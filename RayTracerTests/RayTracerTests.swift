@@ -1,36 +1,29 @@
-//
-//  RayTracerTests.swift
-//  RayTracerTests
-//
-//  Created by Deirdre Saoirse Moen on 9/12/18.
-//  Copyright © 2018 Deirdre Saoirse Moen. All rights reserved.
-//
+import Foundation
+import Cucumberish
 
-import XCTest
-@testable import RayTracer
-
-class RayTracerTests: XCTestCase {
-    
-    override func setUp() {
-        super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
-    
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-        super.tearDown()
-    }
-    
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-    
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
-    }
-    
+public class CucumberishInitializer: NSObject {
+	public class func CucumberishSwiftInit()
+	{
+		//Using XCUIApplication only available in XCUI test targets not the normal Unit test targets.
+		var application : XCUIApplication!
+		//A closure that will be executed only before executing any of your features
+		beforeStart { () -> Void in
+			//Any global initialization can go here
+		}
+		//A Given step definition
+		Given("the app is running") { (args, userInfo) -> Void in
+			
+		}
+		//Another step definition
+		And("all data cleared") { (args, userInfo) -> Void in
+			//Assume you defined an "I tap on \"(.*)\" button" step previousely, you can call it from your code as well.
+			let testCase = userInfo?[kXCTestCaseKey] as? XCTestCase
+			SStep(testCase, "I tap the \"Clear All Data\" button")
+		}
+		//Create a bundle for the folder that contains your "Features" folder. In this example, the CucumberishInitializer.swift file is in the same directory as the "Features" folder.
+		let bundle = Bundle(for: CucumberishInitializer.self)
+		
+		Cucumberish.executeFeatures(inDirectory: "Features", from: bundle, includeTags: nil, excludeTags: nil)
+	}
 }
+
