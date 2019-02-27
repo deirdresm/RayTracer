@@ -7,17 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0986B7571D15DCDE69CB23CC /* Pods_RayTracerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 449BBAB87010CD21E7E63E3E /* Pods_RayTracerTests.framework */; };
+		38049A732226516F00B8E281 /* TestTuples.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38CC76EC215AC7EF006B7934 /* TestTuples.swift */; };
 		38650A472149DE1A00D30282 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38650A462149DE1A00D30282 /* AppDelegate.swift */; };
 		38650A492149DE1A00D30282 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38650A482149DE1A00D30282 /* GameViewController.swift */; };
 		38650A4B2149DE1A00D30282 /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 38650A4A2149DE1A00D30282 /* art.scnassets */; };
 		38650A4D2149DE1B00D30282 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 38650A4C2149DE1B00D30282 /* Assets.xcassets */; };
 		38650A502149DE1B00D30282 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 38650A4E2149DE1B00D30282 /* Main.storyboard */; };
-		38650A5C2149DE1B00D30282 /* RayTracerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38650A5B2149DE1B00D30282 /* RayTracerTests.swift */; };
 		38650A672149DE1C00D30282 /* RayTracerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38650A662149DE1C00D30282 /* RayTracerUITests.swift */; };
-		38650A772149DEDF00D30282 /* RayTracerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 38650A762149DEDF00D30282 /* RayTracerTests.m */; };
-		7A25AF1A33EF0B2E4029A2E4 /* Pods_RayTracer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 801180F1C14111C0F39E89AF /* Pods_RayTracer.framework */; };
-		E1CFDB8A1C9851AC25193F12 /* Pods_RayTracerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39CA07CEBB8239DD92EE59C0 /* Pods_RayTracerUITests.framework */; };
+		387D03732225E36300F43D70 /* Tuple.swift in Sources */ = {isa = PBXBuildFile; fileRef = 387D03722225E36300F43D70 /* Tuple.swift */; };
+		387D03762226066300F43D70 /* Point.swift in Sources */ = {isa = PBXBuildFile; fileRef = 387D03752226066300F43D70 /* Point.swift */; };
+		387D03782226068900F43D70 /* Vector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 387D03772226068900F43D70 /* Vector.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,7 +37,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		114284F2E735DB969E18F78B /* Pods-RayTracerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RayTracerTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RayTracerTests/Pods-RayTracerTests.debug.xcconfig"; sourceTree = "<group>"; };
 		38650A432149DE1A00D30282 /* RayTracer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RayTracer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		38650A462149DE1A00D30282 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		38650A482149DE1A00D30282 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
@@ -48,21 +46,15 @@
 		38650A512149DE1B00D30282 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		38650A522149DE1B00D30282 /* RayTracer.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = RayTracer.entitlements; sourceTree = "<group>"; };
 		38650A572149DE1B00D30282 /* RayTracerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RayTracerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		38650A5B2149DE1B00D30282 /* RayTracerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RayTracerTests.swift; sourceTree = "<group>"; };
 		38650A5D2149DE1B00D30282 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		38650A622149DE1C00D30282 /* RayTracerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RayTracerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		38650A662149DE1C00D30282 /* RayTracerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RayTracerUITests.swift; sourceTree = "<group>"; };
 		38650A682149DE1C00D30282 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		38650A752149DEDE00D30282 /* RayTracerTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RayTracerTests-Bridging-Header.h"; sourceTree = "<group>"; };
-		38650A762149DEDF00D30282 /* RayTracerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RayTracerTests.m; sourceTree = "<group>"; };
-		39CA07CEBB8239DD92EE59C0 /* Pods_RayTracerUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RayTracerUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		449BBAB87010CD21E7E63E3E /* Pods_RayTracerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RayTracerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		629E20B8C82A89E832DF69BC /* Pods-RayTracerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RayTracerTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-RayTracerTests/Pods-RayTracerTests.release.xcconfig"; sourceTree = "<group>"; };
-		6A56A6E86CE90ADE2276BD13 /* Pods-RayTracerUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RayTracerUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-RayTracerUITests/Pods-RayTracerUITests.release.xcconfig"; sourceTree = "<group>"; };
-		6AE03ECEE049296876885AD1 /* Pods-RayTracer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RayTracer.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RayTracer/Pods-RayTracer.debug.xcconfig"; sourceTree = "<group>"; };
-		801180F1C14111C0F39E89AF /* Pods_RayTracer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RayTracer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		B1B977B1E703984A7FF222F5 /* Pods-RayTracerUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RayTracerUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RayTracerUITests/Pods-RayTracerUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		D081EAC20C94A1D6B5CB5742 /* Pods-RayTracer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RayTracer.release.xcconfig"; path = "Pods/Target Support Files/Pods-RayTracer/Pods-RayTracer.release.xcconfig"; sourceTree = "<group>"; };
+		387D03722225E36300F43D70 /* Tuple.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tuple.swift; sourceTree = "<group>"; };
+		387D03742225F06C00F43D70 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		387D03752226066300F43D70 /* Point.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Point.swift; sourceTree = "<group>"; };
+		387D03772226068900F43D70 /* Vector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vector.swift; sourceTree = "<group>"; };
+		38CC76EC215AC7EF006B7934 /* TestTuples.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestTuples.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,7 +62,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7A25AF1A33EF0B2E4029A2E4 /* Pods_RayTracer.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,7 +69,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0986B7571D15DCDE69CB23CC /* Pods_RayTracerTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -86,22 +76,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E1CFDB8A1C9851AC25193F12 /* Pods_RayTracerUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		38049A72222650C800B8E281 /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				38CC76EC215AC7EF006B7934 /* TestTuples.swift */,
+			);
+			name = Features;
+			sourceTree = "<group>";
+		};
 		38650A3A2149DE1A00D30282 = {
 			isa = PBXGroup;
 			children = (
+				387D03742225F06C00F43D70 /* README.md */,
 				38650A452149DE1A00D30282 /* RayTracer */,
 				38650A5A2149DE1B00D30282 /* RayTracerTests */,
 				38650A652149DE1C00D30282 /* RayTracerUITests */,
 				38650A442149DE1A00D30282 /* Products */,
-				A7B666A8FE8FCAE63743E008 /* Pods */,
-				72A1C8B812DCCCD0435E5045 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -125,6 +121,9 @@
 				38650A4E2149DE1B00D30282 /* Main.storyboard */,
 				38650A512149DE1B00D30282 /* Info.plist */,
 				38650A522149DE1B00D30282 /* RayTracer.entitlements */,
+				387D03722225E36300F43D70 /* Tuple.swift */,
+				387D03752226066300F43D70 /* Point.swift */,
+				387D03772226068900F43D70 /* Vector.swift */,
 			);
 			path = RayTracer;
 			sourceTree = "<group>";
@@ -132,11 +131,8 @@
 		38650A5A2149DE1B00D30282 /* RayTracerTests */ = {
 			isa = PBXGroup;
 			children = (
-				38650A5B2149DE1B00D30282 /* RayTracerTests.swift */,
-				38650A762149DEDF00D30282 /* RayTracerTests.m */,
-				38650A742149DE7900D30282 /* Features */,
+				38049A72222650C800B8E281 /* Features */,
 				38650A5D2149DE1B00D30282 /* Info.plist */,
-				38650A752149DEDE00D30282 /* RayTracerTests-Bridging-Header.h */,
 			);
 			path = RayTracerTests;
 			sourceTree = "<group>";
@@ -150,36 +146,6 @@
 			path = RayTracerUITests;
 			sourceTree = "<group>";
 		};
-		38650A742149DE7900D30282 /* Features */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Features;
-			sourceTree = "<group>";
-		};
-		72A1C8B812DCCCD0435E5045 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				801180F1C14111C0F39E89AF /* Pods_RayTracer.framework */,
-				449BBAB87010CD21E7E63E3E /* Pods_RayTracerTests.framework */,
-				39CA07CEBB8239DD92EE59C0 /* Pods_RayTracerUITests.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		A7B666A8FE8FCAE63743E008 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				6AE03ECEE049296876885AD1 /* Pods-RayTracer.debug.xcconfig */,
-				D081EAC20C94A1D6B5CB5742 /* Pods-RayTracer.release.xcconfig */,
-				114284F2E735DB969E18F78B /* Pods-RayTracerTests.debug.xcconfig */,
-				629E20B8C82A89E832DF69BC /* Pods-RayTracerTests.release.xcconfig */,
-				B1B977B1E703984A7FF222F5 /* Pods-RayTracerUITests.debug.xcconfig */,
-				6A56A6E86CE90ADE2276BD13 /* Pods-RayTracerUITests.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -187,7 +153,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 38650A6B2149DE1C00D30282 /* Build configuration list for PBXNativeTarget "RayTracer" */;
 			buildPhases = (
-				A0A98428D0E9805B17F7353D /* [CP] Check Pods Manifest.lock */,
 				38650A3F2149DE1A00D30282 /* Sources */,
 				38650A402149DE1A00D30282 /* Frameworks */,
 				38650A412149DE1A00D30282 /* Resources */,
@@ -205,11 +170,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 38650A6E2149DE1C00D30282 /* Build configuration list for PBXNativeTarget "RayTracerTests" */;
 			buildPhases = (
-				0D2B6986EEDCA34645E5FF3D /* [CP] Check Pods Manifest.lock */,
 				38650A532149DE1B00D30282 /* Sources */,
 				38650A542149DE1B00D30282 /* Frameworks */,
 				38650A552149DE1B00D30282 /* Resources */,
-				E51B64F896A5FDA99C82ADFC /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -225,7 +188,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 38650A712149DE1C00D30282 /* Build configuration list for PBXNativeTarget "RayTracerUITests" */;
 			buildPhases = (
-				3C712CF5F9C3A6D904FE3E44 /* [CP] Check Pods Manifest.lock */,
 				38650A5E2149DE1C00D30282 /* Sources */,
 				38650A5F2149DE1C00D30282 /* Frameworks */,
 				38650A602149DE1C00D30282 /* Resources */,
@@ -252,10 +214,10 @@
 				TargetAttributes = {
 					38650A422149DE1A00D30282 = {
 						CreatedOnToolsVersion = 9.4.1;
+						LastSwiftMigration = 1010;
 					};
 					38650A562149DE1B00D30282 = {
 						CreatedOnToolsVersion = 9.4.1;
-						LastSwiftMigration = 0940;
 						TestTargetID = 38650A422149DE1A00D30282;
 					};
 					38650A612149DE1C00D30282 = {
@@ -311,103 +273,15 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
-/* Begin PBXShellScriptBuildPhase section */
-		0D2B6986EEDCA34645E5FF3D /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-RayTracerTests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		3C712CF5F9C3A6D904FE3E44 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-RayTracerUITests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		A0A98428D0E9805B17F7353D /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-RayTracer-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		E51B64F896A5FDA99C82ADFC /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-RayTracerTests/Pods-RayTracerTests-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Cucumberish/Cucumberish.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Cucumberish.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RayTracerTests/Pods-RayTracerTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
 		38650A3F2149DE1A00D30282 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				387D03762226066300F43D70 /* Point.swift in Sources */,
 				38650A492149DE1A00D30282 /* GameViewController.swift in Sources */,
+				387D03782226068900F43D70 /* Vector.swift in Sources */,
+				387D03732225E36300F43D70 /* Tuple.swift in Sources */,
 				38650A472149DE1A00D30282 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -416,8 +290,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				38650A5C2149DE1B00D30282 /* RayTracerTests.swift in Sources */,
-				38650A772149DEDF00D30282 /* RayTracerTests.m in Sources */,
+				38049A732226516F00B8E281 /* TestTuples.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -507,7 +380,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
@@ -561,7 +434,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
 				SWIFT_COMPILATION_MODE = wholemodule;
@@ -571,13 +444,12 @@
 		};
 		38650A6C2149DE1C00D30282 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6AE03ECEE049296876885AD1 /* Pods-RayTracer.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = RayTracer/RayTracer.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = 3LH6DD65LK;
+				DEVELOPMENT_TEAM = V3N8JZ2T92;
 				INFOPLIST_FILE = RayTracer/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -585,19 +457,18 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = net.deirdre.RayTracer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
 		};
 		38650A6D2149DE1C00D30282 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D081EAC20C94A1D6B5CB5742 /* Pods-RayTracer.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = RayTracer/RayTracer.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = 3LH6DD65LK;
+				DEVELOPMENT_TEAM = V3N8JZ2T92;
 				INFOPLIST_FILE = RayTracer/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -605,13 +476,12 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = net.deirdre.RayTracer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Release;
 		};
 		38650A6F2149DE1C00D30282 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 114284F2E735DB969E18F78B /* Pods-RayTracerTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -619,7 +489,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = 3LH6DD65LK;
+				DEVELOPMENT_TEAM = V3N8JZ2T92;
 				INFOPLIST_FILE = RayTracerTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -628,16 +498,13 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = net.deirdre.RayTracerTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "RayTracerTests/RayTracerTests-Bridging-Header.h";
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RayTracer.app/Contents/MacOS/RayTracer";
 			};
 			name = Debug;
 		};
 		38650A702149DE1C00D30282 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 629E20B8C82A89E832DF69BC /* Pods-RayTracerTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -645,7 +512,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = 3LH6DD65LK;
+				DEVELOPMENT_TEAM = V3N8JZ2T92;
 				INFOPLIST_FILE = RayTracerTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -654,20 +521,18 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = net.deirdre.RayTracerTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "RayTracerTests/RayTracerTests-Bridging-Header.h";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RayTracer.app/Contents/MacOS/RayTracer";
 			};
 			name = Release;
 		};
 		38650A722149DE1C00D30282 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B1B977B1E703984A7FF222F5 /* Pods-RayTracerUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = 3LH6DD65LK;
+				DEVELOPMENT_TEAM = V3N8JZ2T92;
 				INFOPLIST_FILE = RayTracerUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -676,19 +541,18 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = net.deirdre.RayTracerUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TEST_TARGET_NAME = RayTracer;
 			};
 			name = Debug;
 		};
 		38650A732149DE1C00D30282 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6A56A6E86CE90ADE2276BD13 /* Pods-RayTracerUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = 3LH6DD65LK;
+				DEVELOPMENT_TEAM = V3N8JZ2T92;
 				INFOPLIST_FILE = RayTracerUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -697,7 +561,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = net.deirdre.RayTracerUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TEST_TARGET_NAME = RayTracer;
 			};
 			name = Release;
