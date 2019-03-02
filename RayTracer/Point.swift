@@ -10,8 +10,8 @@ import Foundation
 
 class Point : Tuple {
 	
-	init(x: Float, y: Float, z: Float) {
-		super.init(x: x, y: y, z: z, w: 1.0)
+	init(_ x: Double, _ y: Double, _ z: Double) {
+		super.init(x, y, z, 1.0)
 	}
 	
 	
