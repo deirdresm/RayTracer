@@ -76,6 +76,15 @@ class Tuple: Equatable, CustomStringConvertible {
 		return Tuple(x, y, z, w)
 	}
 
+	static func * (lhs: Tuple, rhs: Tuple) -> Tuple {
+		let x = lhs.x * rhs.x
+		let y = lhs.y * rhs.y
+		let z = lhs.z * rhs.z
+		let w = lhs.w * rhs.w
+		
+		return Tuple(x, y, z, w)
+	}
+	
 	static func / (lhs: Tuple, rhs: Double) -> Tuple {
 		let x = lhs.x / rhs
 		let y = lhs.y / rhs

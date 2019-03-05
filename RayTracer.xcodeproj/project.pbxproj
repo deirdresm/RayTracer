@@ -17,6 +17,7 @@
 		387D03732225E36300F43D70 /* Tuple.swift in Sources */ = {isa = PBXBuildFile; fileRef = 387D03722225E36300F43D70 /* Tuple.swift */; };
 		387D03762226066300F43D70 /* Point.swift in Sources */ = {isa = PBXBuildFile; fileRef = 387D03752226066300F43D70 /* Point.swift */; };
 		387D03782226068900F43D70 /* Vector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 387D03772226068900F43D70 /* Vector.swift */; };
+		38D7882D222F174700116CD8 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D7882C222F174700116CD8 /* Color.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,7 @@
 		387D03752226066300F43D70 /* Point.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Point.swift; sourceTree = "<group>"; };
 		387D03772226068900F43D70 /* Vector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vector.swift; sourceTree = "<group>"; };
 		38CC76EC215AC7EF006B7934 /* TestTuples.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestTuples.swift; sourceTree = "<group>"; };
+		38D7882C222F174700116CD8 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +124,7 @@
 				38650A512149DE1B00D30282 /* Info.plist */,
 				38650A522149DE1B00D30282 /* RayTracer.entitlements */,
 				387D03722225E36300F43D70 /* Tuple.swift */,
+				38D7882C222F174700116CD8 /* Color.swift */,
 				387D03752226066300F43D70 /* Point.swift */,
 				387D03772226068900F43D70 /* Vector.swift */,
 			);
@@ -283,6 +286,7 @@
 				387D03782226068900F43D70 /* Vector.swift in Sources */,
 				387D03732225E36300F43D70 /* Tuple.swift in Sources */,
 				38650A472149DE1A00D30282 /* AppDelegate.swift in Sources */,
+				38D7882D222F174700116CD8 /* Color.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
