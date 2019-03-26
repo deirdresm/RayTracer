@@ -6,28 +6,50 @@
 //  Copyright © 2019 Deirdre Saoirse Moen. All rights reserved.
 //
 
-import Foundation
+import AppKit
 
 class Color : Vector {
 	
 	public var red: CGFloat {
-		return CGFloat(self.x)
+		get {
+			return CGFloat(x)
+		}
+		set(newRed) {
+			self.x = newRed
+		}
 	}
 	
 	public var green: CGFloat {
-		return CGFloat(self.y)
+		get {
+			return CGFloat(y)
+		}
+		set(newGreen) {
+			self.y = newGreen
+		}
 	}
 	
 	public var blue: CGFloat {
-		return CGFloat(self.z)
-	}
-
-	convenience init(_ x: CGFloat, _ y: CGFloat, _ z: CGFloat) {
-		self.init(Double(x), Double(y), Double(z))
+		get {
+			return CGFloat(z)
+		}
+		set(newBlue) {
+			self.z = newBlue
+		}
 	}
 	
-
+	static public var black: NSColor = NSColor.black
+	
+	func nsColor() -> NSColor {
+		return NSColor(red: x, green: y, blue: z, alpha: 1.0)
+	}
+	
 	override var description: String {
 		return("Point: x: \(x), y: \(y), z: \(z), w: \(w)")
+	}
+}
+
+extension NSColor {
+	func normalized(_ value: CGFloat) -> CGFloat {
+		return value / 255.0
 	}
 }

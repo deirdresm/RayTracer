@@ -12,14 +12,14 @@ infix operator •: MultiplicationPrecedence
 infix operator ×: MultiplicationPrecedence
 
 class Tuple: Equatable, CustomStringConvertible {
-	let epsilon : Double = 0.00001
+	let epsilon : CGFloat = 0.00001
 	
-	var x: Double
-	var y: Double
-	var z: Double
-	var w: Double
+	var x: CGFloat
+	var y: CGFloat
+	var z: CGFloat
+	var w: CGFloat
 	
-	init(_ x: Double, _ y: Double, _ z: Double, _ w: Double) {
+	init(_ x: CGFloat, _ y: CGFloat, _ z: CGFloat, _ w: CGFloat) {
 		self.x = x
 		self.y = y
 		self.z = z
@@ -37,7 +37,7 @@ class Tuple: Equatable, CustomStringConvertible {
 	//MARK: Class Methods
 	
 	static func == (lhs: Tuple, rhs: Tuple) -> Bool {
-		let epsilon : Double = 0.00001	// the other one's an instance method, and this is a class method
+		let epsilon : CGFloat = 0.00001	// the other one's an instance method, and this is a class method
 
 		if abs(lhs.x - rhs.x) <= epsilon &&
 			abs(lhs.y - rhs.y) <= epsilon &&
@@ -67,7 +67,7 @@ class Tuple: Equatable, CustomStringConvertible {
 		return Tuple(x, y, z, w)
 	}
 
-	static func * (lhs: Tuple, rhs: Double) -> Tuple {
+	static func * (lhs: Tuple, rhs: CGFloat) -> Tuple {
 		let x = lhs.x * rhs
 		let y = lhs.y * rhs
 		let z = lhs.z * rhs
@@ -85,7 +85,7 @@ class Tuple: Equatable, CustomStringConvertible {
 		return Tuple(x, y, z, w)
 	}
 	
-	static func / (lhs: Tuple, rhs: Double) -> Tuple {
+	static func / (lhs: Tuple, rhs: CGFloat) -> Tuple {
 		let x = lhs.x / rhs
 		let y = lhs.y / rhs
 		let z = lhs.z / rhs
@@ -104,7 +104,7 @@ class Tuple: Equatable, CustomStringConvertible {
 	
 	// MARK: Magnitude functions
 	
-	public func magnitude() -> Double {
+	public func magnitude() -> CGFloat {
 		let mag = sqrt(self.x*self.x + self.y*self.y + self.z*self.z + self.w*self.w)
 		return mag
 	}
@@ -121,7 +121,7 @@ class Tuple: Equatable, CustomStringConvertible {
 	
 	// Dot product (note: using option-8 for this dot as the right dot has another meaning?)
 	
-	public static func • (_ left: Tuple, _ right: Tuple) -> Double {
+	public static func • (_ left: Tuple, _ right: Tuple) -> CGFloat {
 		let result = left.x * right.x + left.y * right.y +
 					left.z * right.z + left.w * right.w
 		return result

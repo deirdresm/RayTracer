@@ -17,6 +17,10 @@
 		387D03732225E36300F43D70 /* Tuple.swift in Sources */ = {isa = PBXBuildFile; fileRef = 387D03722225E36300F43D70 /* Tuple.swift */; };
 		387D03762226066300F43D70 /* Point.swift in Sources */ = {isa = PBXBuildFile; fileRef = 387D03752226066300F43D70 /* Point.swift */; };
 		387D03782226068900F43D70 /* Vector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 387D03772226068900F43D70 /* Vector.swift */; };
+		38B6FB6522480130004405A4 /* Canvas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38B6FB6422480130004405A4 /* Canvas.swift */; };
+		38B6FB6722480159004405A4 /* TestCanvases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38B6FB6622480159004405A4 /* TestCanvases.swift */; };
+		38B6FB6922495704004405A4 /* PPMFileFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38B6FB6822495704004405A4 /* PPMFileFormat.swift */; };
+		38B6FB6B22495D2D004405A4 /* TestPPMFileFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38B6FB6A22495D2D004405A4 /* TestPPMFileFormat.swift */; };
 		38D7882D222F174700116CD8 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D7882C222F174700116CD8 /* Color.swift */; };
 /* End PBXBuildFile section */
 
@@ -55,6 +59,10 @@
 		387D03742225F06C00F43D70 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		387D03752226066300F43D70 /* Point.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Point.swift; sourceTree = "<group>"; };
 		387D03772226068900F43D70 /* Vector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vector.swift; sourceTree = "<group>"; };
+		38B6FB6422480130004405A4 /* Canvas.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Canvas.swift; sourceTree = "<group>"; };
+		38B6FB6622480159004405A4 /* TestCanvases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestCanvases.swift; sourceTree = "<group>"; };
+		38B6FB6822495704004405A4 /* PPMFileFormat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PPMFileFormat.swift; sourceTree = "<group>"; };
+		38B6FB6A22495D2D004405A4 /* TestPPMFileFormat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestPPMFileFormat.swift; sourceTree = "<group>"; };
 		38CC76EC215AC7EF006B7934 /* TestTuples.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestTuples.swift; sourceTree = "<group>"; };
 		38D7882C222F174700116CD8 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -88,6 +96,8 @@
 			isa = PBXGroup;
 			children = (
 				38CC76EC215AC7EF006B7934 /* TestTuples.swift */,
+				38B6FB6622480159004405A4 /* TestCanvases.swift */,
+				38B6FB6A22495D2D004405A4 /* TestPPMFileFormat.swift */,
 			);
 			name = Features;
 			sourceTree = "<group>";
@@ -125,6 +135,8 @@
 				38650A522149DE1B00D30282 /* RayTracer.entitlements */,
 				387D03722225E36300F43D70 /* Tuple.swift */,
 				38D7882C222F174700116CD8 /* Color.swift */,
+				38B6FB6822495704004405A4 /* PPMFileFormat.swift */,
+				38B6FB6422480130004405A4 /* Canvas.swift */,
 				387D03752226066300F43D70 /* Point.swift */,
 				387D03772226068900F43D70 /* Vector.swift */,
 			);
@@ -281,9 +293,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				38B6FB6522480130004405A4 /* Canvas.swift in Sources */,
 				387D03762226066300F43D70 /* Point.swift in Sources */,
 				38650A492149DE1A00D30282 /* GameViewController.swift in Sources */,
 				387D03782226068900F43D70 /* Vector.swift in Sources */,
+				38B6FB6922495704004405A4 /* PPMFileFormat.swift in Sources */,
 				387D03732225E36300F43D70 /* Tuple.swift in Sources */,
 				38650A472149DE1A00D30282 /* AppDelegate.swift in Sources */,
 				38D7882D222F174700116CD8 /* Color.swift in Sources */,
@@ -295,6 +309,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				38049A732226516F00B8E281 /* TestTuples.swift in Sources */,
+				38B6FB6B22495D2D004405A4 /* TestPPMFileFormat.swift in Sources */,
+				38B6FB6722480159004405A4 /* TestCanvases.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

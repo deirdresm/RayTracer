@@ -9,7 +9,7 @@ import XCTest
 
 class TestTupleFeatures: XCTestCase {
 	
-	let epsilon : Double = 0.00001
+	let epsilon : CGFloat = 0.00001
 	
 	//MARK: Tuples, Points, Vectors basics
 
@@ -166,7 +166,7 @@ class TestTupleFeatures: XCTestCase {
 
 	func testTupleTimesScalar() {
 		let a = Tuple(1, -2, 3, -4)
-		let b : Double = 3.5
+		let b : CGFloat = 3.5
 		
 		XCTAssertEqual(a * b, Tuple(3.5, -7, 10.5, -14))
 	}
@@ -177,7 +177,7 @@ class TestTupleFeatures: XCTestCase {
 
 	func testMultiplyTupleByFraction() {
 		let a = Tuple(1, -2, 3, -4)
-		let b : Double = 0.5
+		let b : CGFloat = 0.5
 
 		XCTAssertEqual(a * b, Tuple(0.5, -1, 1.5, -2))
 	}
@@ -189,7 +189,7 @@ class TestTupleFeatures: XCTestCase {
 	
 	func testDivideTupleByScalar() {
 		let a = Tuple(1, -2, 3, -4)
-		let b : Double = 2.0
+		let b : CGFloat = 2.0
 		
 		XCTAssertEqual(a / b, Tuple(0.5, -1, 1.5, -2))
 	}
@@ -250,7 +250,7 @@ class TestTupleFeatures: XCTestCase {
 
 	func testNormalizedVector() {
 		
-		let sq : Double = 1/sqrt(14)
+		let sq : CGFloat = 1/sqrt(14)
 		
 		var v = Vector(4, 0, 0)
 		XCTAssertEqual(v.normalize(), Vector(1, 0, 0))
@@ -368,6 +368,5 @@ class TestTupleFeatures: XCTestCase {
 	//	When r ← reflect(v, n)
 	//	Then r = vector(1, 0, 0)
 
-	
 
 }
