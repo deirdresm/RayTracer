@@ -48,7 +48,7 @@ class Canvas: CustomStringConvertible, Equatable {
 	func toPPM() -> String {
 		let file = PPMFileFormat(self)
 		
-		return ""
+		return file.fileOutput
 	}
 	
 	static func == (lhs: Canvas, rhs: Canvas) -> Bool { // TODO: make this work

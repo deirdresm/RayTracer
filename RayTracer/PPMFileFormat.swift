@@ -15,6 +15,8 @@ class PPMFileFormat : NSObject {
 	convenience init(_ canvas: Canvas) {
 		self.init()
 		self.canvas = canvas
+		
+		writeHeader()
 	}
 	
 	func writeHeader() {

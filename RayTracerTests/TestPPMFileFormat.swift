@@ -22,8 +22,20 @@ class TestPPMFileFormat: XCTestCase {
 //	​ 	​    ​ 	​    """
 
     func testPPMHeader() {
+		
+		let header =
+			"""
+			P3
+			5 3
+			255
+
+			"""
+
         let c = Canvas(5,3)
 		let ppm = c.toPPM()
+		
+		XCTAssertEqual(ppm, header)
+		
     }
 
 	func testExample() {
