@@ -30,7 +30,7 @@ class TestPPMFileFormat: XCTestCase {
 		
 	}
 	
-	func testExample() {
+	func testExample2() {
 		
 	}
 	
