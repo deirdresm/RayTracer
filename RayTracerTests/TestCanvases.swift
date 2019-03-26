@@ -11,12 +11,6 @@ import XCTest
 
 class TestCanvases: XCTestCase {
 
-//	Scenario​: Creating a canvas
-//	​ 	  ​​ 	  ​Given​ c ← canvas(10, 20)
-//	​ 	  ​​ 	  ​Then​ c.width = 10
-//	​ 	    ​​ 	    ​And​ c.height = 20
-//	​ 	    ​​ 	    ​And​ every pixel of c is color(0, 0, 0)
-
     func testCreateCanvas() {
 		let c = Canvas(10,20)
 		
@@ -32,12 +26,6 @@ class TestCanvases: XCTestCase {
 		}
     }
 	
-//	Scenario​: Writing pixels to a canvas
-//	​      ​Given​ c ← canvas(10, 20)
-//	​      ​And​ red ← color(1, 0, 0)
-//	​      ​When​ write_pixel(c, 2, 3, red)
-//	​  ​​    ​Then​ pixel_at(c, 2, 3) = red
-	
 	func testPixelSetAndRead() {
 		let c = Canvas(10,20)
 		let color = Color(1.0, 0.0, 0.0) // red
@@ -51,6 +39,23 @@ class TestCanvases: XCTestCase {
 		c.writePixel(2, 3, color)
 		XCTAssertEqual(c.pixelAt(2, 3).nsColor(), NSColor.red)
 
+	}
+	
+	func testCanvasEquatability() {
+		let c = Canvas(10, 20)
+		let d = Canvas(10, 20)
+		
+		XCTAssertEqual(c, d)
+		
+		let red = Color(1.0, 0.0, 0.0) // red
+		c.writePixel(2, 3, red)
+		d.writePixel(2, 3, red)
+		
+		let blue = Color(0.0, 0.0, 1.0)
+		c.writePixel(5, 9, blue)
+		d.writePixel(5, 9, blue)
+		
+		XCTAssertEqual(c, d)
 	}
 
 }

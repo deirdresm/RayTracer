@@ -39,6 +39,23 @@ class Color : Vector {
 	
 	static public var black: NSColor = NSColor.black
 	
+	func clamped() -> Color {
+		
+		var colors = [self.red, self.green, self.blue]
+		var outcolors : [CGFloat] = [0.0, 0.0, 0.0] // TODO: I know there's a better way….
+		
+		for index in 0..<colors.count {
+			if colors[index] > 1 {
+				outcolors[index] = 1
+			} else if colors[index] < 0 {
+				outcolors[index] = 0
+			} else {
+				outcolors[index] = colors[index]
+			}
+		}
+		return Color(outcolors[0], outcolors[1], outcolors[2])
+	}
+	
 	func nsColor() -> NSColor {
 		return NSColor(red: x, green: y, blue: z, alpha: 1.0)
 	}

@@ -36,7 +36,8 @@ class Canvas: CustomStringConvertible, Equatable {
 	}
 	
 	func writePixel(_ y: Int, _ x: Int, _ color: Color) {
-		pixelData[y][x] = color
+		
+		pixelData[y][x] = color.clamped()
 	}
 	
 	func pixelAt(_ y: Int, _ x: Int) -> Color {
@@ -44,12 +45,26 @@ class Canvas: CustomStringConvertible, Equatable {
 		return pixelData[y][x]
 	}
 	
-	func toPPM() {
+	func toPPM() -> String {
 		let file = PPMFileFormat(self)
 		
+		return ""
 	}
 	
-	static func == (lhs: Canvas, rhs: Canvas) -> Bool {
-		return false
+	static func == (lhs: Canvas, rhs: Canvas) -> Bool { // TODO: make this work
+		if lhs.width != rhs.width || lhs.height != rhs.height {
+			return false
+		}
+		
+		for y in 0..<lhs.width {
+			for x in 0..<lhs.height {
+				
+				if lhs.pixelAt(y, x) != rhs.pixelAt(y, x) {
+					return false
+				}
+			}
+		}
+
+		return true
 	}
 }
