@@ -20,6 +20,6 @@ class PPMFileFormat : NSObject {
 	}
 	
 	func writeHeader() {
-		fileOutput = "P3\n\(canvas.width) \(canvas.height)\n255\n"
+		fileOutput = "P3\n\(canvas.width) \(canvas.height)\n255"
 	}
 }

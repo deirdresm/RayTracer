@@ -28,14 +28,12 @@ class TestPPMFileFormat: XCTestCase {
 			P3
 			5 3
 			255
-
 			"""
 
         let c = Canvas(5,3)
 		let ppm = c.toPPM()
 		
-		XCTAssertEqual(ppm, header)
-		
+		XCTAssertTrue(ppm.hasPrefix(header))
     }
 
 	func testExample() {
