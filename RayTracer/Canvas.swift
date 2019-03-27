@@ -15,6 +15,8 @@ class Canvas: CustomStringConvertible, Equatable {
 	var width: Int = 0
 	var height: Int = 0
 	
+	let maxColorValue = 255
+	
 	var pixelData: [[Color]]
 	
 	init(_ width: Int, _ height: Int) {
@@ -36,7 +38,7 @@ class Canvas: CustomStringConvertible, Equatable {
 	}
 	
 	func writePixel(_ y: Int, _ x: Int, _ color: Color) {
-		
+		print("pixelData width: \(self.width), height: \(self.height), y: \(y), x: \(x)")
 		pixelData[y][x] = color.clamped()
 	}
 	

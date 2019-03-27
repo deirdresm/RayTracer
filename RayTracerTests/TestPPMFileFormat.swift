@@ -27,7 +27,7 @@ class TestPPMFileFormat: XCTestCase {
 			"""
 			P3
 			5 3
-			255
+			255\n
 			"""
 
         let c = Canvas(5,3)
@@ -35,9 +35,39 @@ class TestPPMFileFormat: XCTestCase {
 		
 		XCTAssertTrue(ppm.hasPrefix(header))
     }
-
-	func testExample() {
+	
+	func testPPMPixelData() {
+		let header =
+		"""
+			P3
+			5 3
+			255\n
+			"""
 		
+		let body =
+		"""
+			255 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+			0 0 0 0 0 0 0 128 0 0 0 0 0 0 0
+			0 0 0 0 0 0 0 0 0 0 0 0 0 0 255\n
+			"""
+
+		let c = Canvas(5,3)
+		
+		let c1 = Color(1.5, 0, 0).clamped()
+		let c2 = Color(0.2, -0.5, 0.2).clamped()
+		let c3 = Color(-0.5, 0, 1).clamped()
+		
+		c.writePixel(0, 0, c1)
+		c.writePixel(2, 1, c2)
+		c.writePixel(4, 2, c3)
+
+		let ppm = c.toPPM()
+		let ppmExpected = header + body
+		
+		print(body)
+		
+		XCTAssertTrue(ppm.hasPrefix(header))
+		XCTAssertTrue(ppm.hasSuffix(body))
 	}
 	
 	func testExample2() {
