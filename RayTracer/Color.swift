@@ -67,6 +67,8 @@ class Color : Vector {
 
 extension NSColor {
 	func normalized(_ value: CGFloat) -> CGFloat {
+		
+		
 		return value / 255.0
 	}
 }

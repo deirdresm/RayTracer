@@ -19,9 +19,9 @@ class TestCanvases: XCTestCase {
 		
 		let black = Color(0, 0, 0)
 		
-		for y in 0..<c.width {
-			for x in 0..<c.height {
-				XCTAssertEqual(c.pixelAt(y, x), black)
+		for y in 0..<c.height {
+			for x in 0..<c.width {
+				XCTAssertEqual(c.pixelAt(x, y), black)
 			}
 		}
     }
@@ -52,8 +52,8 @@ class TestCanvases: XCTestCase {
 		d.writePixel(2, 3, red)
 		
 		let blue = Color(0.0, 0.0, 1.0)
-		c.writePixel(5, 9, blue)
-		d.writePixel(5, 9, blue)
+		c.writePixel(5, 12, blue)
+		d.writePixel(5, 12, blue)
 		
 		XCTAssertEqual(c, d)
 	}

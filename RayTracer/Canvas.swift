@@ -27,22 +27,22 @@ class Canvas: CustomStringConvertible, Equatable {
 		
 		let black = Color(0, 0, 0)
 		
-		pixelData = Array(repeating: Array(repeating: black, count: height), count: width)
+		pixelData = Array(repeating: Array(repeating: black, count: width), count: height)
 		
-		for y in 0..<width {
-			for x in 0..<height {
-				
-				writePixel(y, x, black)
-			}
-		}
+		
+//		for y in 0..<height {
+//			for x in 0..<width {
+//
+//				writePixel(x, y, black)
+//			}
+//		}
 	}
-	
-	func writePixel(_ y: Int, _ x: Int, _ color: Color) {
-		print("pixelData width: \(self.width), height: \(self.height), y: \(y), x: \(x)")
+
+	func writePixel(_ x: Int, _ y: Int, _ color: Color) {
 		pixelData[y][x] = color.clamped()
 	}
 	
-	func pixelAt(_ y: Int, _ x: Int) -> Color {
+	func pixelAt(_ x: Int, _ y: Int) -> Color {
 		// TODO: assumes y and x are valid
 		return pixelData[y][x]
 	}
@@ -58,10 +58,9 @@ class Canvas: CustomStringConvertible, Equatable {
 			return false
 		}
 		
-		for y in 0..<lhs.width {
-			for x in 0..<lhs.height {
-				
-				if lhs.pixelAt(y, x) != rhs.pixelAt(y, x) {
+		for y in 0..<lhs.height {
+			for x in 0..<lhs.width {
+				if lhs.pixelAt(x, y) != rhs.pixelAt(x, y) {
 					return false
 				}
 			}

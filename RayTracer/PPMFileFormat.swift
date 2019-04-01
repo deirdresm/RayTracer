@@ -17,6 +17,7 @@ class PPMFileFormat : NSObject {
 		self.canvas = canvas
 		
 		writeHeader()
+		writeBody()
 	}
 	
 	func writeHeader() {
@@ -26,15 +27,35 @@ class PPMFileFormat : NSObject {
 	func writeBody() {
 		var bodyOutput = ""
 		
+		var currentLineLength = 0
+		
 		for y in 0..<canvas.height {
-			for x in 0..<canvas.height {
+			for x in 0..<canvas.width {
 				
-				let p = canvas.pixelAt(y, x)
-				let r = Int(p.red * 255.0)
-				let g = Int(p.green * 255.0)
-				let b = Int(p.blue * 255.0)
-				bodyOutput += " \(r) \(g) \(b)"
+				let p = canvas.pixelAt(x, y)
+				
+				let r = Int(round(p.red * 255.0))
+				let g = Int(round(p.green * 255.0))
+				let b = Int(round(p.blue * 255.0))
+				
+				var temp = "\(r) \(g) \(b)"
+				if currentLineLength + temp.count + 1 >= 69 {
+					temp = "\n\(r) \(g) \(b)"
+					currentLineLength = temp.count - 1
+				} else {
+					
+					if x > 0 {
+						temp = " " + temp
+						currentLineLength += temp.count
+					}
+				}
+				
+				bodyOutput += temp
 			}
+			bodyOutput += "\n"
+			currentLineLength = 0
 		}
+		
+		fileOutput += bodyOutput
 	}
 }
