@@ -15,6 +15,14 @@ class Point : Tuple {
 	}
 	
 	
+	static func + (lhs: Point, rhs: Vector) -> Point {
+		let x = lhs.x + rhs.x
+		let y = lhs.y + rhs.y
+		let z = lhs.z + rhs.z
+		
+		return Point(x, y, z)
+	}
+	
 	override var description: String {
 		return("Point: x: \(x), y: \(y), z: \(z), w: \(w)")
 	}

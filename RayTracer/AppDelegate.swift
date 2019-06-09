@@ -13,6 +13,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         // Insert code here to initialize your application
+		
+		let example = Example()
+		example.makeCurve(width: 900, height: 550)
+		
     }
     
 }
