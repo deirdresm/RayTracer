@@ -11,6 +11,8 @@ import Foundation
 infix operator •: MultiplicationPrecedence
 infix operator ×: MultiplicationPrecedence
 
+// TODO: consider making Tuple a struct
+
 class Tuple: Equatable, CustomStringConvertible {
 	let epsilon : CGFloat = 0.00001
 	
@@ -49,7 +51,7 @@ class Tuple: Equatable, CustomStringConvertible {
 		return false
 	}
 	
-	static func + (lhs: Tuple, rhs: Tuple) -> Tuple {
+	static func + (lhs: Tuple, rhs: Tuple) -> some Tuple {
 		let x = lhs.x + rhs.x
 		let y = lhs.y + rhs.y
 		let z = lhs.z + rhs.z
@@ -58,7 +60,7 @@ class Tuple: Equatable, CustomStringConvertible {
 		return Tuple(x, y, z, w)
 	}
 	
-	static func - (lhs: Tuple, rhs: Tuple) -> Tuple {
+	static func - (lhs: Tuple, rhs: Tuple) -> some Tuple {
 		let x = lhs.x - rhs.x
 		let y = lhs.y - rhs.y
 		let z = lhs.z - rhs.z
@@ -67,7 +69,7 @@ class Tuple: Equatable, CustomStringConvertible {
 		return Tuple(x, y, z, w)
 	}
 
-	static func * (lhs: Tuple, rhs: CGFloat) -> Tuple {
+	static func * (lhs: Tuple, rhs: CGFloat) -> some Tuple {
 		let x = lhs.x * rhs
 		let y = lhs.y * rhs
 		let z = lhs.z * rhs
@@ -76,7 +78,7 @@ class Tuple: Equatable, CustomStringConvertible {
 		return Tuple(x, y, z, w)
 	}
 
-	static func * (lhs: Tuple, rhs: Tuple) -> Tuple {
+	static func * (lhs: Tuple, rhs: Tuple) -> some Tuple {
 		let x = lhs.x * rhs.x
 		let y = lhs.y * rhs.y
 		let z = lhs.z * rhs.z
@@ -85,7 +87,7 @@ class Tuple: Equatable, CustomStringConvertible {
 		return Tuple(x, y, z, w)
 	}
 	
-	static func / (lhs: Tuple, rhs: CGFloat) -> Tuple {
+	static func / (lhs: Tuple, rhs: CGFloat) -> some Tuple {
 		let x = lhs.x / rhs
 		let y = lhs.y / rhs
 		let z = lhs.z / rhs

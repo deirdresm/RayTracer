@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		38049A732226516F00B8E281 /* TestTuples.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38CC76EC215AC7EF006B7934 /* TestTuples.swift */; };
+		3804DD2F22596A4900DD2869 /* Example.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3804DD2E22596A4900DD2869 /* Example.swift */; };
+		3804DD3122596DDA00DD2869 /* Projectile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3804DD3022596DDA00DD2869 /* Projectile.swift */; };
 		38650A472149DE1A00D30282 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38650A462149DE1A00D30282 /* AppDelegate.swift */; };
 		38650A492149DE1A00D30282 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38650A482149DE1A00D30282 /* GameViewController.swift */; };
 		38650A4B2149DE1A00D30282 /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 38650A4A2149DE1A00D30282 /* art.scnassets */; };
@@ -17,6 +19,8 @@
 		387D03732225E36300F43D70 /* Tuple.swift in Sources */ = {isa = PBXBuildFile; fileRef = 387D03722225E36300F43D70 /* Tuple.swift */; };
 		387D03762226066300F43D70 /* Point.swift in Sources */ = {isa = PBXBuildFile; fileRef = 387D03752226066300F43D70 /* Point.swift */; };
 		387D03782226068900F43D70 /* Vector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 387D03772226068900F43D70 /* Vector.swift */; };
+		388139F125C782B100EB0DB6 /* TestMatrices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 388139F025C782B100EB0DB6 /* TestMatrices.swift */; };
+		388139F625C7831C00EB0DB6 /* Matrix.swift in Sources */ = {isa = PBXBuildFile; fileRef = 388139F525C7831C00EB0DB6 /* Matrix.swift */; };
 		38B6FB6522480130004405A4 /* Canvas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38B6FB6422480130004405A4 /* Canvas.swift */; };
 		38B6FB6722480159004405A4 /* TestCanvases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38B6FB6622480159004405A4 /* TestCanvases.swift */; };
 		38B6FB6922495704004405A4 /* PPMFileFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38B6FB6822495704004405A4 /* PPMFileFormat.swift */; };
@@ -42,6 +46,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3804DD2E22596A4900DD2869 /* Example.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Example.swift; sourceTree = "<group>"; };
+		3804DD3022596DDA00DD2869 /* Projectile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Projectile.swift; sourceTree = "<group>"; };
 		38650A432149DE1A00D30282 /* RayTracer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RayTracer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		38650A462149DE1A00D30282 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		38650A482149DE1A00D30282 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
@@ -59,6 +65,8 @@
 		387D03742225F06C00F43D70 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		387D03752226066300F43D70 /* Point.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Point.swift; sourceTree = "<group>"; };
 		387D03772226068900F43D70 /* Vector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vector.swift; sourceTree = "<group>"; };
+		388139F025C782B100EB0DB6 /* TestMatrices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestMatrices.swift; sourceTree = "<group>"; };
+		388139F525C7831C00EB0DB6 /* Matrix.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Matrix.swift; sourceTree = "<group>"; };
 		38B6FB6422480130004405A4 /* Canvas.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Canvas.swift; sourceTree = "<group>"; };
 		38B6FB6622480159004405A4 /* TestCanvases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestCanvases.swift; sourceTree = "<group>"; };
 		38B6FB6822495704004405A4 /* PPMFileFormat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PPMFileFormat.swift; sourceTree = "<group>"; };
@@ -98,6 +106,7 @@
 				38CC76EC215AC7EF006B7934 /* TestTuples.swift */,
 				38B6FB6622480159004405A4 /* TestCanvases.swift */,
 				38B6FB6A22495D2D004405A4 /* TestPPMFileFormat.swift */,
+				388139F025C782B100EB0DB6 /* TestMatrices.swift */,
 			);
 			name = Features;
 			sourceTree = "<group>";
@@ -137,8 +146,11 @@
 				38D7882C222F174700116CD8 /* Color.swift */,
 				38B6FB6822495704004405A4 /* PPMFileFormat.swift */,
 				38B6FB6422480130004405A4 /* Canvas.swift */,
+				3804DD2E22596A4900DD2869 /* Example.swift */,
+				3804DD3022596DDA00DD2869 /* Projectile.swift */,
 				387D03752226066300F43D70 /* Point.swift */,
 				387D03772226068900F43D70 /* Vector.swift */,
+				388139F525C7831C00EB0DB6 /* Matrix.swift */,
 			);
 			path = RayTracer;
 			sourceTree = "<group>";
@@ -295,14 +307,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3804DD3122596DDA00DD2869 /* Projectile.swift in Sources */,
 				38B6FB6522480130004405A4 /* Canvas.swift in Sources */,
 				387D03762226066300F43D70 /* Point.swift in Sources */,
 				38650A492149DE1A00D30282 /* GameViewController.swift in Sources */,
 				387D03782226068900F43D70 /* Vector.swift in Sources */,
+				388139F625C7831C00EB0DB6 /* Matrix.swift in Sources */,
 				38B6FB6922495704004405A4 /* PPMFileFormat.swift in Sources */,
 				387D03732225E36300F43D70 /* Tuple.swift in Sources */,
 				38650A472149DE1A00D30282 /* AppDelegate.swift in Sources */,
 				38D7882D222F174700116CD8 /* Color.swift in Sources */,
+				3804DD2F22596A4900DD2869 /* Example.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -311,6 +326,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				38049A732226516F00B8E281 /* TestTuples.swift in Sources */,
+				388139F125C782B100EB0DB6 /* TestMatrices.swift in Sources */,
 				38B6FB6B22495D2D004405A4 /* TestPPMFileFormat.swift in Sources */,
 				38B6FB6722480159004405A4 /* TestCanvases.swift in Sources */,
 			);
@@ -402,7 +418,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
@@ -457,7 +473,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
 				SWIFT_COMPILATION_MODE = wholemodule;
@@ -479,6 +495,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				PRODUCT_BUNDLE_IDENTIFIER = net.deirdre.RayTracer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -498,6 +515,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				PRODUCT_BUNDLE_IDENTIFIER = net.deirdre.RayTracer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
