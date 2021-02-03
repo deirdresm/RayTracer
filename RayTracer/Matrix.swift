@@ -17,6 +17,56 @@ struct Matrix: Equatable {
     init(_ matrix: [[CGFloat]]) {
         _matrix = matrix
     }
+
+    // MARK: variables
+    
+    static var identity: Matrix = {
+            return Matrix([[1,0,0,0],[0,1,0,0],
+                        [0,0,1,0],[0,0,0,1]])
+    }()
+
+    // number of rows. You'll note this is the top-level count of the array of arrays
+    var rows: Int {
+        get {
+            return _matrix.count
+        }
+    }
+    
+    // number of columns
+    var cols: Int {
+        get {
+            return _matrix[0].count
+        }
+    }
+    
+    var invertible: Bool {
+        get {
+            return self.determinant != 0
+        }
+    }
+
+    var inverse: Matrix {
+        get {
+            assert(self.invertible, "Only supports invertible matrices")
+            var m = Matrix(self._matrix)
+            let d = self.determinant
+
+            for row in 0 ..< rows {
+                for col in 0 ..< cols {
+                    let c = cofactor(row: row, col: col)
+                    m[col,row] = c/d
+                }
+            }
+            return m
+        }
+    }
+
+    // MARK: subscript sauce
+    
+    // from this, we get the ability to use array-like subscripts
+    // without actually being an array, e.g.:
+    // let m = Matrix([[1,2],[3,4]])
+    // m[0,1] // returns 2
     
     @inlinable
     public subscript(row: Int, column: Int) -> CGFloat {
@@ -27,8 +77,31 @@ struct Matrix: Equatable {
         _matrix[row][column] = rhs
       }
     }
+    
+    // MARK: Description
+    
+    var description: String {
+        var result = ""
+        
+        for i in 0 ..< rows {
+            if i == 0 { // no prepending a line break
+                result.append("\(_matrix[i])")
+            } else {
+                result.append("\n\(_matrix[i])")
+            }
+        }
+        return result
+    }
+
+    // MARK: Multiply
+
+    // multiplies one array by another, like it says on the tin
+    // Note: this assumes 4x4
 
     static func * (lhs: Matrix, rhs: Matrix) -> Matrix {
+        assert(lhs.rows == 4 && lhs.cols == 4, "Only supports 4x4 matrices (lhs)")
+        assert(rhs.rows == 4 && rhs.cols == 4, "Only supports 4x4 matrices (rhs)")
+
         var m = Matrix([[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0]])
         
         for row in 0...3 {
@@ -42,7 +115,12 @@ struct Matrix: Equatable {
         return m
     }
 
+    // multiplies an array by a tuple, like it says on the tin
+    // Note: this assumes 4x4
+
     static func * (lhs: Matrix, rhs: Tuple) -> Tuple {
+        assert(lhs.rows == 4 && lhs.cols == 4, "Only supports 4x4 matrices (lhs)")
+
         var m = Matrix([[0,0,0,0]])
         
         for row in 0...3 {
@@ -53,5 +131,72 @@ struct Matrix: Equatable {
         }
         return Tuple(m[0,0], m[0,1], m[0,2], m[0,4])
     }
+    
+    // MARK: Transpose
 
+    // transpose a 4x4 matrix (flip x and y)
+    func transpose() -> Matrix {
+        assert(self.rows == 4 && self.cols == 4, "Only supports 4x4 matrices (self)")
+        var m = Matrix([[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0]])
+        
+        for row in 0...3 {
+            for col in 0...3 {
+                m[col, row] = self[row, col]
+            }
+        }
+        return m
+    }
+    
+    // MARK: Invert
+    
+    public var determinant: CGFloat {
+        var d: CGFloat = 0
+        var cf: CGFloat = 0
+        
+        assert(rows == cols, "Need a matching number of rows/cols: \(rows), \(cols)")
+
+        if rows == 2 && cols == 2 {
+            d += self[0,0] * self[1,1]
+            d -= self[0,1] * self[1,0]
+        } else {
+            for c in 0 ..< cols {
+                cf = cofactor(row: 0, col: c)
+
+                d += self[0,c] * cf
+            }
+        }
+
+        return d
+    }
+    
+    // MARK: submatrices
+    
+    // provide a smaller matrix, removing the stated row and column
+    func submatrix(row: Int, col: Int) -> Matrix {
+        var result = self._matrix
+        
+        // first, remove the row
+        result.remove(at: row)
+        
+        // iterate to remove columns
+        for i in 0 ..< result.count { // count is new # of rows
+            result[i].remove(at: col)
+        }
+        
+        return Matrix(result)
+    }
+    
+    func minor(row: Int, col: Int) -> CGFloat {
+        let matrix = submatrix(row: row, col: col)
+        return matrix.determinant
+    }
+    
+    func cofactor(row: Int, col: Int) -> CGFloat {
+        var d:CGFloat = minor(row: row, col: col)
+        
+        if !(row + col).isMultiple(of: 2) {
+            d = -d
+        }
+        return d
+    }
 }
