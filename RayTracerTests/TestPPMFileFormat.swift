@@ -9,6 +9,8 @@
 import XCTest
 @testable import RayTracer
 
+// swiftlint:disable identifier_name trailing_whitespace comment_spacing comma
+
 class TestPPMFileFormat: XCTestCase {
 	
 //	Scenario​: Constructing the PPM header

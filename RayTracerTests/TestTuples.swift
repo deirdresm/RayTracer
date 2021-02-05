@@ -8,6 +8,8 @@
 import XCTest
 @testable import RayTracer
 
+// swiftlint:disable identifier_name trailing_whitespace comma comment_spacing
+
 class TestTupleFeatures: XCTestCase {
 	
 	let epsilon : CGFloat = 0.00001

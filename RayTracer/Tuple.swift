@@ -8,6 +8,8 @@
 
 import Foundation
 
+// swiftlint:disable identifier_name trailing_whitespace
+
 infix operator •: MultiplicationPrecedence
 infix operator ×: MultiplicationPrecedence
 

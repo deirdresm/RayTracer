@@ -9,6 +9,7 @@
 import XCTest
 @testable import RayTracer
 
+// swiftlint:disable identifier_name trailing_whitespace comma comment_spacing
 
 // MARK: test to pass accuracy comparison down from matrix to the individual values
 

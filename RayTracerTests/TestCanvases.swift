@@ -9,6 +9,8 @@
 import XCTest
 @testable import RayTracer
 
+// swiftlint:disable identifier_name trailing_whitespace comma comment_spacing
+
 class TestCanvases: XCTestCase {
 
     func testCreateCanvas() {

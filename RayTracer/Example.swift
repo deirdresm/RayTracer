@@ -9,6 +9,8 @@
 import Foundation
 import AppKit
 
+// swiftlint:disable identifier_name trailing_whitespace
+
 class Example : NSObject {
 	
 	let docDir : URL = {
@@ -59,7 +61,6 @@ class Example : NSObject {
 			try! FileManager.default.removeItem(at: docDir.appendingPathComponent(fileName))
 		}
 		FileManager.default.createFile(atPath: fileNamePath, contents: rendered.fileOutput.data(using: String.Encoding.utf8), attributes: nil)
-		
 	}
-	
+
 }

@@ -13,8 +13,8 @@ struct Projectile {
 	var velocity = Vector(0, 0, 0)
 	
 	mutating func tick(environment: Environment) {
-		position = position + velocity
-		velocity = velocity + environment.gravity + environment.wind
+		position += velocity
+		velocity += environment.gravity + environment.wind
 	}
 }
 
