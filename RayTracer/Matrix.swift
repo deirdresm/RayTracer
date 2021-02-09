@@ -132,7 +132,7 @@ struct Matrix: Equatable {
                 lhs[row, 2] * rhs.z +
                 lhs[row, 3] * rhs.w
         }
-        return Tuple(m[0, 0], m[0, 1], m[0, 2], m[0, 4])
+        return Tuple(m[0, 0], m[0, 1], m[0, 2], m[0, 3])
     }
 
     // MARK: Transpose
@@ -202,5 +202,20 @@ struct Matrix: Equatable {
             d = -d
         }
         return d
+    }
+
+    // MARK: translation
+
+    static func translation(_ t: Tuple) -> Matrix {
+        var matrix = Matrix.identity
+        matrix[0, 3] = t.x
+        matrix[1, 3] = t.y
+        matrix[2, 3] = t.z
+
+        return matrix
+    }
+
+    func translated(_ t: Tuple) -> Matrix {
+        return Matrix.translation(t) * self
     }
 }
