@@ -16,7 +16,6 @@ class Point : Tuple {
 		super.init(x, y, z, 1.0)
 	}
 	
-	
 	static func + (lhs: Point, rhs: Vector) -> Point {
 		let x = lhs.x + rhs.x
 		let y = lhs.y + rhs.y
@@ -24,7 +23,7 @@ class Point : Tuple {
 		
 		return Point(x, y, z)
 	}
-	
+
 	override var description: String {
 		return("Point: x: \(x), y: \(y), z: \(z), w: \(w)")
 	}

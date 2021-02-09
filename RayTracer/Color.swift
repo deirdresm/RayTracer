@@ -51,7 +51,7 @@ class Color : Vector {
 	
 	func clamped() -> Color {
 		
-		var colors = [self.red, self.green, self.blue]
+		let colors = [self.red, self.green, self.blue]
 		var outcolors : [CGFloat] = [0.0, 0.0, 0.0] // TODO: I know there's a better way….
 		
 		for index in 0..<colors.count {

@@ -16,7 +16,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 		
 		let example = Example()
 		example.makeCurve(width: 900, height: 550)
-		
     }
     
 }

@@ -29,6 +29,7 @@ class Vector : Tuple {
 		
 		return normal
 	}
+
 	static func + (lhs: Vector, rhs: Vector) -> Vector {
 		let x = lhs.x + rhs.x
 		let y = lhs.y + rhs.y
@@ -45,7 +46,23 @@ class Vector : Tuple {
 		return Vector(x, y, z)
 	}
 	
-	static func * (lhs: Vector, rhs: CGFloat) -> Vector {
+    static func + (lhs: Vector, rhs: Point) -> Vector {
+        let x = lhs.x + rhs.x
+        let y = lhs.y + rhs.y
+        let z = lhs.z + rhs.z
+
+        return Vector(x, y, z)
+    }
+
+    static func += (lhs: Vector, rhs: Vector) -> some Vector {
+        let x = lhs.x + rhs.x
+        let y = lhs.y + rhs.y
+        let z = lhs.z + rhs.z
+
+        return Vector(x, y, z)
+    }
+
+    static func * (lhs: Vector, rhs: CGFloat) -> Vector {
 		let x = lhs.x * rhs
 		let y = lhs.y * rhs
 		let z = lhs.z * rhs

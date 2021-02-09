@@ -232,6 +232,4 @@ class TestTupleFeatures: XCTestCase {
 	//	And n ← vector(√2/2, √2/2, 0)
 	//	When r ← reflect(v, n)
 	//	Then r = vector(1, 0, 0)
-
-
 }
