@@ -8,13 +8,13 @@
 import XCTest
 @testable import RayTracer
 
-// swiftlint:disable identifier_name trailing_whitespace comma comment_spacing
+// swiftlint:disable identifier_name
 
 class TestTupleFeatures: XCTestCase {
 	
 	let epsilon : CGFloat = 0.00001
 	
-	//MARK: Tuples, Points, Vectors basics
+	// MARK: Tuples, Points, Vectors basics
 
 	func testTupleW1isAPoint() {
 		let point = Tuple(4.3, -4.2, 3.1, 1.0)

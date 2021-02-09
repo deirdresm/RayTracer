@@ -11,7 +11,7 @@ import CoreGraphics
 
 // the Swift stdlib Array is actually a @frozen struct
 
-// swiftlint:disable identifier_name trailing_whitespace
+// swiftlint:disable identifier_name
 
 struct Matrix: Equatable {
     private var _matrix: [[CGFloat]]

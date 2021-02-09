@@ -8,7 +8,7 @@
 
 import Foundation
 
-// swiftlint:disable identifier_name trailing_whitespace
+// swiftlint:disable identifier_name
 
 class Point : Tuple {
 	

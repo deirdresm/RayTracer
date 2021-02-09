@@ -9,7 +9,7 @@
 import Foundation
 import AppKit
 
-// swiftlint:disable identifier_name trailing_whitespace
+// swiftlint:disable identifier_name
 
 class Example : NSObject {
 
