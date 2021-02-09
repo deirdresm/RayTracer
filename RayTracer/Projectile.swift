@@ -8,13 +8,18 @@
 
 import Foundation
 
-struct Projectile {
+class Projectile {
 	var position = Point(0, 0, 0)
 	var velocity = Vector(0, 0, 0)
+
+    init(position: Point, velocity: Vector) {
+        self.position = position
+        self.velocity = velocity
+    }
 	
-	mutating func tick(environment: Environment) {
-		position += velocity
-		velocity += environment.gravity + environment.wind
+	func tick(environment: Environment) {
+		position = position + velocity
+		velocity = velocity + environment.gravity + environment.wind
 	}
 }
 

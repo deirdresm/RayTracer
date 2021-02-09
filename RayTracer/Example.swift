@@ -23,16 +23,16 @@ class Example : NSObject {
 		
 		let startPoint = Point(0, 1, 0)
 		
-		var saturation : CGFloat = 0.9
-		var brightness : CGFloat = 0.9
-		var alpha : CGFloat = 1.0
+		let saturation : CGFloat = 0.9
+		let brightness : CGFloat = 0.9
+		let alpha : CGFloat = 1.0
 		var currentHue : CGFloat = 0.0
 		
 		let velocity : Vector = Vector(1, 1.8, 0).normalize()*11.25
 		let gravity = Vector(0, -0.098, 0)
 		let wind = Vector(-0.01, 0, 0)
 		var p = Projectile(position: startPoint, velocity: velocity)
-		var e = Environment(gravity: gravity, wind: wind)
+		let e = Environment(gravity: gravity, wind: wind)
 		var c = Canvas(width, height)
 
 		var areWeDoneYet = false
@@ -46,7 +46,7 @@ class Example : NSObject {
 			
 			// calc next position
 			p.tick(environment: e)
-			
+
 			areWeDoneYet = !(Int(p.position.x) < (width - 1))
 		} while !areWeDoneYet
 		
