@@ -218,4 +218,71 @@ struct Matrix: Equatable {
     func translated(_ t: Tuple) -> Matrix {
         return Matrix.translation(t) * self
     }
+
+    // MARK: scaling
+
+    // assumes self is the scaling
+    static func scaling(point: Point) -> Matrix { // a point for the x, y, z factors
+        var matrix = Matrix.identity
+        matrix[0, 0] = point.x
+        matrix[1, 1] = point.y
+        matrix[2, 2] = point.z
+
+        return matrix
+    }
+
+    // MARK: rotation
+
+    static func rotationX(radians: CGFloat) -> Matrix {
+        let cosX = cos(radians)
+        let sinX = sin(radians)
+        var matrix = Matrix.identity
+        matrix[1, 1] = cosX
+        matrix[1, 2] = -sinX
+        matrix[2, 1] = sinX
+        matrix[2, 2] = cosX
+
+        return matrix
+    }
+
+    static func rotationY(radians: CGFloat) -> Matrix {
+        let cosY = cos(radians)
+        let sinY = sin(radians)
+        var matrix = Matrix.identity
+        matrix[0, 0] = cosY
+        matrix[0, 2] = sinY
+        matrix[2, 0] = -sinY
+        matrix[2, 2] = cosY
+
+        return matrix
+    }
+
+    static func rotationZ(radians: CGFloat) -> Matrix {
+        let cosZ = cos(radians)
+        let sinZ = sin(radians)
+        var matrix = Matrix.identity
+        matrix[0, 0] = cosZ
+        matrix[0, 1] = -sinZ
+        matrix[1, 0] = sinZ
+        matrix[1, 1] = cosZ
+
+        return matrix
+    }
+
+    static func shearing(_ xY: CGFloat,
+                         _ xZ: CGFloat,
+                         _ yX: CGFloat,
+                         _ yZ: CGFloat,
+                         _ zX: CGFloat,
+                         _ zY: CGFloat) -> Matrix {
+        var matrix = Matrix.identity
+        matrix[0, 1] = xY
+        matrix[0, 2] = xZ
+        matrix[1, 0] = yX
+        matrix[1, 2] = yZ
+        matrix[2, 0] = zX
+        matrix[2, 1] = zY
+        return matrix
+    }
+
 }

@@ -50,84 +50,207 @@ class TestMatrixTransformations: XCTestCase {
 //    And v ← vector(-3, 4, 5)
 //   Then transform * v = v
 
+    func testVectorTranslation() {
+        let t = Point(5, -3, 2)
+        let transform = Matrix.translation(t)
+
+        let v = Vector(-3, 4, 5)
+        XCTAssertEqual(transform * v, v)
+    }
+
 //Scenario: A scaling matrix applied to a point
 //  Given transform ← scaling(2, 3, 4)
 //    And p ← point(-4, 6, 8)
 //   Then transform * p = point(-8, 18, 32)
-//
+
+    func testPointScaling() {
+        let s = Point(2, 3, 4)
+        let p = Point(-4, 6, 8)
+        let scaled = Matrix.scaling(point: s)
+
+        let v = Point(-8, 18, 32)
+        XCTAssertEqual(scaled * p, v)
+    }
+
 //Scenario: A scaling matrix applied to a vector
 //  Given transform ← scaling(2, 3, 4)
 //    And v ← vector(-4, 6, 8)
 //   Then transform * v = vector(-8, 18, 32)
-//
+
+    func testVectorScaling() {
+        let s = Point(2, 3, 4)
+        let p = Vector(-4, 6, 8)
+        let scaled = Matrix.scaling(point: s)
+
+        let v = Vector(-8, 18, 32)
+        XCTAssertEqual(scaled * p, v)
+    }
+
 //Scenario: Multiplying by the inverse of a scaling matrix
 //  Given transform ← scaling(2, 3, 4)
 //    And inv ← inverse(transform)
 //    And v ← vector(-4, 6, 8)
 //   Then inv * v = vector(-2, 2, 2)
-//
+
+    func testInverseScaling() {
+        let s = Point(2, 3, 4)
+        let v = Vector(-4, 6, 8)
+        let scaled = Matrix.scaling(point: s)
+        let inv = scaled.inverse
+
+        let v2 = Vector(-2, 2, 2)
+        XCTAssertEqual(inv * v, v2)
+    }
+
 //Scenario: Reflection is scaling by a negative value
 //  Given transform ← scaling(-1, 1, 1)
 //    And p ← point(2, 3, 4)
 //   Then transform * p = point(-2, 3, 4)
-//
+
+    func testReflectionScaling() {
+        let s = Point(-1, 1, 1)
+        let p = Point(2, 3, 4)
+        let scaled = Matrix.scaling(point: s)
+
+        let p2 = Point(-2, 3, 4)
+        XCTAssertEqual(scaled * p, p2)
+    }
+
 //Scenario: Rotating a point around the x axis
 //  Given p ← point(0, 1, 0)
 //    And half_quarter ← rotation_x(π / 4)
 //    And full_quarter ← rotation_x(π / 2)
 //  Then half_quarter * p = point(0, √2/2, √2/2)
 //    And full_quarter * p = point(0, 0, 1)
-//
+
+    func testRotationX() {
+        let p = Point(0, 1, 0)
+        let halfQuarter = Matrix.rotationX(radians: CGFloat.pi / 4)
+        let fullQuarter = Matrix.rotationX(radians: CGFloat.pi / 2)
+
+        XCTAssertEqual(halfQuarter * p, Point(0, sqrt(2)/2, sqrt(2)/2))
+        XCTAssertEqual(fullQuarter * p, Point(0, 0, 1))
+    }
+
 //Scenario: The inverse of an x-rotation rotates in the opposite direction
 //  Given p ← point(0, 1, 0)
 //    And half_quarter ← rotation_x(π / 4)
 //    And inv ← inverse(half_quarter)
 //  Then inv * p = point(0, √2/2, -√2/2)
-//
+
+    func testInverseRotationX() {
+        let p = Point(0, 1, 0)
+        let halfQuarter = Matrix.rotationX(radians: CGFloat.pi / 4)
+        let inv = halfQuarter.inverse
+        let fullQuarter = Matrix.rotationX(radians: CGFloat.pi / 2)
+
+        XCTAssertEqual(inv * p, Point(0, sqrt(2)/2, -sqrt(2)/2))
+    }
+
 //Scenario: Rotating a point around the y axis
 //  Given p ← point(0, 0, 1)
 //    And half_quarter ← rotation_y(π / 4)
 //    And full_quarter ← rotation_y(π / 2)
 //  Then half_quarter * p = point(√2/2, 0, √2/2)
 //    And full_quarter * p = point(1, 0, 0)
-//
+
+    func testRotationY() {
+        let p = Point(0, 0, 1)
+        let halfQuarter = Matrix.rotationY(radians: CGFloat.pi / 4)
+        let fullQuarter = Matrix.rotationY(radians: CGFloat.pi / 2)
+
+        XCTAssertEqual(halfQuarter * p, Point(sqrt(2)/2, 0, sqrt(2)/2))
+        XCTAssertEqual(fullQuarter * p, Point(1, 0, 0))
+    }
+
 //Scenario: Rotating a point around the z axis
 //  Given p ← point(0, 1, 0)
 //    And half_quarter ← rotation_z(π / 4)
 //    And full_quarter ← rotation_z(π / 2)
 //  Then half_quarter * p = point(-√2/2, √2/2, 0)
 //    And full_quarter * p = point(-1, 0, 0)
-//
+
+    func testRotationZ() {
+        let p = Point(0, 1, 0)
+        let halfQuarter = Matrix.rotationZ(radians: CGFloat.pi / 4)
+        let fullQuarter = Matrix.rotationZ(radians: CGFloat.pi / 2)
+
+        XCTAssertEqual(halfQuarter * p, Point(-sqrt(2)/2, sqrt(2)/2, 0))
+        XCTAssertEqual(fullQuarter * p, Point(-1, 0, 0))
+    }
+
 //Scenario: A shearing transformation moves x in proportion to y
 //  Given transform ← shearing(1, 0, 0, 0, 0, 0)
 //    And p ← point(2, 3, 4)
 //  Then transform * p = point(5, 3, 4)
-//
+
+    func testShearingXY() {
+        let matrix = Matrix.shearing(1, 0, 0, 0, 0, 0)
+        let p = Point(2, 3, 4)
+
+        XCTAssertEqual(matrix * p, Point(5, 3, 4))
+    }
+
 //Scenario: A shearing transformation moves x in proportion to z
 //  Given transform ← shearing(0, 1, 0, 0, 0, 0)
 //    And p ← point(2, 3, 4)
 //  Then transform * p = point(6, 3, 4)
-//
+
+    func testShearingXZ() {
+        let matrix = Matrix.shearing(0, 1, 0, 0, 0, 0)
+        let p = Point(2, 3, 4)
+
+        XCTAssertEqual(matrix * p, Point(6, 3, 4))
+    }
+
 //Scenario: A shearing transformation moves y in proportion to x
 //  Given transform ← shearing(0, 0, 1, 0, 0, 0)
 //    And p ← point(2, 3, 4)
 //  Then transform * p = point(2, 5, 4)
-//
+
+    func testShearingYX() {
+        let matrix = Matrix.shearing(0, 0, 1, 0, 0, 0)
+        let p = Point(2, 3, 4)
+
+        XCTAssertEqual(matrix * p, Point(2, 5, 4))
+    }
+
 //Scenario: A shearing transformation moves y in proportion to z
 //  Given transform ← shearing(0, 0, 0, 1, 0, 0)
 //    And p ← point(2, 3, 4)
 //  Then transform * p = point(2, 7, 4)
-//
+
+    func testShearingYZ() {
+        let matrix = Matrix.shearing(0, 0, 0, 1, 0, 0)
+        let p = Point(2, 3, 4)
+
+        XCTAssertEqual(matrix * p, Point(2, 7, 4))
+    }
+
 //Scenario: A shearing transformation moves z in proportion to x
 //  Given transform ← shearing(0, 0, 0, 0, 1, 0)
 //    And p ← point(2, 3, 4)
 //  Then transform * p = point(2, 3, 6)
-//
+
+    func testShearingZX() {
+        let matrix = Matrix.shearing(0, 0, 0, 0, 1, 0)
+        let p = Point(2, 3, 4)
+
+        XCTAssertEqual(matrix * p, Point(2, 3, 6))
+    }
+
 //Scenario: A shearing transformation moves z in proportion to y
 //  Given transform ← shearing(0, 0, 0, 0, 0, 1)
 //    And p ← point(2, 3, 4)
 //  Then transform * p = point(2, 3, 7)
-//
+
+    func testShearingZY() {
+        let matrix = Matrix.shearing(0, 0, 0, 0, 0, 1)
+        let p = Point(2, 3, 4)
+
+        XCTAssertEqual(matrix * p, Point(2, 3, 7))
+    }
+
 //Scenario: Individual transformations are applied in sequence
 //  Given p ← point(1, 0, 1)
 //    And A ← rotation_x(π / 2)
@@ -142,7 +265,23 @@ class TestMatrixTransformations: XCTestCase {
 //  # then apply translation
 //  When p4 ← C * p3
 //  Then p4 = point(15, 0, 7)
-//
+
+    func testTransformationSequence1() {
+        let p = Point(1, 0, 1)
+        let a = Matrix.rotationX(radians: CGFloat.pi / 2)
+        let b = Matrix.scaling(point: Point(5, 5, 5))
+        let c = Matrix.translation(Point(10, 5, 7))
+
+        let p2 = a * p
+        XCTAssertEqual(p2, Point(1, -1, 0))
+
+        let p3 = b * p2
+        XCTAssertEqual(p3, Point(5, -5, 0))
+
+        let p4 = c * p3
+        XCTAssertEqual(p4, Point(15, 0, 7))
+    }
+
 //Scenario: Chained transformations must be applied in reverse order
 //  Given p ← point(1, 0, 1)
 //    And A ← rotation_x(π / 2)
@@ -150,14 +289,36 @@ class TestMatrixTransformations: XCTestCase {
 //    And C ← translation(10, 5, 7)
 //  When T ← C * B * A
 //  Then T * p = point(15, 0, 7)
-//
+
+    func testReverseChainedTransformations() {
+        let p = Point(1, 0, 1)
+        let a = Matrix.rotationX(radians: CGFloat.pi / 2)
+        let b = Matrix.scaling(point: Point(5, 5, 5))
+        let c = Matrix.translation(Point(10, 5, 7))
+
+        let t = c * b * a
+        XCTAssertEqual(t * p, Point(15, 0, 7))
+    }
+
 //Scenario: The transformation matrix for the default orientation
 //  Given from ← point(0, 0, 0)
 //    And to ← point(0, 0, -1)
 //    And up ← vector(0, 1, 0)
 //  When t ← view_transform(from, to, up)
 //  Then t = identity_matrix
+
+//    func testDefaultOrientationTransform() {
+//        let p = Point(0, 0, 0)
+//        let to = Point(0, 0, -1)
+//        let up = Vector(0, 1, 0)
+//        let t = view
+//        let b = Matrix.scaling(point: Point(5, 5, 5))
+//        let c = Matrix.translation(Point(10, 5, 7))
 //
+//        let t = c * b * a
+//        XCTAssertEqual(t * p, Point(15, 0, 7))
+//    }
+
 //Scenario: A view transformation matrix looking in positive z direction
 //  Given from ← point(0, 0, 0)
 //    And to ← point(0, 0, 1)
