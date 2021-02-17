@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		38038C7A25DCF5290036BAC6 /* TestRayRays.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38038C7925DCF5290036BAC6 /* TestRayRays.swift */; };
+		38038C7F25DCF6080036BAC6 /* Ray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38038C7E25DCF6080036BAC6 /* Ray.swift */; };
+		38038C8C25DCF9B30036BAC6 /* Sphere.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38038C8725DCF9AD0036BAC6 /* Sphere.swift */; };
+		38038C9125DCFCD30036BAC6 /* TestSphere.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38038C9025DCFCD30036BAC6 /* TestSphere.swift */; };
 		38049A732226516F00B8E281 /* TestTuples.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38CC76EC215AC7EF006B7934 /* TestTuples.swift */; };
 		3804DD2F22596A4900DD2869 /* Example.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3804DD2E22596A4900DD2869 /* Example.swift */; };
 		3804DD3122596DDA00DD2869 /* Projectile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3804DD3022596DDA00DD2869 /* Projectile.swift */; };
@@ -49,6 +52,9 @@
 
 /* Begin PBXFileReference section */
 		38038C7925DCF5290036BAC6 /* TestRayRays.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestRayRays.swift; sourceTree = "<group>"; };
+		38038C7E25DCF6080036BAC6 /* Ray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ray.swift; sourceTree = "<group>"; };
+		38038C8725DCF9AD0036BAC6 /* Sphere.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sphere.swift; sourceTree = "<group>"; };
+		38038C9025DCFCD30036BAC6 /* TestSphere.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestSphere.swift; sourceTree = "<group>"; };
 		3804DD2E22596A4900DD2869 /* Example.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Example.swift; sourceTree = "<group>"; };
 		3804DD3022596DDA00DD2869 /* Projectile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Projectile.swift; sourceTree = "<group>"; };
 		38650A432149DE1A00D30282 /* RayTracer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RayTracer.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -104,6 +110,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		38038C8325DCF6150036BAC6 /* Examples */ = {
+			isa = PBXGroup;
+			children = (
+				3804DD2E22596A4900DD2869 /* Example.swift */,
+			);
+			path = Examples;
+			sourceTree = "<group>";
+		};
 		38049A72222650C800B8E281 /* Features */ = {
 			isa = PBXGroup;
 			children = (
@@ -113,6 +127,7 @@
 				388139F025C782B100EB0DB6 /* TestMatrices.swift */,
 				38EA45EE25D0E2E80018167A /* TestMatrixTransformations.swift */,
 				38038C7925DCF5290036BAC6 /* TestRayRays.swift */,
+				38038C9025DCFCD30036BAC6 /* TestSphere.swift */,
 			);
 			name = Features;
 			sourceTree = "<group>";
@@ -149,14 +164,16 @@
 				38650A512149DE1B00D30282 /* Info.plist */,
 				38650A522149DE1B00D30282 /* RayTracer.entitlements */,
 				387D03722225E36300F43D70 /* Tuple.swift */,
-				38D7882C222F174700116CD8 /* Color.swift */,
-				38B6FB6822495704004405A4 /* PPMFileFormat.swift */,
-				38B6FB6422480130004405A4 /* Canvas.swift */,
-				3804DD2E22596A4900DD2869 /* Example.swift */,
-				3804DD3022596DDA00DD2869 /* Projectile.swift */,
 				387D03752226066300F43D70 /* Point.swift */,
 				387D03772226068900F43D70 /* Vector.swift */,
+				3804DD3022596DDA00DD2869 /* Projectile.swift */,
+				38B6FB6422480130004405A4 /* Canvas.swift */,
+				38D7882C222F174700116CD8 /* Color.swift */,
 				388139F525C7831C00EB0DB6 /* Matrix.swift */,
+				38038C7E25DCF6080036BAC6 /* Ray.swift */,
+				38038C8725DCF9AD0036BAC6 /* Sphere.swift */,
+				38038C8325DCF6150036BAC6 /* Examples */,
+				38B6FB6822495704004405A4 /* PPMFileFormat.swift */,
 			);
 			path = RayTracer;
 			sourceTree = "<group>";
@@ -321,6 +338,8 @@
 				388139F625C7831C00EB0DB6 /* Matrix.swift in Sources */,
 				38B6FB6922495704004405A4 /* PPMFileFormat.swift in Sources */,
 				387D03732225E36300F43D70 /* Tuple.swift in Sources */,
+				38038C8C25DCF9B30036BAC6 /* Sphere.swift in Sources */,
+				38038C7F25DCF6080036BAC6 /* Ray.swift in Sources */,
 				38650A472149DE1A00D30282 /* AppDelegate.swift in Sources */,
 				38D7882D222F174700116CD8 /* Color.swift in Sources */,
 				3804DD2F22596A4900DD2869 /* Example.swift in Sources */,
@@ -331,6 +350,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				38038C9125DCFCD30036BAC6 /* TestSphere.swift in Sources */,
 				38EA45EF25D0E2E80018167A /* TestMatrixTransformations.swift in Sources */,
 				38049A732226516F00B8E281 /* TestTuples.swift in Sources */,
 				388139F125C782B100EB0DB6 /* TestMatrices.swift in Sources */,
