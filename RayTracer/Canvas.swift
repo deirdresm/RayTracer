@@ -19,7 +19,7 @@ class Canvas: CustomStringConvertible, Equatable {
 	
 	let maxColorValue = 255
 	
-	var pixelData: [[Color]]
+	var pixelData: [[VColor]]
 	
 	init(_ width: Int, _ height: Int) {
 		description = "Canvas width: \(width), height: \(height)"
@@ -27,7 +27,7 @@ class Canvas: CustomStringConvertible, Equatable {
 		self.width = width
 		self.height = height
 		
-		let black = Color(0, 0, 0)
+		let black = VColor(0, 0, 0)
 		
 		pixelData = Array(repeating: Array(repeating: black, count: width), count: height)
 		
@@ -40,11 +40,11 @@ class Canvas: CustomStringConvertible, Equatable {
 //		}
 	}
 
-	func writePixel(_ x: Int, _ y: Int, _ color: Color) {
+	func writePixel(_ x: Int, _ y: Int, _ color: VColor) {
 		pixelData[y][x] = color.clamped()
 	}
 	
-	func pixelAt(_ x: Int, _ y: Int) -> Color {
+	func pixelAt(_ x: Int, _ y: Int) -> VColor {
 		// TODO: assumes y and x are valid
 		return pixelData[y][x]
 	}

@@ -175,7 +175,7 @@ class TestTupleFeatures: XCTestCase {
 	// MARK: Color Tests
 
 	func testColorSet() {
-		let c = Color(-0.5, 0.4, 1.7)
+		let c = VColor(-0.5, 0.4, 1.7)
 		
 		XCTAssertEqual(c.red, -0.5)
 		XCTAssertEqual(c.green, 0.4)
@@ -183,40 +183,40 @@ class TestTupleFeatures: XCTestCase {
 	}
 	
 	func testColorAddition() {
-		let c1 = Color(0.9, 0.6, 0.75)
-		let c2 = Color(0.7, 0.1, 0.25)
+		let c1 = VColor(0.9, 0.6, 0.75)
+		let c2 = VColor(0.7, 0.1, 0.25)
 
-		XCTAssertEqual(c1 + c2, Color(1.6, 0.7, 1.0))
+		XCTAssertEqual(c1 + c2, VColor(1.6, 0.7, 1.0))
 	}
 
 	func testColorSubtraction() {
-		let c1 = Color(0.9, 0.6, 0.75)
-		let c2 = Color(0.7, 0.1, 0.25)
+		let c1 = VColor(0.9, 0.6, 0.75)
+		let c2 = VColor(0.7, 0.1, 0.25)
 		
-		XCTAssertEqual(c1 - c2, Color(0.2, 0.5, 0.5))
+		XCTAssertEqual(c1 - c2, VColor(0.2, 0.5, 0.5))
 	}
 
 	func testColorMultiplyByScalar() {
-		let c = Color(0.2, 0.3, 0.4)
+		let c = VColor(0.2, 0.3, 0.4)
 		
-		XCTAssertEqual(c * 2, Color(0.4, 0.6, 0.8))
+		XCTAssertEqual(c * 2, VColor(0.4, 0.6, 0.8))
 	}
 	
 	func testMultiplyingColors() {
-		let c1 = Color(1, 0.2, 0.4)
-		let c2 = Color(0.9, 1, 0.1)
+		let c1 = VColor(1, 0.2, 0.4)
+		let c2 = VColor(0.9, 1, 0.1)
 		
-		XCTAssertEqual(c1 * c2, Color(0.9, 0.2, 0.04))
+		XCTAssertEqual(c1 * c2, VColor(0.9, 0.2, 0.04))
 	}
 	
 	func testColorParameterClamping() {
-		let c1 = Color(1.5, 0, 0).clamped()
-		let c2 = Color(0.2, -0.5, 0.2).clamped()
-		let c3 = Color(-0.5, 0, 1).clamped()
+		let c1 = VColor(1.5, 0, 0).clamped()
+		let c2 = VColor(0.2, -0.5, 0.2).clamped()
+		let c3 = VColor(-0.5, 0, 1).clamped()
 		
-		XCTAssertEqual(c1.clamped(), Color(1.0, 0, 0))
-		XCTAssertEqual(c2, Color(0.2, 0, 0.2))
-		XCTAssertEqual(c3, Color(0, 0, 1))
+		XCTAssertEqual(c1.clamped(), VColor(1.0, 0, 0))
+		XCTAssertEqual(c2, VColor(0.2, 0, 0.2))
+		XCTAssertEqual(c3, VColor(0, 0, 1))
 	}
 	
 	// MARK: Reflection tests

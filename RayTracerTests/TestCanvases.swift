@@ -19,7 +19,7 @@ class TestCanvases: XCTestCase {
 		XCTAssertEqual(c.width, 10)
 		XCTAssertEqual(c.height, 20)
 		
-		let black = Color(0, 0, 0)
+		let black = VColor(0, 0, 0)
 		
 		for y in 0..<c.height {
 			for x in 0..<c.width {
@@ -30,7 +30,7 @@ class TestCanvases: XCTestCase {
 	
 	func testPixelSetAndRead() {
 		let c = Canvas(10,20)
-		let color = Color(1.0, 0.0, 0.0) // red
+		let color = VColor(1.0, 0.0, 0.0) // red
 		print("color's redComponent: \(color.nsColor().redComponent), NSColor's redComponent: \((NSColor.red).redComponent)")
 		
 		XCTAssertEqual(color.red, 1.0)
@@ -49,11 +49,11 @@ class TestCanvases: XCTestCase {
 		
 		XCTAssertEqual(c, d)
 		
-		let red = Color(1.0, 0.0, 0.0) // red
+		let red = VColor(1.0, 0.0, 0.0) // red
 		c.writePixel(2, 3, red)
 		d.writePixel(2, 3, red)
 		
-		let blue = Color(0.0, 0.0, 1.0)
+		let blue = VColor(0.0, 0.0, 1.0)
 		c.writePixel(5, 12, blue)
 		d.writePixel(5, 12, blue)
 		

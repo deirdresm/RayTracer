@@ -10,7 +10,7 @@ import AppKit
 
 // swiftlint:disable identifier_name
 
-class Color : Vector {
+class VColor: Vector {
 	
 	override init(_ x: CGFloat, _ y: CGFloat, _ z: CGFloat) {
 		super.init(x, y, z)
@@ -49,7 +49,7 @@ class Color : Vector {
 	
 	static public var black: NSColor = NSColor.black
 	
-	func clamped() -> Color {
+	func clamped() -> VColor {
 		
 		let colors = [self.red, self.green, self.blue]
 		var outcolors : [CGFloat] = [0.0, 0.0, 0.0] // TODO: I know there's a better way….
@@ -63,7 +63,7 @@ class Color : Vector {
 				outcolors[index] = colors[index]
 			}
 		}
-		return Color(outcolors[0], outcolors[1], outcolors[2])
+		return VColor(outcolors[0], outcolors[1], outcolors[2])
 	}
 	
 	func nsColor() -> NSColor {

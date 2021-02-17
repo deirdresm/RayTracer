@@ -55,9 +55,9 @@ class TestPPMFileFormat: XCTestCase {
 
 		let c = Canvas(5,3)
 		
-		let c1 = Color(1.5, 0, 0).clamped()
-		let c2 = Color(0.0, 0.5, 0.0).clamped()
-		let c3 = Color(-0.5, 0, 1).clamped()
+		let c1 = VColor(1.5, 0, 0).clamped()
+		let c2 = VColor(0.0, 0.5, 0.0).clamped()
+		let c3 = VColor(-0.5, 0, 1).clamped()
 		
 		c.writePixel(0, 0, c1)
 		c.writePixel(2, 1, c2)
@@ -86,7 +86,7 @@ class TestPPMFileFormat: XCTestCase {
 		
 		let canvas = Canvas(10, 2)
 		
-		let color = Color(1.0, 0.8, 0.6)
+		let color = VColor(1.0, 0.8, 0.6)
 		
 		let header =
 		"""
