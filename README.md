@@ -3,7 +3,7 @@
 
 For those who don't know about this book, it's a test-driven development approach to writing a ray tracer. Unlike most programming books, it tells you design principles and lays out what the tests should be like, but without code. So language choice is personal, and I chose Swift.
 
-Currently: finished Chapter 3, next up: Matrix Transformations
+Currently: on chapter 5, the beginnings of rays.
 
 ## Design Thoughts
 
