@@ -3,7 +3,9 @@
 
 For those who don't know about this book, it's a test-driven development approach to writing a ray tracer. Unlike most programming books, it tells you design principles and lays out what the tests should be like, but without code. So language choice is personal, and I chose Swift.
 
-Currently: on chapter 5, the beginnings of rays.
+Many of the various projects for Swift are largely UI based, but Swift is a general-purpose language, so I wanted to try a project that wasn't UI based to get a feel for using the language in a different way.
+
+Currently: on chapter 5, the beginnings of intersections.
 
 ## Design Thoughts
 
