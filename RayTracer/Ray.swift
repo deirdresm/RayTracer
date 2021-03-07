@@ -11,7 +11,7 @@ import CoreGraphics
 
 // swiftlint:disable identifier_name
 
-struct Ray {
+public struct Ray: Equatable {
     var origin: Point
     var direction: Vector
 
@@ -20,8 +20,16 @@ struct Ray {
         self.direction = direction
     }
 
-    func position(_ t: CGFloat) -> Point {
-        return self.origin + (self.direction * t)
+    func position(_ time: CGFloat) -> Point {
+        return self.origin + (self.direction * time)
+    }
+
+    func transform(_ matrix: Matrix) -> Ray {
+
+        let o: Point = matrix * origin as! Point
+        let d: Vector = matrix * direction as! Vector
+        let r = Ray(origin: o, direction: d)
+        return r
     }
 
 }
