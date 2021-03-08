@@ -36,13 +36,13 @@ class Sphere: Shape, Equatable {
             let t1 = (-b - sqrt(discriminant)) / (2 * a)
             let t2 = (-b + sqrt(discriminant)) / (2 * a)
 
-            let t1i = Intersection(distance: t1, shape: self, time: 0) // TODO: fix time later
-            let t2i = Intersection(distance: t2, shape: self, time: 0) // TODO: fix time later
+            let t1i = Intersection(distance: t1, shape: self)
+            let t2i = Intersection(distance: t2, shape: self)
 
             return [t1i, t2i]
         } else if discriminant == 0 { // perfect tangent
             let t1 = (-b - sqrt(discriminant)) / (2 * a)
-            let t1i = Intersection(distance: t1, shape: self, time: 0) // TODO: fix time later
+            let t1i = Intersection(distance: t1, shape: self)
             return [t1i, t1i]
         }
 

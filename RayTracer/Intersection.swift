@@ -8,7 +8,17 @@
 
 import Foundation
 
-public struct Intersection: Identifiable, Equatable {
+// note: book uses t for the distance parameter; I named it the
+// same as it was in the Ray structure.
+
+public struct Intersection: Identifiable, Equatable, Comparable {
+
+    // MARK: - Equatable/Comparable conformance
+
+    public static func < (lhs: Intersection, rhs: Intersection) -> Bool {
+        return(lhs.distance < rhs.distance)
+    }
+
     public static func == (lhs: Intersection, rhs: Intersection) -> Bool {
         return((lhs.distance == rhs.distance) && (lhs.shape.id == rhs.shape.id))
     }
@@ -16,6 +26,5 @@ public struct Intersection: Identifiable, Equatable {
     public var id = UUID()
     public let distance: CGFloat
     public let shape: Shape
-    public let time: CGFloat
-    
+
 }

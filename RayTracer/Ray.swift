@@ -14,6 +14,7 @@ import CoreGraphics
 public struct Ray: Equatable {
     var origin: Point
     var direction: Vector
+    var intersections: [Intersection] = []
 
     init(origin: Point, direction: Vector) {
         self.origin = origin
@@ -32,4 +33,15 @@ public struct Ray: Equatable {
         return r
     }
 
+    func hit() -> Intersection? {
+        if intersections.count == 0 { return nil }
+
+        let hits = intersections.filter { $0.distance > 0 }
+
+        if hits.count > 0 {
+            return hits.sorted().first
+        } else {
+            return nil
+        }
+    }
 }

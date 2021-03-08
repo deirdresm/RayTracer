@@ -7,6 +7,7 @@
 //
 
 import XCTest
+@testable import RayTracer
 
 class TestIntersections: XCTestCase {
 
@@ -15,7 +16,14 @@ class TestIntersections: XCTestCase {
 //      When i ← intersection(3.5, s)
 //      Then i.t = 3.5
 //        And i.object = s
-//
+
+    func testIntersectionAttributes() {
+        let s = Sphere()
+        let i = Intersection(distance: 3.5, shape: s)
+        XCTAssertEqual(i.distance, 3.5)
+        XCTAssertEqual(i.shape as! Sphere, s)
+    }
+
 //    Scenario: Precomputing the state of an intersection
 //      Given r ← ray(point(0, 0, -5), vector(0, 0, 1))
 //        And shape ← sphere()
@@ -79,7 +87,25 @@ class TestIntersections: XCTestCase {
 //      Then xs.count = 2
 //        And xs[0].t = 1
 //        And xs[1].t = 2
-//
+
+    func testAggregatingIntersections() {
+
+        // note: this ray does not intersect this sphere
+        // TODO: find a real ray value for this and other tests
+
+        let origin = Point(1, 2, 3)
+        let direction = Vector(4, 5, 6)
+        var r = Ray(origin: origin, direction: direction)
+        let s = Sphere()
+        let i1 = Intersection(distance: 1, shape: s)
+        let i2 = Intersection(distance: 2, shape: s)
+
+        r.intersections = [i1, i2]
+        XCTAssertEqual(r.intersections.count, 2)
+        XCTAssertEqual(r.intersections[0].distance, 1)
+        XCTAssertEqual(r.intersections[1].distance, 2)
+    }
+
 //    Scenario: The hit, when all intersections have positive t
 //      Given s ← sphere()
 //        And i1 ← intersection(1, s)
@@ -87,7 +113,23 @@ class TestIntersections: XCTestCase {
 //        And xs ← intersections(i2, i1)
 //      When i ← hit(xs)
 //      Then i = i1
-//
+
+    func testPositiveTHits() {
+
+        // note: this ray does not intersect this sphere
+        // TODO: find a real ray value for this and other tests
+
+        let origin = Point(1, 2, 3)
+        let direction = Vector(4, 5, 6)
+        var r = Ray(origin: origin, direction: direction)
+        let s = Sphere()
+        let i1 = Intersection(distance: 1, shape: s)
+        let i2 = Intersection(distance: 2, shape: s)
+
+        r.intersections = [i1, i2]
+        XCTAssertEqual(r.hit(), i1)
+    }
+
 //    Scenario: The hit, when some intersections have negative t
 //      Given s ← sphere()
 //        And i1 ← intersection(-1, s)
@@ -95,7 +137,23 @@ class TestIntersections: XCTestCase {
 //        And xs ← intersections(i2, i1)
 //      When i ← hit(xs)
 //      Then i = i2
-//
+
+    func testSomeNegativeTHits() {
+
+        // note: this ray does not intersect this sphere
+        // TODO: find a real ray value for this and other tests
+
+        let origin = Point(1, 2, 3)
+        let direction = Vector(4, 5, 6)
+        var r = Ray(origin: origin, direction: direction)
+        let s = Sphere()
+        let i1 = Intersection(distance: -1, shape: s)
+        let i2 = Intersection(distance: 1, shape: s)
+
+        r.intersections = [i1, i2]
+        XCTAssertEqual(r.hit(), i2)
+    }
+
 //    Scenario: The hit, when all intersections have negative t
 //      Given s ← sphere()
 //        And i1 ← intersection(-2, s)
@@ -103,7 +161,23 @@ class TestIntersections: XCTestCase {
 //        And xs ← intersections(i2, i1)
 //      When i ← hit(xs)
 //      Then i is nothing
-//
+
+    func testAllNegativeIntersections() {
+
+        // note: this ray does not intersect this sphere
+        // TODO: find a real ray value for this and other tests
+
+        let origin = Point(1, 2, 3)
+        let direction = Vector(4, 5, 6)
+        var r = Ray(origin: origin, direction: direction)
+        let s = Sphere()
+        let i1 = Intersection(distance: -2, shape: s)
+        let i2 = Intersection(distance: -1, shape: s)
+
+        r.intersections = [i1, i2]
+        XCTAssertNil(r.hit())
+    }
+
 //    Scenario: The hit is always the lowest nonnegative intersection
 //      Given s ← sphere()
 //      And i1 ← intersection(5, s)
@@ -113,7 +187,25 @@ class TestIntersections: XCTestCase {
 //      And xs ← intersections(i1, i2, i3, i4)
 //    When i ← hit(xs)
 //    Then i = i4
-//
+
+    func testLowestNonegativeHits() {
+
+        // note: this ray does not intersect this sphere
+        // TODO: find a real ray value for this and other tests
+
+        let origin = Point(1, 2, 3)
+        let direction = Vector(4, 5, 6)
+        var r = Ray(origin: origin, direction: direction)
+        let s = Sphere()
+        let i1 = Intersection(distance: 5, shape: s)
+        let i2 = Intersection(distance: 7, shape: s)
+        let i3 = Intersection(distance: -3, shape: s)
+        let i4 = Intersection(distance: 2, shape: s)
+
+        r.intersections = [i1, i2, i3, i4]
+        XCTAssertEqual(r.hit(), i4)
+    }
+
 //    Scenario Outline: Finding n1 and n2 at various intersections
 //      Given A ← glass_sphere() with:
 //          | transform                 | scaling(2, 2, 2) |
