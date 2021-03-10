@@ -5,31 +5,43 @@ For those who don't know about this book, it's a test-driven development approac
 
 Many of the various projects for Swift are largely UI based, but Swift is a general-purpose language, so I wanted to try a project that wasn't UI based to get a feel for using the language in a different way.
 
-It's been a (ObiWan voice) *long time* (ObiWan voice) since I've done significant geometry work. I've always had an interest in geometry ever since my mom got me [Cundy and Rollett's book *Mathematical Models*](https://en.wikipedia.org/wiki/Mathematical_Models_(Cundy_and_Rollett)) to placate me when I had an unfortunate math teacher, but I never went as far as I could have with it.
+It's been a (ObiWan voice) *long time* since I've done significant geometry work. I've always had an interest in geometry ever since my mom got me [Cundy and Rollett's book *Mathematical Models*](https://en.wikipedia.org/wiki/Mathematical_Models_(Cundy_and_Rollett)) to placate me when I had an unfortunate math teacher, but I never went as far as I could have with it.
 
-Currently: on chapter 5, the beginnings of intersections.
+### One Motivation for Doing This
 
-## Design Thoughts
+Last year, I was sick with COVID (and post-COVID) most of the year. During the active phase of the illness, I would sometimes see rooms change what [Platonic solid they were](https://en.wikipedia.org/wiki/Platonic_solid). While I was walking, typically. ([This is called Alice in Wonderland Syndrome](https://en.wikipedia.org/wiki/Alice_in_Wonderland_syndrome) and has been associated with both viruses and migraines, and guess what I had both of?)
 
-1. Much though Cucumberish looks cool and expressive, I'm going to stick with XCTest for the tests. (Update: I may switch to Quick at some point just because this is a good kind of project for adding that.)
-2. I find it fascinating that things that could be structs in Swift are classes…e.g., Tuple. That allows for inheritance you can't get with a struct, but also the behavior of a struct and a class is different. (Fun tidbit: Swift's Double is a struct.)
-3. I considered having Tuple wrap SceneKit's ScnVector4…that's a struct, so it can't be straight inheritance. Point and Vector also logically inherit from Tuple. So. (Changing these to protocols may work, but I'll look at it later on. But Point/Vector/Tuple as implemented are more tightly coupled than most protocol structs are.)
+Anyhow, I thought it would be interesting to be able to visually model it because it's hard for other people to envision what I experienced, especially when I talk about walls sliding away. That was a couple of weeks of some *very* disorienting spacial perceptions.
+
+### Current Status
+
+Currently: on chapter 5, transformations and translations.
 
 ## Chapter 5
 
-This book was basically easy until Chapter 5, because the math got ahead of my brain fairly early on. What I struggled with at first was why a sphere's intersection with a ray should be a float, not a point.
+This book was basically easy until Chapter 5, because the visualization of the concepts got ahead of me fairly early on. What I struggled with at first was why a sphere's intersection with a ray should be a float, not a point.
 
-Then I realized that, while I'd been thinking about it from the sphere's POV, it's really where along the ray that point is, and you only need a floating point number to represent that (given that there's already a known direction). Later on, this will also translate into time, but we're not doing that part yet.
+Then I realized that, while I'd been thinking about it from the sphere's POV, it's really where along the ray that point is, and you only need a floating point number to represent that (given that there's already a known direction and origin).
 
 I read the intersection calculations several times, as well as some other implementations, and finally decided to just literally transcribe the book's description into Swift. Voila!
 
+### Transformations and translations
+
+> Want to translate your sphere away from the ray? That’s just the same as translating the ray away from the sphere, in the opposite direction […].
+
+*sounds of brain matter splattering*
+
+I'm so used to thinking of spacial things being (relatively) fixed that the idea of different things being in different spaces and perceptions suddenly, just to make calculation easier, is a real mindbender.
+
 ### Intersections, a set of
 
-In reading, it seems that a lot of people have interpreted [Intersection] to be a property of the Intersection class, where I think it more properly should be attached to the ray. It's what the ray hit, right?
+In reading, it seems that a lot of people have interpreted [Intersection] to be a property of the Intersection struct (or class), where I think it more properly should be attached to the ray. It's what the ray hit, right?
 
-Also, I see no reason (at this point) not to make it a set, which can be filtered pretty easily. Though…that could break the tangent special case. For that reason, I'm going to make it an array.
+Also, I see no reason (at this point) not to make it a set, which can be filtered pretty easily. Though…that could break the tangent special case (where there is one hit on a sphere instead of two). For that reason, I'm going to make it an array.
 
 So, for the tests relating to multiple intersections, I'm going to add a ray where there wasn't already one.
+
+I'd previously called the t-value of Intersection distance, so I'm keeping that.
 
 ## Other Implementations
 
