@@ -26,9 +26,8 @@ public struct Ray: Equatable {
     }
 
     func transform(_ matrix: Matrix) -> Ray {
-
-        let o: Point = matrix * origin as! Point
-        let d: Vector = matrix * direction as! Vector
+        let o: Point = matrix * origin
+        let d: Vector = matrix * direction
         let r = Ray(origin: o, direction: d)
         return r
     }

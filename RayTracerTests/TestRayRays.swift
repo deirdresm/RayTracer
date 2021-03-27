@@ -50,6 +50,14 @@ class TestRayRay: XCTestCase {
 //      Then r2.origin = point(4, 6, 8)
 //        And r2.direction = vector(0, 1, 0)
 
+    func testRayTranslation() {
+        let r = Ray(origin: Point(1, 2, 3), direction: Vector(0, 1, 0))
+        let m = Matrix.translation(Point(3, 4, 5))
+        let r2 = r.transform(m)
+        XCTAssertEqual(r2.origin, Point(4, 6, 8))
+        XCTAssertEqual(r2.direction, Vector(0, 1, 0))
+    }
+
 //    Scenario: Scaling a ray
 //      Given r ← ray(point(1, 2, 3), vector(0, 1, 0))
 //        And m ← scaling(2, 3, 4)
@@ -57,4 +65,11 @@ class TestRayRay: XCTestCase {
 //      Then r2.origin = point(2, 6, 12)
 //        And r2.direction = vector(0, 3, 0)
 
+    func testRayScaling() {
+        let r = Ray(origin: Point(1, 2, 3), direction: Vector(0, 1, 0))
+        let m = Matrix.scaling(point: Point(2, 3, 4))
+        let r2 = r.transform(m)
+        XCTAssertEqual(r2.origin, Point(2, 6, 12))
+        XCTAssertEqual(r2.direction, Vector(0, 3, 0))
+    }
 }

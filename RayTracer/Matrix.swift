@@ -135,6 +135,41 @@ struct Matrix: Equatable {
         return Tuple(m[0, 0], m[0, 1], m[0, 2], m[0, 3])
     }
 
+    // multiplies an array by a point, because using the tuple version
+    // causes much harfing of hairballs
+    // TODO: improve the casting ability here
+
+    static func * (lhs: Matrix, rhs: Point) -> Point {
+        assert(lhs.rows == 4 && lhs.cols == 4, "Only supports 4x4 matrices (lhs)")
+
+        var m = Matrix([[0, 0, 0, 0]])
+
+        for row in 0...3 {
+            m[0, row] = lhs[row, 0] * rhs.x +
+                lhs[row, 1] * rhs.y +
+                lhs[row, 2] * rhs.z +
+                lhs[row, 3] * rhs.w
+        }
+        return Point(m[0, 0], m[0, 1], m[0, 2])
+    }
+
+    // multiplies an array by a vector, because using the tuple version
+    // causes much harfing of hairballs
+
+    static func * (lhs: Matrix, rhs: Vector) -> Vector {
+        assert(lhs.rows == 4 && lhs.cols == 4, "Only supports 4x4 matrices (lhs)")
+
+        var m = Matrix([[0, 0, 0, 0]])
+
+        for row in 0...3 {
+            m[0, row] = lhs[row, 0] * rhs.x +
+                lhs[row, 1] * rhs.y +
+                lhs[row, 2] * rhs.z +
+                lhs[row, 3] * rhs.w
+        }
+        return Vector(m[0, 0], m[0, 1], m[0, 2])
+    }
+
     // MARK: Transpose
 
     // transpose a 4x4 matrix (flip x and y)
