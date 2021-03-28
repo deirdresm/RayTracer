@@ -12,9 +12,9 @@ import AppKit
 
 class VColor: Vector {
 	
-	override init(_ x: CGFloat, _ y: CGFloat, _ z: CGFloat) {
-		super.init(x, y, z)
-	}
+    override init(_ x: CGFloat, _ y: CGFloat, _ z: CGFloat) {
+        super.init(x, y, z)
+    }
 	
 	convenience init(nsColor: NSColor) {
 		self.init(nsColor.redComponent, nsColor.greenComponent, nsColor.blueComponent)

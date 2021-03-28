@@ -10,7 +10,7 @@ import Foundation
 
 // swiftlint:disable identifier_name
 
-class Vector : Tuple {
+class Vector: Tuple {
 	
 	init(_ x: CGFloat, _ y: CGFloat, _ z: CGFloat) {
 		super.init(x, y, z, 0.0)

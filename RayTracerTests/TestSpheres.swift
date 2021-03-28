@@ -141,14 +141,34 @@ class TestSpheres: XCTestCase {
 //      Then xs.count = 2
 //        And xs[0].t = 3
 //        And xs[1].t = 7
-//
+
+    func testScaledSphereIntersectsRay() {
+        let r = Ray(origin: Point(0, 0, -5), direction: Vector(0, 0, 1))
+        let sphere = Sphere()
+        sphere.setTransform(Matrix.scaling(point: Point(2, 2, 2)))
+        let xs = sphere.intersect(r)
+        XCTAssertEqual(xs.count, 2)
+        XCTAssertEqual(xs[0].distance, 3)
+        XCTAssertEqual(xs[1].distance, 7)
+    }
+
 //    Scenario: Intersecting a translated sphere with a ray
 //      Given r ← ray(point(0, 0, -5), vector(0, 0, 1))
 //        And s ← sphere()
 //      When set_transform(s, translation(5, 0, 0))
 //        And xs ← intersect(s, r)
 //      Then xs.count = 0
-//
+
+    func testTranslatedSphereIntersectsRay() {
+        let r = Ray(origin: Point(0, 0, -5), direction: Vector(0, 0, 1))
+        let sphere = Sphere()
+        sphere.setTransform(Matrix.translation(Point(5, 0, 0)))
+        let xs = sphere.intersect(r)
+        XCTAssertEqual(xs.count, 0)
+
+        // TODO: add another test case with a non-zero intersection count
+    }
+
 //    Scenario: The normal on a sphere at a point on the x axis
 //      Given s ← sphere()
 //      When n ← normal_at(s, point(1, 0, 0))

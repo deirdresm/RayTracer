@@ -41,6 +41,7 @@ class Canvas: CustomStringConvertible, Equatable {
 	}
 
 	func writePixel(_ x: Int, _ y: Int, _ color: VColor) {
+        guard y < height else { return }
 		pixelData[y][x] = color.clamped()
 	}
 	

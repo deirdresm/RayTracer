@@ -23,7 +23,7 @@ class Tuple: Equatable, CustomStringConvertible {
 	var z: CGFloat
 	var w: CGFloat
 	
-	init(_ x: CGFloat, _ y: CGFloat, _ z: CGFloat, _ w: CGFloat) {
+    init(_ x: CGFloat, _ y: CGFloat, _ z: CGFloat, _ w: CGFloat) {
 		self.x = x
 		self.y = y
 		self.z = z

@@ -24,10 +24,11 @@ class Sphere: Shape, Equatable {
 
     // 
     func intersect(_ ray: Ray) -> [Intersection] {
-        let sphereToRay = ray.origin - Point(0, 0, 0)
+        let rayIxf = ray.transform(transform.inverse)
+        let sphereToRay = rayIxf.origin - Point(0, 0, 0)
 
-        let a = ray.direction • ray.direction
-        let b = 2 * (ray.direction • sphereToRay)
+        let a = rayIxf.direction • rayIxf.direction
+        let b = 2 * (rayIxf.direction • sphereToRay)
         let c = (sphereToRay • sphereToRay) - 1
 
         let discriminant = (b * b) - (4 * a * c)
