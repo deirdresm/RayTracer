@@ -135,9 +135,7 @@ struct Matrix: Equatable {
         return Tuple(m[0, 0], m[0, 1], m[0, 2], m[0, 3])
     }
 
-    // multiplies an array by a point, because using the tuple version
-    // causes much harfing of hairballs
-    // TODO: improve the casting ability here
+    // multiplies an array by a point
 
     static func * (lhs: Matrix, rhs: Point) -> Point {
         assert(lhs.rows == 4 && lhs.cols == 4, "Only supports 4x4 matrices (lhs)")
@@ -153,8 +151,7 @@ struct Matrix: Equatable {
         return Point(m[0, 0], m[0, 1], m[0, 2])
     }
 
-    // multiplies an array by a vector, because using the tuple version
-    // causes much harfing of hairballs
+    // multiplies an array by a vector
 
     static func * (lhs: Matrix, rhs: Vector) -> Vector {
         assert(lhs.rows == 4 && lhs.cols == 4, "Only supports 4x4 matrices (lhs)")
