@@ -31,13 +31,6 @@ class Canvas: CustomStringConvertible, Equatable {
 		
 		pixelData = Array(repeating: Array(repeating: black, count: width), count: height)
 		
-		
-//		for y in 0..<height {
-//			for x in 0..<width {
-//
-//				writePixel(x, y, black)
-//			}
-//		}
 	}
 
 	func writePixel(_ x: Int, _ y: Int, _ color: VColor) {

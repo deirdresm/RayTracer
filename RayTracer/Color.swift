@@ -48,7 +48,9 @@ class VColor: Vector {
 	}
 	
 	static public var black: NSColor = NSColor.black
-	
+
+    // clamps a color to be in a valid range
+    
 	func clamped() -> VColor {
 		
 		let colors = [self.red, self.green, self.blue]

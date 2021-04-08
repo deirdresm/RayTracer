@@ -17,5 +17,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 		let example = Example()
 		example.makeCurve(width: 900, height: 600)
         example.makeClock(width: 900, height: 600)
+        example.makeClock2(width: 900, height: 600)
     }
 }

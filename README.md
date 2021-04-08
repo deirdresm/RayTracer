@@ -43,6 +43,10 @@ So, for the tests relating to multiple intersections, I'm going to add a ray whe
 
 I'd previously called the t-value of Intersection distance, so I'm keeping that.
 
+## Notes and ToDo
+
+1. Rotated clock example from chapter 4 is rotated and upside-down, which I'd never have noticed if I hadn't used different colors for each hour marker. :P
+
 ## Other Implementations
 
 It was cool to have a question about a detail I wasn't certain about and see implementations in so many other languages. Here are a few:

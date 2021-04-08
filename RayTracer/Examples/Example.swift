@@ -17,7 +17,24 @@ class Example : NSObject {
         return FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
     }()
 
+    private static var decimalFormatter: NumberFormatter = {
+            let formatter = NumberFormatter()
+            formatter.numberStyle = .decimal
+            formatter.maximumFractionDigits = 3
+            return formatter
+    }()
+
     // TODO: needs clamping for out-of-bounds errors.
+
+    func writeRenderedFile(canvas: Canvas, fileName: String) {
+        let rendered = PPMFileFormat(canvas)
+        let fileNamePath = docDir.appendingPathComponent(fileName).path
+
+        if FileManager.default.fileExists(atPath: fileNamePath) {
+            try! FileManager.default.removeItem(at: docDir.appendingPathComponent(fileName))
+        }
+        FileManager.default.createFile(atPath: fileNamePath, contents: rendered.fileOutput.data(using: String.Encoding.utf8), attributes: nil)
+    }
 
     func makeCurve(width: Int, height: Int) {
 
@@ -50,17 +67,7 @@ class Example : NSObject {
             areWeDoneYet = !(Int(p.position.x) < (width - 1))
         } while !areWeDoneYet
 
-
-        let rendered = PPMFileFormat(c)
-        let fileName = "makeCurve.ppm"
-        print(docDir.appendingPathComponent(fileName).path)
-
-        let fileNamePath = docDir.appendingPathComponent(fileName).path
-
-        if FileManager.default.fileExists(atPath: fileNamePath) {
-            try! FileManager.default.removeItem(at: docDir.appendingPathComponent(fileName))
-        }
-        FileManager.default.createFile(atPath: fileNamePath, contents: rendered.fileOutput.data(using: String.Encoding.utf8), attributes: nil)
+        writeRenderedFile(canvas: c, fileName: "makeCurve.ppm")
     }
 
     func makeClock(width: Int, height: Int) {
@@ -72,75 +79,66 @@ class Example : NSObject {
         let brightness : CGFloat = 0.95
         let alpha : CGFloat = 1.0
 
-        // scale to be 80% of the size of the smaller of width/height
-        let radius = width > height ? 0.4 * CGFloat(height) : 0.4 * CGFloat(width)
+        // scale to be 70% of the size of the smaller of width/height
+        let radius = width > height ? 0.35 * CGFloat(height) : 0.35 * CGFloat(width)
 
         for hour in 1 ... 12 {
             currentHue = CGFloat(hour) / 12.0
             let nsColor = NSColor(colorSpace: .deviceRGB, hue: currentHue, saturation: saturation, brightness: brightness, alpha: alpha)
             let color = VColor(nsColor: nsColor)
 
-            // this is just the relative position, needs to be
-            // scaled for the canvas size
             let x = cos(currentHue * 2 * CGFloat.pi)
             let y = sin(currentHue * 2 * CGFloat.pi)
 
             let x2 = startPoint.x + radius * x
             let y2 = startPoint.y + radius * y
 
+            let r = Matrix.rotationY(radians: CGFloat(hour/6) * CGFloat.pi) // per hint #3
+            let rm = r * Point(x, 0, y)
+
             c.writePixel(Int(x2), height - Int(y2), color)
         }
 
-        let rendered = PPMFileFormat(c)
-        let fileName = "makeClock.ppm"
-        print(docDir.appendingPathComponent(fileName).path)
-
-        let fileNamePath = docDir.appendingPathComponent(fileName).path
-
-        if FileManager.default.fileExists(atPath: fileNamePath) {
-            try! FileManager.default.removeItem(at: docDir.appendingPathComponent(fileName))
-        }
-        FileManager.default.createFile(atPath: fileNamePath, contents: rendered.fileOutput.data(using: String.Encoding.utf8), attributes: nil)
+        writeRenderedFile(canvas: c, fileName: "makeClock.ppm")
     }
 
-    // TODO: for later
-    func makeTiltedClock(width: Int, height: Int) {
+    // End of Chapter 4 project
+
+    // TODO: this is actually upsided-down and rotated, not merely rotated
+    func makeClock2(width: Int, height: Int) {
         let startPoint = Point(CGFloat(width / 2), CGFloat(height / 2), 0)
         var c = Canvas(width, height)
-        var currentHue : CGFloat = 0.0
+        var currentHour : CGFloat = 0.0
 
         let saturation : CGFloat = 0.95
         let brightness : CGFloat = 0.95
         let alpha : CGFloat = 1.0
 
+        var formatter = NumberFormatter()
+        formatter.numberStyle = .decimal
+        formatter.maximumFractionDigits = 3
+
         // scale to be 85% of the size of the smaller of width/height
         let radius = width > height ? 0.425 * CGFloat(height) : 0.425 * CGFloat(width)
 
         for hour in 1 ... 12 {
-            currentHue = CGFloat(hour) / 12.0
-            let nsColor = NSColor(colorSpace: .deviceRGB, hue: currentHue, saturation: saturation, brightness: brightness, alpha: alpha)
+            currentHour = CGFloat(hour) / 12.0
+
+            let nsColor = NSColor(colorSpace: .deviceRGB, hue: currentHour, saturation: saturation, brightness: brightness, alpha: alpha)
             let color = VColor(nsColor: nsColor)
 
             // this is just the relative position, needs to be
             // scaled for the canvas size
-            let x = cos(currentHue * 2 * CGFloat.pi)
-            let y = sin(currentHue * 2 * CGFloat.pi)
 
-            let x2 = startPoint.x + radius * x
-            let y2 = startPoint.y + radius * y
+            let r = Matrix.rotationY(radians: currentHour * 2.0 * CGFloat.pi) // per hint #3
+            let rm = r * Point(0, 0, 1)
+
+            let x2 = startPoint.x + radius * rm.x
+            let y2 = startPoint.y + radius * rm.z
 
             c.writePixel(Int(x2), height - Int(y2), color)
         }
 
-        let rendered = PPMFileFormat(c)
-        let fileName = "makeTiltedClock.ppm"
-        print(docDir.appendingPathComponent(fileName).path)
-
-        let fileNamePath = docDir.appendingPathComponent(fileName).path
-
-        if FileManager.default.fileExists(atPath: fileNamePath) {
-            try! FileManager.default.removeItem(at: docDir.appendingPathComponent(fileName))
-        }
-        FileManager.default.createFile(atPath: fileNamePath, contents: rendered.fileOutput.data(using: String.Encoding.utf8), attributes: nil)
+        writeRenderedFile(canvas: c, fileName: "makeRotatedClock.ppm")
     }
 }

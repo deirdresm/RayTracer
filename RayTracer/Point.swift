@@ -11,6 +11,19 @@ import Foundation
 // swiftlint:disable identifier_name
 
 final class Point : Tuple {
+
+    var formatter: NumberFormatter {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .decimal
+        formatter.maximumFractionDigits = 3
+        return formatter
+    }
+
+    func formatted(_ num: CGFloat) -> String {
+        let num2: NSNumber = NSNumber(value: Float(num))
+        let fs = formatter.string(from: num2)
+        return fs!
+    }
 	
 	init(_ x: CGFloat, _ y: CGFloat, _ z: CGFloat) {
 		super.init(x, y, z, 1.0)
@@ -25,6 +38,7 @@ final class Point : Tuple {
 	}
 
 	override var description: String {
-		return("Point: x: \(x), y: \(y), z: \(z), w: \(w)")
+
+        return("Point: x: \(formatted(x)), y: \(formatted(y)), z: \(formatted(z)), w: \(formatted(w))")
 	}
 }
