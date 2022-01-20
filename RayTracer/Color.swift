@@ -11,6 +11,10 @@ import AppKit
 // swiftlint:disable identifier_name
 
 class VColor: Vector {
+
+	required override init(_ x: CGFloat, _ y: CGFloat, _ z: CGFloat, _ w: CGFloat) {
+		super.init(x, y, z, 0.0)
+	}
 	
     override init(_ x: CGFloat, _ y: CGFloat, _ z: CGFloat) {
         super.init(x, y, z)

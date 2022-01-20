@@ -45,7 +45,9 @@ class Example : NSObject {
         let alpha : CGFloat = 1.0
         var currentHue : CGFloat = 0.0
 
-        let velocity : Vector = Vector(1, 1.8, 0).normalize()*11.25
+		let v = Vector(1, 1.8, 0)
+
+		let velocity : Vector = v.normalize() * 11.25
         let gravity = Vector(0, -0.098, 0)
         let wind = Vector(-0.01, 0, 0)
         var p = Projectile(position: startPoint, velocity: velocity)
@@ -141,4 +143,36 @@ class Example : NSObject {
 
         writeRenderedFile(canvas: c, fileName: "makeRotatedClock.ppm")
     }
+	// End of Chapter 4 project
+
+	// TODO: incomplete
+	func makeSphericalSilhouette(width: Int) {
+		let rayOrigin = Point(CGFloat(width / 2), CGFloat(width / 2), -5)
+		let wallZ = 10
+		let wallSize = 8
+		let pixelSize = width / wallSize
+		let half = width / 2
+
+		let purple = VColor(1, 1, 0)
+		let shape = Sphere()
+
+		var c = Canvas(width, width)
+
+		for y in 0 ..< width {
+			let worldY = half - pixelSize * y
+
+			for x in 0 ..< width {
+				let worldX = -half + pixelSize * x
+				let position = Point(CGFloat(worldX), CGFloat(worldY), CGFloat(wallZ))
+
+				let direction = position - rayOrigin
+
+				let r = Ray(origin: rayOrigin,
+							direction: direction.normalize() as! Vector
+				)
+			}
+		}
+
+		writeRenderedFile(canvas: c, fileName: "sphericalSilhouette.ppm")
+	}
 }
