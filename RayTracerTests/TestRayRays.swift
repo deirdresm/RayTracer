@@ -11,6 +11,9 @@ import XCTest
 
 // swiftlint:disable identifier_name
 
+// TODO: Missing test cases
+// 1. other paths in hit function
+
 class TestRayRay: XCTestCase {
 
 //    Scenario: Creating and querying a ray

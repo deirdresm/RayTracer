@@ -9,8 +9,6 @@
 import Foundation
 import CoreGraphics
 
-// the Swift stdlib Array is actually a @frozen struct
-
 // swiftlint:disable identifier_name
 
 struct Matrix: Equatable {
@@ -316,5 +314,22 @@ struct Matrix: Equatable {
         matrix[2, 1] = zY
         return matrix
     }
+
+	// MARK: transformation
+
+	static func viewTransform(from: Point, to: Point, up: Vector) -> Matrix {
+		let forward = (to - from).normalize()
+		let upnormal = up.normalize()
+
+		let left = forward × upnormal
+		let actualUp = left × forward
+
+		let orientation = Matrix([[left.x,     left.y,     left.z,     0],
+								  [actualUp.x, actualUp.y, actualUp.z, 0],
+								  [-forward.x, -forward.y, -forward.z, 0],
+								  [0,          0,          0,          1]])
+		return orientation * Matrix.translation(
+			Tuple(-from.x, -from.y, -from.z, 0))
+	}
 
 }

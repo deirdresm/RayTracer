@@ -10,6 +10,14 @@ import XCTest
 
 // swiftlint:disable identifier_name
 
+// TODO: Missing test cases
+// 1. tuple x tuple
+// 2. == that returns false
+// 3. description
+// 4. vector + vector
+// 5. vector + point
+// 6. vector += vector
+
 class TestTupleFeatures: XCTestCase {
 	
 	let epsilon : CGFloat = 0.00001

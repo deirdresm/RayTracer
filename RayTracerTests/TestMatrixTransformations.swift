@@ -13,9 +13,14 @@ import XCTest
 
 // swiftlint:disable identifier_name
 
+// TODO: Missing tests
+// 1. translated
+
 // MARK: test to pass accuracy comparison down from matrix to the individual values
 
 class TestMatrixTransformations: XCTestCase {
+
+	let epsilon: Double = 0.0001
 
 //Scenario: Multiplying by a translation matrix
 //  Given transform ← translation(5, -3, 2)
@@ -282,7 +287,7 @@ class TestMatrixTransformations: XCTestCase {
         XCTAssertEqual(p4, Point(15, 0, 7))
     }
 
-//Scenario: Chained transformations must be applied in reverse order
+// Scenario: Chained transformations must be applied in reverse order
 //  Given p ← point(1, 0, 1)
 //    And A ← rotation_x(π / 2)
 //    And B ← scaling(5, 5, 5)
@@ -300,40 +305,55 @@ class TestMatrixTransformations: XCTestCase {
         XCTAssertEqual(t * p, Point(15, 0, 7))
     }
 
-//Scenario: The transformation matrix for the default orientation
+// Scenario: The transformation matrix for the default orientation
 //  Given from ← point(0, 0, 0)
 //    And to ← point(0, 0, -1)
 //    And up ← vector(0, 1, 0)
 //  When t ← view_transform(from, to, up)
 //  Then t = identity_matrix
 
-//    func testDefaultOrientationTransform() {
-//        let p = Point(0, 0, 0)
-//        let to = Point(0, 0, -1)
-//        let up = Vector(0, 1, 0)
-//        let t = view
-//        let b = Matrix.scaling(point: Point(5, 5, 5))
-//        let c = Matrix.translation(Point(10, 5, 7))
-//
-//        let t = c * b * a
-//        XCTAssertEqual(t * p, Point(15, 0, 7))
-//    }
+    func testDefaultOrientationTransform() {
+        let from = Point(0, 0, 0)
+        let to = Point(0, 0, -1)
+        let up = Vector(0, 1, 0)
+		
+		let t = Matrix.viewTransform(from: from, to: to, up: up)
+		XCTAssertEqual(t, Matrix.identity)
+    }
 
-//Scenario: A view transformation matrix looking in positive z direction
+// Scenario: A view transformation matrix looking in positive z direction
 //  Given from ← point(0, 0, 0)
 //    And to ← point(0, 0, 1)
 //    And up ← vector(0, 1, 0)
 //  When t ← view_transform(from, to, up)
 //  Then t = scaling(-1, 1, -1)
-//
-//Scenario: The view transformation moves the world
+
+	func testViewTransformLookingInPositiveZ() {
+		let from = Point(0, 0, 0)
+		let to = Point(0, 0, 1)
+		let up = Vector(0, 1, 0)
+
+		let t = Matrix.viewTransform(from: from, to: to, up: up)
+		XCTAssertEqual(t, Matrix.scaling(point: Point(-1, 1, -1)))
+ }
+
+// Scenario: The view transformation moves the world
 //  Given from ← point(0, 0, 8)
 //    And to ← point(0, 0, 0)
 //    And up ← vector(0, 1, 0)
 //  When t ← view_transform(from, to, up)
 //  Then t = translation(0, 0, -8)
-//
-//Scenario: An arbitrary view transformation
+
+	func testViewTransformMovesWorld() {
+		let from = Point(0, 0, 8)
+		let to = Point(0, 0, 0)
+		let up = Vector(0, 1, 0)
+
+		let t = Matrix.viewTransform(from: from, to: to, up: up)
+		XCTAssertEqual(t, Matrix.translation(Point(0, 0, -8)))
+	}
+
+// Scenario: An arbitrary view transformation
 //  Given from ← point(1, 3, 2)
 //    And to ← point(4, -2, 8)
 //    And up ← vector(1, 1, 0)
@@ -343,4 +363,29 @@ class TestMatrixTransformations: XCTestCase {
 //      |  0.76772 | 0.60609 |  0.12122 | -2.82843 |
 //      | -0.35857 | 0.59761 | -0.71714 |  0.00000 |
 //      |  0.00000 | 0.00000 |  0.00000 |  1.00000 |
+
+	func testAnArbitraryViewTransform() {
+		let from = Point(1, 3, 2)
+		let to = Point(4, -2, 8)
+		let up = Vector(1, 1, 0)
+
+		let t = Matrix.viewTransform(from: from, to: to, up: up)
+
+		XCTAssertEqual(t[0,0], -0.50709, accuracy: epsilon)
+		XCTAssertEqual(t[0,1], 0.50709, accuracy: epsilon)
+		XCTAssertEqual(t[0,2], 0.67612, accuracy: epsilon)
+		XCTAssertEqual(t[0,3], -2.36643, accuracy: epsilon)
+		XCTAssertEqual(t[1,0], 0.76772, accuracy: epsilon)
+		XCTAssertEqual(t[1,1], 0.60609, accuracy: epsilon)
+		XCTAssertEqual(t[1,2], 0.12122, accuracy: epsilon)
+		XCTAssertEqual(t[1,3], -2.82843, accuracy: epsilon)
+		XCTAssertEqual(t[2,0], -0.35857, accuracy: epsilon)
+		XCTAssertEqual(t[2,1], 0.59761, accuracy: epsilon)
+		XCTAssertEqual(t[2,2], -0.71714, accuracy: epsilon)
+		XCTAssertEqual(t[2,3], 0, accuracy: epsilon)
+		XCTAssertEqual(t[3,0], 0, accuracy: epsilon)
+		XCTAssertEqual(t[3,1], 0, accuracy: epsilon)
+		XCTAssertEqual(t[3,2], 0, accuracy: epsilon)
+		XCTAssertEqual(t[3,3], 1, accuracy: epsilon)
+	}
 }

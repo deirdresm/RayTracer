@@ -13,7 +13,7 @@ import Foundation
 infix operator •: MultiplicationPrecedence
 infix operator ×: MultiplicationPrecedence
 
-// TODO: consider making Tuple a struct
+/// Tuple: parent class for Point and Vector.
 
 class Tuple: Equatable, CustomStringConvertible {
 	let epsilon : CGFloat = 0.00001
@@ -52,7 +52,8 @@ class Tuple: Equatable, CustomStringConvertible {
 		}
 		return false
 	}
-	
+
+	/// Add two tuples together, returning the result
 	static func + (lhs: Tuple, rhs: Tuple) -> some Tuple {
 		let x = lhs.x + rhs.x
 		let y = lhs.y + rhs.y
@@ -62,6 +63,7 @@ class Tuple: Equatable, CustomStringConvertible {
 		return Tuple(x, y, z, w)
 	}
 	
+	/// Subtract rhs tuple from lhs, returning the result
 	static func - (lhs: Tuple, rhs: Tuple) -> some Tuple {
 		let x = lhs.x - rhs.x
 		let y = lhs.y - rhs.y
@@ -71,6 +73,7 @@ class Tuple: Equatable, CustomStringConvertible {
 		return Tuple(x, y, z, w)
 	}
 
+	/// Multiply a tuple by a float, returning the result
 	static func * (lhs: Tuple, rhs: CGFloat) -> some Tuple {
 		let x = lhs.x * rhs
 		let y = lhs.y * rhs
@@ -80,6 +83,7 @@ class Tuple: Equatable, CustomStringConvertible {
 		return Tuple(x, y, z, w)
 	}
 
+	/// Multiply two tuples together, returning the result
 	static func * (lhs: Tuple, rhs: Tuple) -> some Tuple {
 		let x = lhs.x * rhs.x
 		let y = lhs.y * rhs.y
@@ -89,6 +93,7 @@ class Tuple: Equatable, CustomStringConvertible {
 		return Tuple(x, y, z, w)
 	}
 	
+	/// Divide a tuple by a float, returning the result
 	static func / (lhs: Tuple, rhs: CGFloat) -> some Tuple {
 		let x = lhs.x / rhs
 		let y = lhs.y / rhs
@@ -98,8 +103,7 @@ class Tuple: Equatable, CustomStringConvertible {
 		return Tuple(x, y, z, w)
 	}
 
-	// unary minus operator e.g., -tuple
-	
+	/// unary minus operator e.g., -tuple
 	public static prefix func - (_ tuple: Tuple) -> Tuple {
 		let result = Tuple(-(tuple.x), -(tuple.y), -(tuple.z), -(tuple.w))
 		
@@ -114,7 +118,6 @@ class Tuple: Equatable, CustomStringConvertible {
 	}
 	
 	public func normalize() -> Tuple {
-		
 		let magSquared = self.x*self.x + self.y*self.y + self.z*self.z + self.w*self.w
 		let sq = 1.0/sqrt(magSquared)
 		
@@ -141,8 +144,7 @@ class Tuple: Equatable, CustomStringConvertible {
 					0.0)
 	}
 	
-	//MARK: Custom Description
-	
+	/// Custom Description	
 	var description: String {
 		return("Tuple: x: \(x), y: \(y), z: \(z), w: \(w)")
 	}

@@ -9,7 +9,7 @@ It's been a (ObiWan voice) *long time* since I've done significant geometry work
 
 ### One Motivation for Doing This
 
-Last year, I was sick with COVID (and post-COVID) most of the year. During the active phase of the illness, I would sometimes see rooms change what [Platonic solid they were](https://en.wikipedia.org/wiki/Platonic_solid). While I was walking, typically. ([This is called Alice in Wonderland Syndrome](https://en.wikipedia.org/wiki/Alice_in_Wonderland_syndrome) and has been associated with both viruses and migraines, and guess what I had both of?)
+In 2020, I was sick with Covid (and long Covid) most of the year. During the active phase of the illness, I would sometimes see rooms change what [Platonic solid they were](https://en.wikipedia.org/wiki/Platonic_solid). While I was walking, typically. ([This is called Alice in Wonderland Syndrome](https://en.wikipedia.org/wiki/Alice_in_Wonderland_syndrome) and has been associated with both viruses and migraines, and guess what I had both of?)
 
 Anyhow, I thought it would be interesting to be able to visually model it because it's hard for other people to envision what I experienced, especially when I talk about walls sliding away. That was a couple of weeks of some *very* disorienting spacial perceptions.
 
@@ -31,7 +31,7 @@ I read the intersection calculations several times, as well as some other implem
 
 *sounds of brain matter splattering*
 
-I'm so used to thinking of spacial things being (relatively) fixed that the idea of different things being in different spaces and perceptions suddenly, just to make calculation easier, is a real mindbender.
+I'm so used to thinking of spatial things being (relatively) fixed that the idea of different things being in different spaces and perceptions suddenly, just to make calculation easier, is a real mindbender.
 
 ### Intersections, a set of
 
@@ -53,7 +53,12 @@ It was cool to have a question about a detail I wasn't certain about and see imp
 
 * [Swift](https://github.com/haruhikoM/RayTracerChallenge)
 * [Swift](https://github.com/sbehnke/SwiftlyRT)
+* [Swift](https://github.com/stein-a/RayTracer/)
 * [Python](https://github.com/thomasdelrue/ray-tracer-challenge-python/tree/ce9fc90c5419d432416c65f1e83b824ce0f95dcb)
 * [C++](https://github.com/kongsgard/raytracer/tree/f4f958516c8f479234c1c877cad54871f3857d51)
 * [Scala](https://github.com/jamesmcm/raytracer_challenge_scala)
 * [Rust](https://github.com/arsenypoga/rust-raytracer/tree/08568d9cdfcae84324698f3fc61985d16a1ce126)
+
+Each of us made some different design choices, which are also interesting.
+
+E.g., I made Tuple a class with Point and Vector inheriting from it, but [@sbehnke made Tuple a struct](https://github.com/sbehnke/SwiftlyRT), with no separate Point or Vector, just Point and Vector funcs within the Tuple class.
