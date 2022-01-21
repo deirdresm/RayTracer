@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3801C7AA279B55CB00E757B2 /* DrawSphereBasic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3801C7A9279B55CB00E757B2 /* DrawSphereBasic.swift */; };
+		3801C7AC279B564000E757B2 /* FileBasics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3801C7AB279B564000E757B2 /* FileBasics.swift */; };
 		38038C7A25DCF5290036BAC6 /* TestRayRays.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38038C7925DCF5290036BAC6 /* TestRayRays.swift */; };
 		38038C7F25DCF6080036BAC6 /* Ray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38038C7E25DCF6080036BAC6 /* Ray.swift */; };
 		38038C8C25DCF9B30036BAC6 /* Sphere.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38038C8725DCF9AD0036BAC6 /* Sphere.swift */; };
@@ -55,6 +57,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3801C7A9279B55CB00E757B2 /* DrawSphereBasic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawSphereBasic.swift; sourceTree = "<group>"; };
+		3801C7AB279B564000E757B2 /* FileBasics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileBasics.swift; sourceTree = "<group>"; };
+		3801C7AD279B5A9400E757B2 /* RayTracerRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = RayTracerRelease.entitlements; sourceTree = "<group>"; };
 		38038C7925DCF5290036BAC6 /* TestRayRays.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestRayRays.swift; sourceTree = "<group>"; };
 		38038C7E25DCF6080036BAC6 /* Ray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ray.swift; sourceTree = "<group>"; };
 		38038C8725DCF9AD0036BAC6 /* Sphere.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sphere.swift; sourceTree = "<group>"; };
@@ -122,6 +127,8 @@
 			isa = PBXGroup;
 			children = (
 				3804DD2E22596A4900DD2869 /* Example.swift */,
+				3801C7AB279B564000E757B2 /* FileBasics.swift */,
+				3801C7A9279B55CB00E757B2 /* DrawSphereBasic.swift */,
 			);
 			path = Examples;
 			sourceTree = "<group>";
@@ -195,6 +202,7 @@
 			children = (
 				38049A72222650C800B8E281 /* Features */,
 				38650A5D2149DE1B00D30282 /* Info.plist */,
+				3801C7AD279B5A9400E757B2 /* RayTracerRelease.entitlements */,
 			);
 			path = RayTracerTests;
 			sourceTree = "<group>";
@@ -349,11 +357,13 @@
 				38CC19D2260FF2FE00B6D0E9 /* Tuple.swift in Sources */,
 				38038C9625DDB2030036BAC6 /* Shape.swift in Sources */,
 				38650A492149DE1A00D30282 /* GameViewController.swift in Sources */,
+				3801C7AA279B55CB00E757B2 /* DrawSphereBasic.swift in Sources */,
 				387D03782226068900F43D70 /* Vector.swift in Sources */,
 				388139F625C7831C00EB0DB6 /* Matrix.swift in Sources */,
 				38B6FB6922495704004405A4 /* PPMFileFormat.swift in Sources */,
 				38038C8C25DCF9B30036BAC6 /* Sphere.swift in Sources */,
 				38038C7F25DCF6080036BAC6 /* Ray.swift in Sources */,
+				3801C7AC279B564000E757B2 /* FileBasics.swift in Sources */,
 				38650A472149DE1A00D30282 /* AppDelegate.swift in Sources */,
 				38D7882D222F174700116CD8 /* Color.swift in Sources */,
 				3804DD2F22596A4900DD2869 /* Example.swift in Sources */,
@@ -463,7 +473,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
@@ -519,7 +529,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
 				SWIFT_COMPILATION_MODE = wholemodule;
@@ -553,7 +563,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = RayTracer/RayTracer.entitlements;
+				CODE_SIGN_ENTITLEMENTS = RayTracer/RayTracerRelease.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;

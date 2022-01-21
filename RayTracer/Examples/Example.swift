@@ -13,11 +13,7 @@ import AppKit
 
 class Example : NSObject {
 
-    let docDir : URL = {
-        return FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-    }()
-
-    private static var decimalFormatter: NumberFormatter = {
+	private static var decimalFormatter: NumberFormatter = {
             let formatter = NumberFormatter()
             formatter.numberStyle = .decimal
             formatter.maximumFractionDigits = 3
@@ -25,16 +21,6 @@ class Example : NSObject {
     }()
 
     // TODO: needs clamping for out-of-bounds errors.
-
-    func writeRenderedFile(canvas: Canvas, fileName: String) {
-        let rendered = PPMFileFormat(canvas)
-        let fileNamePath = docDir.appendingPathComponent(fileName).path
-
-        if FileManager.default.fileExists(atPath: fileNamePath) {
-            try! FileManager.default.removeItem(at: docDir.appendingPathComponent(fileName))
-        }
-        FileManager.default.createFile(atPath: fileNamePath, contents: rendered.fileOutput.data(using: String.Encoding.utf8), attributes: nil)
-    }
 
     func makeCurve(width: Int, height: Int) {
 
@@ -69,7 +55,7 @@ class Example : NSObject {
             areWeDoneYet = !(Int(p.position.x) < (width - 1))
         } while !areWeDoneYet
 
-        writeRenderedFile(canvas: c, fileName: "makeCurve.ppm")
+		FileManager.default.writeRenderedFile(canvas: c, fileName: "makeCurve.ppm")
     }
 
     func makeClock(width: Int, height: Int) {
@@ -101,7 +87,7 @@ class Example : NSObject {
             c.writePixel(Int(x2), height - Int(y2), color)
         }
 
-        writeRenderedFile(canvas: c, fileName: "makeClock.ppm")
+		FileManager.default.writeRenderedFile(canvas: c, fileName: "makeClock.ppm")
     }
 
     // End of Chapter 4 project
@@ -141,38 +127,7 @@ class Example : NSObject {
             c.writePixel(Int(x2), height - Int(y2), color)
         }
 
-        writeRenderedFile(canvas: c, fileName: "makeRotatedClock.ppm")
+		FileManager.default.writeRenderedFile(canvas: c, fileName: "makeRotatedClock.ppm")
     }
 	// End of Chapter 4 project
-
-	// TODO: incomplete
-	func makeSphericalSilhouette(width: Int) {
-		let rayOrigin = Point(CGFloat(width / 2), CGFloat(width / 2), -5)
-		let wallZ = 10
-		let wallSize = 8
-		let pixelSize = width / wallSize
-		let half = width / 2
-
-		let purple = VColor(1, 1, 0)
-		let shape = Sphere()
-
-		var c = Canvas(width, width)
-
-		for y in 0 ..< width {
-			let worldY = half - pixelSize * y
-
-			for x in 0 ..< width {
-				let worldX = -half + pixelSize * x
-				let position = Point(CGFloat(worldX), CGFloat(worldY), CGFloat(wallZ))
-
-				let direction = position - rayOrigin
-
-				let r = Ray(origin: rayOrigin,
-							direction: direction.normalize() as! Vector
-				)
-			}
-		}
-
-		writeRenderedFile(canvas: c, fileName: "sphericalSilhouette.ppm")
-	}
 }

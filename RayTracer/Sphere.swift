@@ -23,7 +23,7 @@ class Sphere: Shape, Equatable {
     }
 
     // 
-    func intersect(_ ray: Ray) -> [Intersection] {
+    func intersections(_ ray: Ray) -> [Intersection] {
         let rayIxf = ray.transform(transform.inverse)
         let sphereToRay = rayIxf.origin - Point(0, 0, 0)
 

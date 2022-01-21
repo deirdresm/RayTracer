@@ -13,6 +13,5 @@ import Foundation
 public protocol Shape {
     var id: UUID { get }
 
-    func intersect(_ ray: Ray) -> [Intersection]
-
+    func intersections(_ ray: Ray) -> [Intersection]
 }
