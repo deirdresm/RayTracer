@@ -15,7 +15,7 @@ class VColor: Vector {
 	required init(_ x: CGFloat, _ y: CGFloat, _ z: CGFloat, _ w: CGFloat) {
 		super.init(x, y, z, 0.0)
 	}
-	
+
     override init(_ x: CGFloat, _ y: CGFloat, _ z: CGFloat) {
         super.init(x, y, z)
     }
@@ -23,7 +23,7 @@ class VColor: Vector {
 	convenience init(nsColor: NSColor) {
 		self.init(nsColor.redComponent, nsColor.greenComponent, nsColor.blueComponent)
 	}
-	
+
 	public var red: CGFloat {
 		get {
 			return CGFloat(x)
@@ -32,7 +32,7 @@ class VColor: Vector {
 			self.x = newRed
 		}
 	}
-	
+
 	public var green: CGFloat {
 		get {
 			return CGFloat(y)
@@ -41,7 +41,7 @@ class VColor: Vector {
 			self.y = newGreen
 		}
 	}
-	
+
 	public var blue: CGFloat {
 		get {
 			return CGFloat(z)
@@ -50,16 +50,16 @@ class VColor: Vector {
 			self.z = newBlue
 		}
 	}
-	
+
 	static public var black: NSColor = NSColor.black
 
     // clamps a color to be in a valid range
-    
+
 	func clamped() -> VColor {
-		
+
 		let colors = [self.red, self.green, self.blue]
-		var outcolors : [CGFloat] = [0.0, 0.0, 0.0] // TODO: I know there's a better way….
-		
+		var outcolors: [CGFloat] = [0.0, 0.0, 0.0] // TODO: I know there's a better way….
+
 		for index in 0..<colors.count {
 			if colors[index] > 1 {
 				outcolors[index] = 1
@@ -71,11 +71,11 @@ class VColor: Vector {
 		}
 		return VColor(outcolors[0], outcolors[1], outcolors[2])
 	}
-	
+
 	func nsColor() -> NSColor {
 		return NSColor(red: x, green: y, blue: z, alpha: 1.0)
 	}
-	
+
 	override var description: String {
 		return("Point: x: \(x), y: \(y), z: \(z), w: \(w)")
 	}
@@ -83,8 +83,6 @@ class VColor: Vector {
 
 extension NSColor {
 	func normalized(_ value: CGFloat) -> CGFloat {
-
-		
 		return value / 255.0
 	}
 }

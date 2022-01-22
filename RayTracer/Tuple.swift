@@ -16,20 +16,20 @@ infix operator ×: MultiplicationPrecedence
 /// Tuple: parent class for Point and Vector.
 
 class Tuple: Equatable, CustomStringConvertible {
-	let epsilon : CGFloat = 0.00001
-	
+	let epsilon: CGFloat = 0.00001
+
 	var x: CGFloat
 	var y: CGFloat
 	var z: CGFloat
 	var w: CGFloat
-	
+
     required init(_ x: CGFloat, _ y: CGFloat, _ z: CGFloat, _ w: CGFloat) {
 		self.x = x
 		self.y = y
 		self.z = z
 		self.w = w
 	}
-	
+
 	func isPoint() -> Bool {
 		return abs(self.w - 1.0) < epsilon
 	}
@@ -37,43 +37,40 @@ class Tuple: Equatable, CustomStringConvertible {
 	func isVector() -> Bool {
 		return abs(self.w) < epsilon
 	}
-	
-	//MARK: Class Methods
+
+	// MARK: Class Methods
 
 	// MARK: Magnitude functions
-	
+
 	public func magnitude() -> CGFloat {
 		let mag = sqrt(self.x*self.x + self.y*self.y + self.z*self.z + self.w*self.w)
 		return mag
 	}
-	
+
 	public func normalize<T: Tuple>() -> T {
 		let magSquared = self.x*self.x + self.y*self.y + self.z*self.z + self.w*self.w
 		let sq = 1.0/sqrt(magSquared)
-		
+
 		let normal = T(self.x*sq, self.y*sq, self.z*sq, self.w*sq)
-		
+
 		return normal
 	}
-	
+
 	// Dot product (note: using option-8 for this dot as the right dot has another meaning?)
-	
+
 	public static func • (_ left: Tuple, _ right: Tuple) -> CGFloat {
 		let result = left.x * right.x + left.y * right.y +
 					left.z * right.z + left.w * right.w
 		return result
 	}
-	
+
 	// Cross product (using × as the operator)
-	
 
 	/// Custom Description	
 	var description: String {
 		return("Tuple: x: \(x), y: \(y), z: \(z), w: \(w)")
 	}
-	
 }
-
 
 /// Add two tuples together, returning the result
 func + <T: Tuple>(lhs: Tuple, rhs: Tuple) -> T {
@@ -132,9 +129,8 @@ prefix func - <T: Tuple>(_ tuple: Tuple) -> T {
 	return result
 }
 
-
 func == <T: Tuple>(lhs: T, rhs: T) -> Bool {
-	let epsilon : CGFloat = 0.00001	// the other one's an instance method, and this is a class method
+	let epsilon: CGFloat = 0.00001	// the other one's an instance method, and this is a class method
 
 	if abs(lhs.x - rhs.x) <= epsilon &&
 		abs(lhs.y - rhs.y) <= epsilon &&

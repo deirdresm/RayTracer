@@ -10,16 +10,16 @@ import Foundation
 
 // swiftlint:disable identifier_name
 
-final class Point : Tuple {
+final class Point: Tuple {
 
 	required init(_ x: CGFloat, _ y: CGFloat, _ z: CGFloat, _ w: CGFloat) {
 		super.init(x, y, z, 1.0)
 	}
-	
+
 	init(_ x: CGFloat, _ y: CGFloat, _ z: CGFloat) {
 		super.init(x, y, z, 1.0)
 	}
-	
+
 	override var description: String {
 
         return("Point: x: \(formatted(x)), y: \(formatted(y)), z: \(formatted(z)), w: \(formatted(w))")

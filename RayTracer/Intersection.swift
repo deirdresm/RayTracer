@@ -8,6 +8,8 @@
 
 import Foundation
 
+// swiftlint:disable identifier_name
+
 // note: book uses t for the distance parameter; I named it the
 // same as it was in the Ray structure.
 
@@ -26,5 +28,4 @@ public struct Intersection: Identifiable, Equatable, Comparable {
     public var id = UUID()
     public let distance: CGFloat
     public let shape: Shape
-
 }

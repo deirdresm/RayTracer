@@ -316,7 +316,7 @@ class TestMatrixTransformations: XCTestCase {
         let from = Point(0, 0, 0)
         let to = Point(0, 0, -1)
         let up = Vector(0, 1, 0)
-		
+
 		let t = Matrix.viewTransform(from: from, to: to, up: up)
 		XCTAssertEqual(t, Matrix.identity)
     }

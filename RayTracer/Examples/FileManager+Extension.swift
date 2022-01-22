@@ -1,5 +1,5 @@
 //
-//  FileBasics.swift
+//  FileManager+Extension.swift
 //  RayTracer
 //
 //  Created by Deirdre Saoirse Moen on 1/21/22.
@@ -18,7 +18,7 @@ extension FileManager {
 		print("Saving to: \(fileURL.path)")
 
 		if fileExists(atPath: fileURL.path) {
-			try! removeItem(at: fileURL)
+			try? removeItem(at: fileURL)
 		}
 		createFile(atPath: fileURL.path, contents: rendered.fileOutput.data(using: String.Encoding.utf8), attributes: nil)
 	}

@@ -10,9 +10,9 @@ import Foundation
 
 // swiftlint:disable identifier_name trailing_whitespace
 
-class PPMFileFormat : NSObject {
+class PPMFileFormat: NSObject {
     var fileOutput = ""
-    var canvas : Canvas!
+    var canvas: Canvas!
 
     convenience init(_ canvas: Canvas) {
         self.init()

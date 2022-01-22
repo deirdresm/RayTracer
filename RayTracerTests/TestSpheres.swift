@@ -24,7 +24,7 @@ class TestSpheres: XCTestCase {
     func testRaySphereIntersections() {
         let ray = Ray(origin: Point(0, 0, -5), direction: Vector(0, 0, 1))
         let sphere = Sphere()
-        let xs: [Intersection] = sphere.intersect(ray)
+        let xs: [Intersection] = sphere.intersections(ray)
         XCTAssertEqual(xs.count, 2)
         XCTAssertEqual(xs[0].distance, 4.0)
         XCTAssertEqual(xs[1].distance, 6.0)
@@ -41,7 +41,7 @@ class TestSpheres: XCTestCase {
     func testRaySphereTangentIntersections() {
         let ray = Ray(origin: Point(0, 1, -5), direction: Vector(0, 0, 1))
         let sphere = Sphere()
-        let xs: [Intersection] = sphere.intersect(ray)
+        let xs: [Intersection] = sphere.intersections(ray)
         XCTAssertEqual(xs.count, 2)
         XCTAssertEqual(xs[0].distance, 5.0)
         XCTAssertEqual(xs[1].distance, 5.0)
@@ -56,7 +56,7 @@ class TestSpheres: XCTestCase {
     func testRaySphereMiss() {
         let ray = Ray(origin: Point(0, 2, -5), direction: Vector(0, 0, 1))
         let sphere = Sphere()
-        let xs: [Intersection] = sphere.intersect(ray)
+        let xs: [Intersection] = sphere.intersections(ray)
         XCTAssertEqual(xs.count, 0)
     }
 
@@ -71,7 +71,7 @@ class TestSpheres: XCTestCase {
     func testRayOriginatesInsideSphere() {
         let ray = Ray(origin: Point(0, 0, 0), direction: Vector(0, 0, 1))
         let sphere = Sphere()
-        let xs: [Intersection] = sphere.intersect(ray)
+        let xs: [Intersection] = sphere.intersections(ray)
         XCTAssertEqual(xs.count, 2)
         XCTAssertEqual(xs[0].distance, -1.0)
         XCTAssertEqual(xs[1].distance, 1.0)
@@ -88,7 +88,7 @@ class TestSpheres: XCTestCase {
     func testSphereBehindRay() {
         let ray = Ray(origin: Point(0, 0, 5), direction: Vector(0, 0, 1))
         let sphere = Sphere()
-        let xs: [Intersection] = sphere.intersect(ray)
+        let xs: [Intersection] = sphere.intersections(ray)
         XCTAssertEqual(xs.count, 2)
         XCTAssertEqual(xs[0].distance, -6.0)
         XCTAssertEqual(xs[1].distance, -4.0)
@@ -105,10 +105,10 @@ class TestSpheres: XCTestCase {
     func testIntersectionsSetObject() {
         let ray = Ray(origin: Point(0, 0, -5), direction: Vector(0, 0, 1))
         let sphere = Sphere()
-        let xs: [Intersection] = sphere.intersect(ray)
+        let xs: [Intersection] = sphere.intersections(ray)
         XCTAssertEqual(xs.count, 2)
-        XCTAssertEqual(xs[0].shape as! Sphere, sphere)
-        XCTAssertEqual(xs[1].shape as! Sphere, sphere)
+        XCTAssertEqual(xs[0].shape as? Sphere, sphere)
+        XCTAssertEqual(xs[1].shape as? Sphere, sphere)
     }
 
 //    Scenario: A sphere's default transformation
@@ -146,7 +146,7 @@ class TestSpheres: XCTestCase {
         let r = Ray(origin: Point(0, 0, -5), direction: Vector(0, 0, 1))
         let sphere = Sphere()
         sphere.setTransform(Matrix.scaling(point: Point(2, 2, 2)))
-        let xs = sphere.intersect(r)
+        let xs = sphere.intersections(r)
         XCTAssertEqual(xs.count, 2)
         XCTAssertEqual(xs[0].distance, 3)
         XCTAssertEqual(xs[1].distance, 7)
@@ -163,7 +163,7 @@ class TestSpheres: XCTestCase {
         let r = Ray(origin: Point(0, 0, -5), direction: Vector(0, 0, 1))
         let sphere = Sphere()
         sphere.setTransform(Matrix.translation(Point(5, 0, 0)))
-        let xs = sphere.intersect(r)
+        let xs = sphere.intersections(r)
         XCTAssertEqual(xs.count, 0)
 
         // TODO: add another test case with a non-zero intersection count

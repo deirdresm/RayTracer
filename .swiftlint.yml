@@ -1,0 +1,7 @@
+disabled_rules: # rule identifiers to exclude from running
+
+  - identifier_name
+  - comment_spacing
+  - comma
+  - todo
+  - vertical_parameter_alignment

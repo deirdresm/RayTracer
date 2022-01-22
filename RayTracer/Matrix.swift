@@ -9,8 +9,6 @@
 import Foundation
 import CoreGraphics
 
-// swiftlint:disable identifier_name
-
 struct Matrix: Equatable {
     private var _matrix: [[CGFloat]]
 
@@ -27,38 +25,30 @@ struct Matrix: Equatable {
 
     // number of rows. You'll note this is the top-level count of the array of arrays
     var rows: Int {
-        get {
-            return _matrix.count
-        }
+		return _matrix.count
     }
 
     // number of columns
     var cols: Int {
-        get {
-            return _matrix[0].count
-        }
+		return _matrix[0].count
     }
 
     var invertible: Bool {
-        get {
-            return self.determinant != 0
-        }
+		return self.determinant != 0
     }
 
     var inverse: Matrix {
-        get {
-            assert(self.invertible, "Only supports invertible matrices")
-            var m = Matrix(self._matrix)
-            let d = self.determinant
+		assert(self.invertible, "Only supports invertible matrices")
+		var m = Matrix(self._matrix)
+		let d = self.determinant
 
-            for row in 0 ..< rows {
-                for col in 0 ..< cols {
-                    let c = cofactor(row: row, col: col)
-                    m[col,row] = c/d
-                }
-            }
-            return m
-        }
+		for row in 0 ..< rows {
+			for col in 0 ..< cols {
+				let c = cofactor(row: row, col: col)
+				m[col,row] = c/d
+			}
+		}
+		return m
     }
 
     // MARK: subscript sauce
@@ -226,8 +216,8 @@ struct Matrix: Equatable {
     }
 
     func cofactor(row: Int, col: Int) -> CGFloat {
-        var d:CGFloat = minor(row: row, col: col)
-        
+        var d: CGFloat = minor(row: row, col: col)
+
         if !(row + col).isMultiple(of: 2) {
             d = -d
         }
@@ -299,6 +289,7 @@ struct Matrix: Equatable {
         return matrix
     }
 
+	// swiftlint:disable function_parameter_count
     static func shearing(_ xY: CGFloat,
                          _ xZ: CGFloat,
                          _ yX: CGFloat,
@@ -314,6 +305,7 @@ struct Matrix: Equatable {
         matrix[2, 1] = zY
         return matrix
     }
+	// swiftlint:enable function_parameter_count
 
 	// MARK: transformation
 

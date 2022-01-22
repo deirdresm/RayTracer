@@ -11,7 +11,7 @@ import AppKit
 
 // swiftlint:disable identifier_name
 
-class Example : NSObject {
+class Example: NSObject {
 
 	private static var decimalFormatter: NumberFormatter = {
             let formatter = NumberFormatter()
@@ -26,14 +26,14 @@ class Example : NSObject {
 
         let startPoint = Point(0, 1, 0)
 
-        let saturation : CGFloat = 0.9
-        let brightness : CGFloat = 0.9
-        let alpha : CGFloat = 1.0
-        var currentHue : CGFloat = 0.0
+        let saturation: CGFloat = 0.9
+        let brightness: CGFloat = 0.9
+        let alpha: CGFloat = 1.0
+        var currentHue: CGFloat = 0.0
 
 		let v = Vector(1, 1.8, 0)
 
-		let velocity : Vector = v.normalize() * 11.25
+		let velocity: Vector = v.normalize() * 11.25
         let gravity = Vector(0, -0.098, 0)
         let wind = Vector(-0.01, 0, 0)
         var p = Projectile(position: startPoint, velocity: velocity)
@@ -44,7 +44,8 @@ class Example : NSObject {
 
         repeat {
             currentHue = p.position.x / CGFloat(width)
-            let nsColor = NSColor(colorSpace: .deviceRGB, hue: currentHue, saturation: saturation, brightness: brightness, alpha: alpha)
+            let nsColor = NSColor(colorSpace: .deviceRGB, hue: currentHue,
+								  saturation: saturation, brightness: brightness, alpha: alpha)
             let color = VColor(nsColor: nsColor)
 
             c.writePixel(Int(p.position.x), height - Int(p.position.y), color)
@@ -61,18 +62,19 @@ class Example : NSObject {
     func makeClock(width: Int, height: Int) {
         let startPoint = Point(CGFloat(width / 2), CGFloat(height / 2), 0)
         var c = Canvas(width, height)
-        var currentHue : CGFloat = 0.0
+        var currentHue: CGFloat = 0.0
 
-        let saturation : CGFloat = 0.95
-        let brightness : CGFloat = 0.95
-        let alpha : CGFloat = 1.0
+        let saturation: CGFloat = 0.95
+        let brightness: CGFloat = 0.95
+        let alpha: CGFloat = 1.0
 
         // scale to be 70% of the size of the smaller of width/height
         let radius = width > height ? 0.35 * CGFloat(height) : 0.35 * CGFloat(width)
 
         for hour in 1 ... 12 {
             currentHue = CGFloat(hour) / 12.0
-            let nsColor = NSColor(colorSpace: .deviceRGB, hue: currentHue, saturation: saturation, brightness: brightness, alpha: alpha)
+            let nsColor = NSColor(colorSpace: .deviceRGB, hue: currentHue,
+								  saturation: saturation, brightness: brightness, alpha: alpha)
             let color = VColor(nsColor: nsColor)
 
             let x = cos(currentHue * 2 * CGFloat.pi)
@@ -96,11 +98,11 @@ class Example : NSObject {
     func makeClock2(width: Int, height: Int) {
         let startPoint = Point(CGFloat(width / 2), CGFloat(height / 2), 0)
         var c = Canvas(width, height)
-        var currentHour : CGFloat = 0.0
+        var currentHour: CGFloat = 0.0
 
-        let saturation : CGFloat = 0.95
-        let brightness : CGFloat = 0.95
-        let alpha : CGFloat = 1.0
+        let saturation: CGFloat = 0.95
+        let brightness: CGFloat = 0.95
+        let alpha: CGFloat = 1.0
 
         var formatter = NumberFormatter()
         formatter.numberStyle = .decimal
@@ -112,7 +114,8 @@ class Example : NSObject {
         for hour in 1 ... 12 {
             currentHour = CGFloat(hour) / 12.0
 
-            let nsColor = NSColor(colorSpace: .deviceRGB, hue: currentHour, saturation: saturation, brightness: brightness, alpha: alpha)
+            let nsColor = NSColor(colorSpace: .deviceRGB, hue: currentHour,
+								  saturation: saturation, brightness: brightness, alpha: alpha)
             let color = VColor(nsColor: nsColor)
 
             // this is just the relative position, needs to be

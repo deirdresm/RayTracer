@@ -21,7 +21,7 @@ class TestIntersections: XCTestCase {
         let s = Sphere()
         let i = Intersection(distance: 3.5, shape: s)
         XCTAssertEqual(i.distance, 3.5)
-        XCTAssertEqual(i.shape as! Sphere, s)
+        XCTAssertEqual(i.shape as? Sphere, s)
     }
 
 //    Scenario: Precomputing the state of an intersection

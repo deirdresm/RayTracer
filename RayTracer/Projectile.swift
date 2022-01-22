@@ -8,6 +8,8 @@
 
 import Foundation
 
+// swiftlint:disable shorthand_operator
+
 class Projectile {
 	var position = Point(0, 0, 0)
 	var velocity = Vector(0, 0, 0)
@@ -16,7 +18,8 @@ class Projectile {
         self.position = position
         self.velocity = velocity
     }
-	
+
+	// TODO: 
 	func tick(environment: Environment) {
 		position = position + velocity
 		velocity = velocity + environment.gravity + environment.wind
