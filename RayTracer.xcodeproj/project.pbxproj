@@ -141,7 +141,6 @@
 				38B6FB6622480159004405A4 /* TestCanvases.swift */,
 				38B6FB6A22495D2D004405A4 /* TestPPMFileFormat.swift */,
 				388139F025C782B100EB0DB6 /* TestMatrices.swift */,
-				38321A1D279BCAA9007F73D4 /* .swiftlint.yml */,
 				38EA45EE25D0E2E80018167A /* TestMatrixTransformations.swift */,
 				38038C7925DCF5290036BAC6 /* TestRayRays.swift */,
 				38038C9025DCFCD30036BAC6 /* TestShapes.swift */,
@@ -157,6 +156,8 @@
 				387D03742225F06C00F43D70 /* README.md */,
 				38650A452149DE1A00D30282 /* RayTracer */,
 				38650A5A2149DE1B00D30282 /* RayTracerTests */,
+				38321A1D279BCAA9007F73D4 /* .swiftlint.yml */,
+				3801C7AD279B5A9400E757B2 /* RayTracerRelease.entitlements */,
 				38650A652149DE1C00D30282 /* RayTracerUITests */,
 				38650A442149DE1A00D30282 /* Products */,
 			);
@@ -204,7 +205,6 @@
 			children = (
 				38049A72222650C800B8E281 /* Features */,
 				38650A5D2149DE1B00D30282 /* Info.plist */,
-				3801C7AD279B5A9400E757B2 /* RayTracerRelease.entitlements */,
 			);
 			path = RayTracerTests;
 			sourceTree = "<group>";

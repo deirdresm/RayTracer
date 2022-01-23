@@ -12,6 +12,7 @@ import XCTest
 // swiftlint:disable identifier_name
 
 class TestSpheres: XCTestCase {
+	let epsilon: CGFloat = 0.00001
 
 //    Scenario: A ray intersects a sphere at two points
 //      Given r ← ray(point(0, 0, -5), vector(0, 0, 1))
@@ -169,44 +170,93 @@ class TestSpheres: XCTestCase {
         // TODO: add another test case with a non-zero intersection count
     }
 
+/// MARK: - Chapter 6.
+	///
 //    Scenario: The normal on a sphere at a point on the x axis
 //      Given s ← sphere()
 //      When n ← normal_at(s, point(1, 0, 0))
 //      Then n = vector(1, 0, 0)
-//
+
+	func testSphereNormalOnXAxis() {
+		let s = Sphere()
+		let n = s.normalAt(Point(1, 0, 0))
+		XCTAssertEqual(n, Vector(1, 0, 0))
+	}
+
 //    Scenario: The normal on a sphere at a point on the y axis
 //      Given s ← sphere()
 //      When n ← normal_at(s, point(0, 1, 0))
 //      Then n = vector(0, 1, 0)
-//
+
+	func testSphereNormalOnYAxis() {
+		let s = Sphere()
+		let n = s.normalAt(Point(0, 1, 0))
+		XCTAssertEqual(n, Vector(0, 1, 0))
+	}
+
 //    Scenario: The normal on a sphere at a point on the z axis
 //      Given s ← sphere()
 //      When n ← normal_at(s, point(0, 0, 1))
 //      Then n = vector(0, 0, 1)
-//
+
+	func testSphereNormalOnZAxis() {
+		let s = Sphere()
+		let n = s.normalAt(Point(0, 0, 1))
+		XCTAssertEqual(n, Vector(0, 0, 1))
+	}
+
 //    Scenario: The normal on a sphere at a nonaxial point
 //      Given s ← sphere()
 //      When n ← normal_at(s, point(√3/3, √3/3, √3/3))
 //      Then n = vector(√3/3, √3/3, √3/3)
-//
+
+	func testSphereNormalNonaxialPoint() {
+		let s = Sphere()
+		let n = s.normalAt(Point(sqrt(3)/3, sqrt(3)/3, sqrt(3)/3))
+		XCTAssertEqual(n, Vector(sqrt(3)/3, sqrt(3)/3, sqrt(3)/3))
+	}
+
 //    Scenario: The normal is a normalized vector
 //      Given s ← sphere()
 //      When n ← normal_at(s, point(√3/3, √3/3, √3/3))
 //      Then n = normalize(n)
-//
+
+	func testSphereNormalNormalizedVector() {
+		let s = Sphere()
+		let n = s.normalAt(Point(sqrt(3)/3, sqrt(3)/3, sqrt(3)/3))
+		XCTAssertEqual(n, n.normalize())
+	}
+
 //    Scenario: Computing the normal on a translated sphere
 //      Given s ← sphere()
 //        And set_transform(s, translation(0, 1, 0))
 //      When n ← normal_at(s, point(0, 1.70711, -0.70711))
 //      Then n = vector(0, 0.70711, -0.70711)
-//
+
+	func testSphereNormalTranslated() {
+		let s = Sphere()
+		s.setTransform(Matrix.translation(Point(0, 1, 0)))
+
+		let n = s.normalAt(Point(0, 1.70711, -0.70711))
+		XCTAssertEqual(n, Vector(0, 0.70711, -0.70711))
+	}
+
 //    Scenario: Computing the normal on a transformed sphere
 //      Given s ← sphere()
 //        And m ← scaling(1, 0.5, 1) * rotation_z(π/5)
 //        And set_transform(s, m)
 //      When n ← normal_at(s, point(0, √2/2, -√2/2))
 //      Then n = vector(0, 0.97014, -0.24254)
-//
+
+	func testSphereNormalTransformed() {
+		let s = Sphere()
+		let m = Matrix.scaling(point: Point(1, 0.5, 1)) * Matrix.rotationZ(radians: CGFloat.pi / 5)
+		s.setTransform(m)
+
+		let n = s.normalAt(Point(0, sqrt(2)/2, -sqrt(2)/2))
+		XCTAssertEqual(n, Vector(0,  0.97014, -0.24254))
+	}
+
 //    Scenario: A sphere has a default material
 //      Given s ← sphere()
 //      When m ← s.material
