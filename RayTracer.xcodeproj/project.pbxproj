@@ -19,6 +19,9 @@
 		38049A732226516F00B8E281 /* TestTuples.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38CC76EC215AC7EF006B7934 /* TestTuples.swift */; };
 		3804DD2F22596A4900DD2869 /* Example.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3804DD2E22596A4900DD2869 /* Example.swift */; };
 		3804DD3122596DDA00DD2869 /* Projectile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3804DD3022596DDA00DD2869 /* Projectile.swift */; };
+		38321A41279D3E11007F73D4 /* Light.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38321A40279D3E11007F73D4 /* Light.swift */; };
+		38321A43279D40E4007F73D4 /* TestLights.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38321A42279D40E4007F73D4 /* TestLights.swift */; };
+		38321A45279D414C007F73D4 /* TestMaterials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38321A44279D414C007F73D4 /* TestMaterials.swift */; };
 		38650A472149DE1A00D30282 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38650A462149DE1A00D30282 /* AppDelegate.swift */; };
 		38650A492149DE1A00D30282 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38650A482149DE1A00D30282 /* GameViewController.swift */; };
 		38650A4B2149DE1A00D30282 /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 38650A4A2149DE1A00D30282 /* art.scnassets */; };
@@ -37,6 +40,7 @@
 		38D1575B25F4BCD5004DB1F7 /* TestIntersections.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D1575A25F4BCD5004DB1F7 /* TestIntersections.swift */; };
 		38D7882D222F174700116CD8 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D7882C222F174700116CD8 /* Color.swift */; };
 		38EA45EF25D0E2E80018167A /* TestMatrixTransformations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38EA45EE25D0E2E80018167A /* TestMatrixTransformations.swift */; };
+		38F148CD279E012B0077332D /* Material.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F148CC279E012B0077332D /* Material.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +74,9 @@
 		3804DD2E22596A4900DD2869 /* Example.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Example.swift; sourceTree = "<group>"; };
 		3804DD3022596DDA00DD2869 /* Projectile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Projectile.swift; sourceTree = "<group>"; };
 		38321A1D279BCAA9007F73D4 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = SOURCE_ROOT; };
+		38321A40279D3E11007F73D4 /* Light.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Light.swift; sourceTree = "<group>"; };
+		38321A42279D40E4007F73D4 /* TestLights.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestLights.swift; sourceTree = "<group>"; };
+		38321A44279D414C007F73D4 /* TestMaterials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestMaterials.swift; sourceTree = "<group>"; };
 		38650A432149DE1A00D30282 /* RayTracer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RayTracer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		38650A462149DE1A00D30282 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		38650A482149DE1A00D30282 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
@@ -97,6 +104,7 @@
 		38D1575A25F4BCD5004DB1F7 /* TestIntersections.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestIntersections.swift; sourceTree = "<group>"; };
 		38D7882C222F174700116CD8 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		38EA45EE25D0E2E80018167A /* TestMatrixTransformations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestMatrixTransformations.swift; sourceTree = "<group>"; };
+		38F148CC279E012B0077332D /* Material.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Material.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,6 +154,8 @@
 				38038C9025DCFCD30036BAC6 /* TestShapes.swift */,
 				38038C9D25DDB51F0036BAC6 /* TestSpheres.swift */,
 				38D1575A25F4BCD5004DB1F7 /* TestIntersections.swift */,
+				38321A44279D414C007F73D4 /* TestMaterials.swift */,
+				38321A42279D40E4007F73D4 /* TestLights.swift */,
 			);
 			name = Features;
 			sourceTree = "<group>";
@@ -186,6 +196,8 @@
 				38CC19D1260FF2FE00B6D0E9 /* Tuple.swift */,
 				387D03752226066300F43D70 /* Point.swift */,
 				387D03772226068900F43D70 /* Vector.swift */,
+				38321A40279D3E11007F73D4 /* Light.swift */,
+				38F148CC279E012B0077332D /* Material.swift */,
 				38D7882C222F174700116CD8 /* Color.swift */,
 				3804DD3022596DDA00DD2869 /* Projectile.swift */,
 				38B6FB6422480130004405A4 /* Canvas.swift */,
@@ -352,6 +364,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				38321A41279D3E11007F73D4 /* Light.swift in Sources */,
+				38F148CD279E012B0077332D /* Material.swift in Sources */,
 				3804DD3122596DDA00DD2869 /* Projectile.swift in Sources */,
 				38B6FB6522480130004405A4 /* Canvas.swift in Sources */,
 				387D03762226066300F43D70 /* Point.swift in Sources */,
@@ -378,6 +392,7 @@
 			files = (
 				38038C9125DCFCD30036BAC6 /* TestShapes.swift in Sources */,
 				38EA45EF25D0E2E80018167A /* TestMatrixTransformations.swift in Sources */,
+				38321A43279D40E4007F73D4 /* TestLights.swift in Sources */,
 				38049A732226516F00B8E281 /* TestTuples.swift in Sources */,
 				388139F125C782B100EB0DB6 /* TestMatrices.swift in Sources */,
 				38B6FB6B22495D2D004405A4 /* TestPPMFileFormat.swift in Sources */,
@@ -385,6 +400,7 @@
 				38B6FB6722480159004405A4 /* TestCanvases.swift in Sources */,
 				38038C9E25DDB51F0036BAC6 /* TestSpheres.swift in Sources */,
 				38038C7A25DCF5290036BAC6 /* TestRayRays.swift in Sources */,
+				38321A45279D414C007F73D4 /* TestMaterials.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

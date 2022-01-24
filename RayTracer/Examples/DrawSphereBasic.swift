@@ -10,7 +10,7 @@ import Foundation
 
 // swiftlint:disable identifier_name
 
-struct DrawSphereBasic {
+struct DrawSphere {
 
 	// TODO: incomplete
 	func makeSphericalSilhouette(width: Int) {
@@ -20,8 +20,13 @@ struct DrawSphereBasic {
 		let pixelSize = wallSize / CGFloat(width)
 		let halfWallSize = wallSize / 2
 
-		let color = VColor(1, 0, 1)	// purple-ish
-		let sphere = Sphere()
+//		let color = VColor(1, 0, 1)	// purple-ish
+		var sphere = Sphere()
+		sphere.material = Material(color: VColor(1, 0.2, 1))
+
+		let lightPosition = Point(-10, 10, -10)
+		let lightColor: VColor = .white
+		let light = Light(position: lightPosition, intensity: lightColor)
 
 		var c = Canvas(width, width)
 
@@ -34,10 +39,24 @@ struct DrawSphereBasic {
 
 				let direction = position - rayOrigin
 
-				let r = Ray(origin: rayOrigin,
-							direction: direction.normalize())
+				let ray = Ray(origin: rayOrigin,
+							  direction: (position - rayOrigin).normalize())
+				let xs = sphere.intersections(ray)	// [Intersection] array returned
 
-				let xs = sphere.intersections(r)	// [Intersection] array returned
+				if xs.count == 0 {
+					continue
+				}
+
+				let hit = xs.sorted().first!
+
+				let point = ray.position(hit.distance)
+				let normal = (hit.shape).normalAt(point)
+				let eyeV = -ray.direction as Vector
+
+				let color = hit.shape.material.lighting(light: light,
+												     position: point,
+														 eyeV: eyeV,
+													  normalV: normal)
 
 				if xs.count > 0 {	// there is at least one hit intersection
 					c.writePixel(x, y, color)

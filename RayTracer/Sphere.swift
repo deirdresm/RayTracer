@@ -15,6 +15,7 @@ class Sphere: Shape, Equatable {
     var origin: Point
     var radius: CGFloat
     var transform: Matrix
+	var material: Material = Material()
 
     init(origin: Point = Point(0, 0, 0), radius: CGFloat = 1.0, transform: Matrix = Matrix.identity) {
         self.origin = origin

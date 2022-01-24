@@ -15,7 +15,7 @@ infix operator ×: MultiplicationPrecedence
 
 /// Tuple: parent class for Point and Vector.
 
-class Tuple: Equatable, CustomStringConvertible {
+public class Tuple: Equatable, CustomStringConvertible {
 	let epsilon: CGFloat = 0.00001
 
 	var x: CGFloat
@@ -56,20 +56,28 @@ class Tuple: Equatable, CustomStringConvertible {
 		return normal
 	}
 
-	// Dot product (note: using option-8 for this dot as the right dot has another meaning?)
+	// Reflect!
 
-	public static func • (_ left: Tuple, _ right: Tuple) -> CGFloat {
-		let result = left.x * right.x + left.y * right.y +
-					left.z * right.z + left.w * right.w
-		return result
+	public func reflect<T: Tuple>(_ normal: T) -> T {
+		return self - normal * 2 * (self • normal)
 	}
 
-	// Cross product (using × as the operator)
-
-	/// Custom Description	
-	var description: String {
+	/// Custom Description
+	public var description: String {
 		return("Tuple: x: \(x), y: \(y), z: \(z), w: \(w)")
 	}
+}
+
+/// MARK: - Unary operators
+
+/// Add Tuple + CGFloat together, returning result
+func + <T: Tuple>(lhs: Tuple, rhs: CGFloat) -> T {
+	let x = lhs.x + rhs
+	let y = lhs.y + rhs
+	let z = lhs.z + rhs
+	let w = lhs.w + rhs
+
+	return T(x, y, z, w)
 }
 
 /// Add two tuples together, returning the result
@@ -129,7 +137,7 @@ prefix func - <T: Tuple>(_ tuple: Tuple) -> T {
 	return result
 }
 
-func == <T: Tuple>(lhs: T, rhs: T) -> Bool {
+public func == <T: Tuple>(lhs: T, rhs: T) -> Bool {
 	let epsilon: CGFloat = 0.00001	// the other one's an instance method, and this is a class method
 
 	if abs(lhs.x - rhs.x) <= epsilon &&
@@ -142,10 +150,20 @@ func == <T: Tuple>(lhs: T, rhs: T) -> Bool {
 	return false
 }
 
-func × <T: Tuple>(_ a: Tuple, _ b: Tuple) -> T {
+// Cross product (using × as the operator)
+
+func × <T: Tuple>(_ a: T, _ b: T) -> T {
 
 	return T(a.y * b.z - a.z * b.y,
-				a.z * b.x - a.x * b.z,
-				a.x * b.y - a.y * b.x,
-				0.0)
+			a.z * b.x - a.x * b.z,
+			a.x * b.y - a.y * b.x,
+			0.0)
+}
+
+// Dot product (note: using option-8 for this dot as the right dot has another meaning?)
+
+func • <T: Tuple>(_ left: T, _ right: T) -> CGFloat {
+	let result = left.x * right.x + left.y * right.y +
+			   left.z * right.z + left.w * right.w
+	return result
 }

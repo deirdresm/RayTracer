@@ -10,7 +10,7 @@ import Foundation
 
 // swiftlint:disable identifier_name
 
-class Vector: Tuple {
+public class Vector: Tuple {
 
 	required init(_ x: CGFloat, _ y: CGFloat, _ z: CGFloat, _ w: CGFloat) {
 		super.init(x, y, z, 0.0)
@@ -20,7 +20,7 @@ class Vector: Tuple {
 		super.init(x, y, z, 0.0)
 	}
 
-	override var description: String {
+	public override var description: String {
 		return("Vector: x: \(x), y: \(y), z: \(z), w: \(w)")
 	}
 }

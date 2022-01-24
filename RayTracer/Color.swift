@@ -11,6 +11,8 @@ import AppKit
 // swiftlint:disable identifier_name
 
 class VColor: Vector {
+	public static let white = VColor(1, 1, 1)
+	public static let black = VColor(0, 0, 0)
 
 	required init(_ x: CGFloat, _ y: CGFloat, _ z: CGFloat, _ w: CGFloat) {
 		super.init(x, y, z, 0.0)
@@ -50,8 +52,6 @@ class VColor: Vector {
 			self.z = newBlue
 		}
 	}
-
-	static public var black: NSColor = NSColor.black
 
     // clamps a color to be in a valid range
 

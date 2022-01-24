@@ -223,17 +223,34 @@ class TestTupleFeatures: XCTestCase {
 		XCTAssertEqual(c3, VColor(0, 0, 1))
 	}
 
-	// MARK: Reflection tests
+	// MARK: Reflection tests (Chapter 6.)
 
 	//	Scenario: Reflecting a vector approaching at 45°
 	//	Given v ← vector(1, -1, 0)
 	//	And n ← vector(0, 1, 0)
 	//	When r ← reflect(v, n)
 	//	Then r = vector(1, 1, 0)
-	//
+
+	func testReflectVectorApproachingAt45() {
+		let v = Vector(1, -1, 0)
+		let n = Vector(0,  1, 0)
+
+		let r = v.reflect(n)
+		XCTAssertEqual(r, Vector(1, 1, 0))
+	}
+
 	//	Scenario: Reflecting a vector off a slanted surface
 	//	Given v ← vector(0, -1, 0)
 	//	And n ← vector(√2/2, √2/2, 0)
 	//	When r ← reflect(v, n)
 	//	Then r = vector(1, 0, 0)
+
+	func testReflectVectorOffSlantedSurface() {
+		let v = Vector(0, -1, 0)
+		let n = Vector(sqrt(2)/2, sqrt(2)/2, 0)
+
+		let r = v.reflect(n)
+		XCTAssertEqual(r, Vector(1, 0, 0))
+	}
+
 }

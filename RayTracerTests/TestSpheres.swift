@@ -257,18 +257,37 @@ class TestSpheres: XCTestCase {
 		XCTAssertEqual(n, Vector(0,  0.97014, -0.24254))
 	}
 
+	// Materials (Chapter 6)
+
 //    Scenario: A sphere has a default material
 //      Given s ← sphere()
 //      When m ← s.material
 //      Then m = material()
-//
+
+	func testSphereHasDefaultMaterial() {
+		let s = Sphere()
+		let m = s.material
+		XCTAssertEqual(m, Material())
+	}
+
 //    Scenario: A sphere may be assigned a material
 //      Given s ← sphere()
 //        And m ← material()
 //        And m.ambient ← 1
 //      When s.material ← m
 //      Then s.material = m
-//
+
+	func testSphereAssignMaterial() {
+		let s = Sphere()
+		var m = Material()
+		m.ambient = 1.0
+
+		s.material = m
+
+		XCTAssertEqual(m, s.material)
+		XCTAssertEqual(m.ambient, s.material.ambient)
+	}
+
 //    Scenario: A helper for producing a sphere with a glassy material
 //      Given s ← glass_sphere()
 //      Then s.transform = identity_matrix
