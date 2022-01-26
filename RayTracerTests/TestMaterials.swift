@@ -43,7 +43,7 @@ class TestMaterials: XCTestCase {
 
 	func testDefaultMaterialReflectivity() {
 		let m = Material()
-// TODO		XCTAssertEqual(m.reflective, 0)
+		XCTAssertEqual(m.reflectivity, 0)
 	}
 
 //	Scenario: Transparency and Refractive Index for the default material

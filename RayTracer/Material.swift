@@ -15,6 +15,7 @@ public struct Material: Equatable {
 	var diffuse: CGFloat = 0.9
 	var specular: CGFloat = 0.9
 	var shininess: CGFloat = 200.0
+	var reflectivity: CGFloat = 0.0
 	var color: VColor = .white
 
 	var description: String {

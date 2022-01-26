@@ -34,21 +34,58 @@ class TestIntersections: XCTestCase {
 //        And comps.point = point(0, 0, -1)
 //        And comps.eyev = vector(0, 0, -1)
 //        And comps.normalv = vector(0, 0, -1)
-//
+
+	func testPrecomputeIntersectionState() {
+		let ray = Ray(origin: Point(0, 0, -5), direction: Vector(0, 0, 1))
+		let sphere = Sphere()
+
+		let i = Intersection(distance: 4, shape: sphere)
+
+		// shout out to @ateliercw for the better name
+		let comps = IntersectionState(intersection: i, ray: ray)
+		
+		XCTAssertEqual(comps.distance, i.distance)
+		XCTAssertEqual(comps.shape.id, i.shape.id)
+		XCTAssertEqual(comps.point, Point(0, 0, -1))
+		XCTAssertEqual(comps.eyeV, Vector(0, 0, -1))
+		XCTAssertEqual(comps.normalV, Vector(0, 0, -1))
+	}
+
 //    Scenario: Precomputing the reflection vector
 //      Given shape ← plane()
 //        And r ← ray(point(0, 1, -1), vector(0, -√2/2, √2/2))
 //        And i ← intersection(√2, shape)
 //      When comps ← prepare_computations(i, r)
 //      Then comps.reflectv = vector(0, √2/2, √2/2)
+
+//	func testPrecomputeReflectionVector() {
+//		let ray = Ray(origin: Point(0, 1, -1), direction: Vector(0, -sqrt(2)/2, sqrt(2)/2))
+//		let sphere = Sphere()
 //
+//		let i = Intersection(distance: sqrt(2), shape: sphere)
+//
+//		// shout out to @ateliercw for the better name
+//		let comps = IntersectionState(intersection: i, ray: ray)
+//
+//		XCTAssertEqual(comps.reflect, Vector(0, sqrt(2)/2, sqrt(2)/2))
+//	}
+
 //    Scenario: The hit, when an intersection occurs on the outside
 //      Given r ← ray(point(0, 0, -5), vector(0, 0, 1))
 //        And shape ← sphere()
 //        And i ← intersection(4, shape)
 //      When comps ← prepare_computations(i, r)
 //      Then comps.inside = false
-//
+
+	func testHitOnOutside() {
+		let ray = Ray(origin: Point(0, 0, -5), direction: Vector(0, 0, 1))
+		let shape = Sphere()
+		let intersection = Intersection(distance: 4, shape: shape)
+		let comps = IntersectionState(intersection: intersection, ray: ray)
+
+		XCTAssertEqual(comps.isInside, false)
+	}
+
 //    Scenario: The hit, when an intersection occurs on the inside
 //      Given r ← ray(point(0, 0, 0), vector(0, 0, 1))
 //        And shape ← sphere()
@@ -59,7 +96,20 @@ class TestIntersections: XCTestCase {
 //        And comps.inside = true
 //          # normal would have been (0, 0, 1), but is inverted!
 //        And comps.normalv = vector(0, 0, -1)
-//
+
+	func testHitOnInside() {
+		let ray = Ray(origin: Point(0, 0, 0), direction: Vector(0, 0, 1))
+		let shape = Sphere()
+		let intersection = Intersection(distance: 1, shape: shape)
+		let comps = IntersectionState(intersection: intersection, ray: ray)
+		XCTAssertEqual(comps.point, Point(0, 0, 1))
+		XCTAssertEqual(comps.eyeV, Vector(0, 0, -1))
+		XCTAssertEqual(comps.isInside, true)
+
+		// inverted because inside
+		XCTAssertEqual(comps.normalV, Vector(0, 0, -1))
+	}
+
 //    Scenario: The hit should offset the point
 //      Given r ← ray(point(0, 0, -5), vector(0, 0, 1))
 //        And shape ← sphere() with:

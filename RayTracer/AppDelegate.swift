@@ -19,7 +19,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         example.makeClock(width: 900, height: 600)
         example.makeClock2(width: 900, height: 600)
 
-		let sphere = DrawSphere()
-		sphere.makeSphericalSilhouette(width: 600)
+//		let sphere = DrawSphere()
+//		sphere.makeSphericalSilhouette(width: 600)
     }
 }

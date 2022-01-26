@@ -41,6 +41,8 @@
 		38D7882D222F174700116CD8 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D7882C222F174700116CD8 /* Color.swift */; };
 		38EA45EF25D0E2E80018167A /* TestMatrixTransformations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38EA45EE25D0E2E80018167A /* TestMatrixTransformations.swift */; };
 		38F148CD279E012B0077332D /* Material.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F148CC279E012B0077332D /* Material.swift */; };
+		38F148CF279FA5140077332D /* World.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F148CE279FA5140077332D /* World.swift */; };
+		38F148D1279FA6340077332D /* TestWorlds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F148D0279FA6340077332D /* TestWorlds.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -105,6 +107,8 @@
 		38D7882C222F174700116CD8 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		38EA45EE25D0E2E80018167A /* TestMatrixTransformations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestMatrixTransformations.swift; sourceTree = "<group>"; };
 		38F148CC279E012B0077332D /* Material.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Material.swift; sourceTree = "<group>"; };
+		38F148CE279FA5140077332D /* World.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = World.swift; sourceTree = "<group>"; };
+		38F148D0279FA6340077332D /* TestWorlds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestWorlds.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -156,6 +160,7 @@
 				38D1575A25F4BCD5004DB1F7 /* TestIntersections.swift */,
 				38321A44279D414C007F73D4 /* TestMaterials.swift */,
 				38321A42279D40E4007F73D4 /* TestLights.swift */,
+				38F148D0279FA6340077332D /* TestWorlds.swift */,
 			);
 			name = Features;
 			sourceTree = "<group>";
@@ -206,6 +211,7 @@
 				38038C8725DCF9AD0036BAC6 /* Sphere.swift */,
 				38038CA225DDB7C10036BAC6 /* Intersection.swift */,
 				38038C9525DDB2020036BAC6 /* Shape.swift */,
+				38F148CE279FA5140077332D /* World.swift */,
 				38038C8325DCF6150036BAC6 /* Examples */,
 				38B6FB6822495704004405A4 /* PPMFileFormat.swift */,
 			);
@@ -378,6 +384,7 @@
 				388139F625C7831C00EB0DB6 /* Matrix.swift in Sources */,
 				38B6FB6922495704004405A4 /* PPMFileFormat.swift in Sources */,
 				38038C8C25DCF9B30036BAC6 /* Sphere.swift in Sources */,
+				38F148CF279FA5140077332D /* World.swift in Sources */,
 				38038C7F25DCF6080036BAC6 /* Ray.swift in Sources */,
 				3801C7AC279B564000E757B2 /* FileManager+Extension.swift in Sources */,
 				38650A472149DE1A00D30282 /* AppDelegate.swift in Sources */,
@@ -400,6 +407,7 @@
 				38B6FB6722480159004405A4 /* TestCanvases.swift in Sources */,
 				38038C9E25DDB51F0036BAC6 /* TestSpheres.swift in Sources */,
 				38038C7A25DCF5290036BAC6 /* TestRayRays.swift in Sources */,
+				38F148D1279FA6340077332D /* TestWorlds.swift in Sources */,
 				38321A45279D414C007F73D4 /* TestMaterials.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -29,3 +29,41 @@ public struct Intersection: Identifiable, Equatable, Comparable {
     public let distance: CGFloat
     public let shape: Shape
 }
+
+public struct IntersectionState: Equatable {
+	let intersection: Intersection
+	let ray: Ray
+	let point: Point
+	let eyeV: Vector
+	let normalV: Vector
+	let isInside: Bool
+
+	init(intersection: Intersection, ray: Ray) {
+		self.intersection = intersection
+		self.ray = ray
+		self.point = ray.position(intersection.distance)
+		self.eyeV = -ray.direction
+		let normalV: Vector = intersection.shape.normalAt(self.point)
+
+		if normalV • self.eyeV < 0 {
+			self.isInside = true
+			self.normalV = -normalV
+		} else {
+			self.isInside = false
+			self.normalV = normalV
+		}
+	}
+
+	var shape: Shape {
+		return intersection.shape
+	}
+
+	var distance: CGFloat {
+		return intersection.distance
+	}
+
+	var reflect: Vector {
+		return point.reflect(normalV)
+	}
+
+}

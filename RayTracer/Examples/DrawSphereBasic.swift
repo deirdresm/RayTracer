@@ -61,11 +61,9 @@ struct DrawSphere {
 				if xs.count > 0 {	// there is at least one hit intersection
 					c.writePixel(x, y, color)
 				}
-
 			}
 		}
 
 		FileManager.default.writeRenderedFile(canvas: c, fileName: "sphericalSilhouette.ppm")
 	}
-
 }

@@ -7,7 +7,7 @@
 //
 
 import Foundation
-struct Light {
+struct Light: Equatable {
 
 	var position: Point
 	var intensity: VColor
