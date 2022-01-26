@@ -14,7 +14,6 @@ public protocol Shape {
     var id: UUID { get }
 	var material: Material { get set }
 
-
     func intersections(_ ray: Ray) -> [Intersection]
 
 	func normalAt(_ worldPoint: Point) -> Vector

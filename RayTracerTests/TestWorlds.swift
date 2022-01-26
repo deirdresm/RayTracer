@@ -41,7 +41,7 @@ class TestWorlds: XCTestCase {
 		let world = World()
 		world.defaultWorld()
 
-		XCTAssertEqual(world.objects.count, 0)
+		XCTAssertEqual(world.objects.count, 2)
 		XCTAssertEqual(world.lights.count, 1)
 
 		let light = Light(position: Point(10, -10, 10), intensity: .white)
@@ -53,6 +53,13 @@ class TestWorlds: XCTestCase {
 		var sphereTwo = Sphere()
 		sphereTwo.setTransform(Matrix.scaling(point: Point(0.5, 0.5, 0.5)))
 		XCTAssertEqual(world.lights.first, light)
+
+		// until I decide which way I want to go with equating spheres….
+		let s1 = world.objects.first as? Sphere
+		XCTAssertEqual(s1?.origin.x, sphereOne.origin.x)
+		XCTAssertEqual(s1?.origin.y, sphereOne.origin.y)
+		XCTAssertEqual(s1?.origin.z, sphereOne.origin.z)
+		XCTAssertEqual(s1?.radius,   sphereOne.radius)
 	}
 
 //	Scenario: Intersect a world with a ray
@@ -88,7 +95,6 @@ class TestWorlds: XCTestCase {
 		XCTAssertEqual(xs[1].distance, 4.5)		// near inner
 		XCTAssertEqual(xs[2].distance, 5.5)		// far inner
 		XCTAssertEqual(xs[3].distance, 6)		// far outer
-
 	}
 
 //	Scenario: Shading an intersection
@@ -100,6 +106,11 @@ class TestWorlds: XCTestCase {
 //		And c ← shade_hit(w, comps)
 //	  Then c = color(0.38066, 0.47583, 0.2855)
 
+	func testShadingAnIntersection() {
+		var w = World()
+		w.defaultWorld()
+	}
+
 //	Scenario: Shading an intersection from the inside
 //	  Given w ← default_world()
 //		And w.light ← point_light(point(0, 0.25, 0), color(1, 1, 1))
@@ -109,13 +120,41 @@ class TestWorlds: XCTestCase {
 //	  When comps ← prepare_computations(i, r)
 //		And c ← shade_hit(w, comps)
 //	  Then c = color(0.90498, 0.90498, 0.90498)
-//
+
+	func testShadingAnIntersectionFromInside() {
+		var world = World()
+		world.defaultWorld()
+		let light = Light(position: Point(0, 0.25, 0), intensity: .white)
+		world.lights = [light]
+
+		let ray = Ray(origin: Point(0, 0, 0), direction: Vector(0, 0, 1))
+		let shape = world.objects[1] // second object
+
+		let intersection = Intersection(distance: 0.5, shape: shape)
+
+		let comps = IntersectionState(intersection: intersection, ray: ray)
+		let color = world.shadeHit(with: comps)
+
+		XCTAssertEqual(color, VColor(0.90498, 0.90498, 0.90498))
+	}
+
 //	Scenario: The color when a ray misses
 //	  Given w ← default_world()
 //		And r ← ray(point(0, 0, -5), vector(0, 1, 0))
 //	  When c ← color_at(w, r)
 //	  Then c = color(0, 0, 0)
-//
+
+	func testColorWhenRayMisses() {
+		var world = World()
+		world.defaultWorld()
+
+		let ray = Ray(origin: Point(0, 0, -5), direction: Vector(0, 1, 0))
+
+		// TODO more stuff here
+
+		// XCTAssertEqual(color, VColor(0.90498, 0.90498, 0.90498))
+	}
+
 //	Scenario: The color when a ray hits
 //	  Given w ← default_world()
 //		And r ← ray(point(0, 0, -5), vector(0, 0, 1))
