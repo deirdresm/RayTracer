@@ -51,7 +51,7 @@ class Sphere: Shape, Equatable {
         return []
     }
 
-	func normalAt(_ worldPoint: Point) -> Vector {
+	func normal(at worldPoint: Point) -> Vector {
 		let objectPoint = transform.inverse * worldPoint
 		let objectNormal = objectPoint - Point(0, 0, 0)
 		let worldNormal = transform.inverse.transpose() * objectNormal

@@ -48,7 +48,7 @@ struct DrawSphere {
 				let hit = xs.sorted().first!
 
 				let point = ray.position(hit.distance)
-				let normal = (hit.shape).normalAt(point)
+				let normal = (hit.shape).normal(at: point)
 				let eyeV = -ray.direction as Vector
 
 				let color = hit.shape.material.lighting(light: light,

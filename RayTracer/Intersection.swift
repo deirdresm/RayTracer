@@ -60,7 +60,7 @@ public struct IntersectionState: Equatable {
 		self.ray = ray
 		self.point = ray.position(intersection.distance)
 		self.eyeV = -ray.direction
-		let normalV: Vector = intersection.shape.normalAt(self.point)
+		let normalV: Vector = intersection.shape.normal(at: self.point)
 
 		if normalV • self.eyeV < 0 {
 			self.isInside = true

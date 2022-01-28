@@ -15,7 +15,17 @@ Anyhow, I thought it would be interesting to be able to visually model it becaus
 
 ### Current Status
 
-Currently: on chapter 5, transformations and translations.
+Just finished Chapter 7 (scenes and worlds and cameras).
+
+About to start Chapter 8, Shadows.
+
+## Chapter 7
+
+![Scene With Spheres](Images/sphericalSilhouette.png)
+
+## Chapter 6
+
+![First Sphere](Images/sceneWithSpheres.png)
 
 ## Chapter 5
 

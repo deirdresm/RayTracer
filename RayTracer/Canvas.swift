@@ -37,7 +37,7 @@ class Canvas: CustomStringConvertible, Equatable {
 		pixelData[y][x] = color.clamped()
 	}
 
-	func pixelAt(_ x: Int, _ y: Int) -> VColor {
+	func pixel(at x: Int, _ y: Int) -> VColor {
 		// TODO: assumes y and x are valid
 		return pixelData[y][x]
 	}
@@ -55,7 +55,7 @@ class Canvas: CustomStringConvertible, Equatable {
 
 		for y in 0..<lhs.height {
 			for x in 0..<lhs.width {
-				if lhs.pixelAt(x, y) != rhs.pixelAt(x, y) {
+				if lhs.pixel(at: x, y) != rhs.pixel(at: x, y) {
 					return false
 				}
 			}

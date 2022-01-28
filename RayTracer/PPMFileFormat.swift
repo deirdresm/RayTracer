@@ -34,7 +34,7 @@ class PPMFileFormat: NSObject {
         for y in 0..<canvas.height {
             for x in 0..<canvas.width {
 
-                let p = canvas.pixelAt(x, y)
+				let p = canvas.pixel(at: x, y)
 
                 let r = Int(round(p.red * 255.0))
                 let g = Int(round(p.green * 255.0))

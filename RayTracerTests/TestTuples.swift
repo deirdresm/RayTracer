@@ -20,8 +20,6 @@ import XCTest
 
 class TestTupleFeatures: XCTestCase {
 
-	let epsilon: CGFloat = 0.00001
-
 	// MARK: Tuples, Points, Vectors basics
 
 	func testTupleW1isAPoint() {
@@ -49,13 +47,13 @@ class TestTupleFeatures: XCTestCase {
 	func testPointCreation() {
 		let point = Point(4, -4, 3)
 
-		XCTAssertTrue(abs(point.w - 1.0) < epsilon)
+		XCTAssertTrue(abs(point.w - 1.0) < CGFloat.epsilon)
 	}
 
 	func testVectorCreation() {
 		let vector = Vector(4, -4, 3)
 
-		XCTAssertTrue(abs(vector.w) < epsilon)
+		XCTAssertTrue(abs(vector.w) < CGFloat.epsilon)
 	}
 
 	// MARK: Tuple arithmetic

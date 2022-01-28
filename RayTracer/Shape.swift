@@ -17,5 +17,5 @@ public protocol Shape {
 
     func intersections(_ ray: Ray) -> [Intersection]
 
-	func normalAt(_ worldPoint: Point) -> Vector
+	func normal(at worldPoint: Point) -> Vector
 }

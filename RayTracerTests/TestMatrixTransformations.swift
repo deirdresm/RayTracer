@@ -20,8 +20,6 @@ import XCTest
 
 class TestMatrixTransformations: XCTestCase {
 
-	let epsilon: Double = 0.0001
-
 //Scenario: Multiplying by a translation matrix
 //  Given transform ← translation(5, -3, 2)
 //    And p ← point(-3, 4, 5)
@@ -371,21 +369,21 @@ class TestMatrixTransformations: XCTestCase {
 
 		let t = Matrix.viewTransform(from: from, to: to, up: up)
 
-		XCTAssertEqual(t[0,0], -0.50709, accuracy: epsilon)
-		XCTAssertEqual(t[0,1], 0.50709, accuracy: epsilon)
-		XCTAssertEqual(t[0,2], 0.67612, accuracy: epsilon)
-		XCTAssertEqual(t[0,3], -2.36643, accuracy: epsilon)
-		XCTAssertEqual(t[1,0], 0.76772, accuracy: epsilon)
-		XCTAssertEqual(t[1,1], 0.60609, accuracy: epsilon)
-		XCTAssertEqual(t[1,2], 0.12122, accuracy: epsilon)
-		XCTAssertEqual(t[1,3], -2.82843, accuracy: epsilon)
-		XCTAssertEqual(t[2,0], -0.35857, accuracy: epsilon)
-		XCTAssertEqual(t[2,1], 0.59761, accuracy: epsilon)
-		XCTAssertEqual(t[2,2], -0.71714, accuracy: epsilon)
-		XCTAssertEqual(t[2,3], 0, accuracy: epsilon)
-		XCTAssertEqual(t[3,0], 0, accuracy: epsilon)
-		XCTAssertEqual(t[3,1], 0, accuracy: epsilon)
-		XCTAssertEqual(t[3,2], 0, accuracy: epsilon)
-		XCTAssertEqual(t[3,3], 1, accuracy: epsilon)
+		XCTAssertEqual(t[0,0], -0.50709, accuracy: CGFloat.epsilon)
+		XCTAssertEqual(t[0,1], 0.50709, accuracy: CGFloat.epsilon)
+		XCTAssertEqual(t[0,2], 0.67612, accuracy: CGFloat.epsilon)
+		XCTAssertEqual(t[0,3], -2.36643, accuracy: CGFloat.epsilon)
+		XCTAssertEqual(t[1,0], 0.76772, accuracy: CGFloat.epsilon)
+		XCTAssertEqual(t[1,1], 0.60609, accuracy: CGFloat.epsilon)
+		XCTAssertEqual(t[1,2], 0.12122, accuracy: CGFloat.epsilon)
+		XCTAssertEqual(t[1,3], -2.82843, accuracy: CGFloat.epsilon)
+		XCTAssertEqual(t[2,0], -0.35857, accuracy: CGFloat.epsilon)
+		XCTAssertEqual(t[2,1], 0.59761, accuracy: CGFloat.epsilon)
+		XCTAssertEqual(t[2,2], -0.71714, accuracy: CGFloat.epsilon)
+		XCTAssertEqual(t[2,3], 0, accuracy: CGFloat.epsilon)
+		XCTAssertEqual(t[3,0], 0, accuracy: CGFloat.epsilon)
+		XCTAssertEqual(t[3,1], 0, accuracy: CGFloat.epsilon)
+		XCTAssertEqual(t[3,2], 0, accuracy: CGFloat.epsilon)
+		XCTAssertEqual(t[3,3], 1, accuracy: CGFloat.epsilon)
 	}
 }

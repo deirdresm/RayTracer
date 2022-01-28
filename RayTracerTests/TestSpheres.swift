@@ -12,8 +12,6 @@ import XCTest
 // swiftlint:disable identifier_name
 
 class TestSpheres: XCTestCase {
-	let epsilon: CGFloat = 0.00001
-
 //    Scenario: A ray intersects a sphere at two points
 //      Given r ← ray(point(0, 0, -5), vector(0, 0, 1))
 //        And s ← sphere()
@@ -179,7 +177,7 @@ class TestSpheres: XCTestCase {
 
 	func testSphereNormalOnXAxis() {
 		let s = Sphere()
-		let n = s.normalAt(Point(1, 0, 0))
+		let n = s.normal(at: Point(1, 0, 0))
 		XCTAssertEqual(n, Vector(1, 0, 0))
 	}
 
@@ -190,7 +188,7 @@ class TestSpheres: XCTestCase {
 
 	func testSphereNormalOnYAxis() {
 		let s = Sphere()
-		let n = s.normalAt(Point(0, 1, 0))
+		let n = s.normal(at: Point(0, 1, 0))
 		XCTAssertEqual(n, Vector(0, 1, 0))
 	}
 
@@ -201,7 +199,7 @@ class TestSpheres: XCTestCase {
 
 	func testSphereNormalOnZAxis() {
 		let s = Sphere()
-		let n = s.normalAt(Point(0, 0, 1))
+		let n = s.normal(at: Point(0, 0, 1))
 		XCTAssertEqual(n, Vector(0, 0, 1))
 	}
 
@@ -212,7 +210,7 @@ class TestSpheres: XCTestCase {
 
 	func testSphereNormalNonaxialPoint() {
 		let s = Sphere()
-		let n = s.normalAt(Point(sqrt(3)/3, sqrt(3)/3, sqrt(3)/3))
+		let n = s.normal(at: Point(sqrt(3)/3, sqrt(3)/3, sqrt(3)/3))
 		XCTAssertEqual(n, Vector(sqrt(3)/3, sqrt(3)/3, sqrt(3)/3))
 	}
 
@@ -223,7 +221,7 @@ class TestSpheres: XCTestCase {
 
 	func testSphereNormalNormalizedVector() {
 		let s = Sphere()
-		let n = s.normalAt(Point(sqrt(3)/3, sqrt(3)/3, sqrt(3)/3))
+		let n = s.normal(at: Point(sqrt(3)/3, sqrt(3)/3, sqrt(3)/3))
 		XCTAssertEqual(n, n.normalize())
 	}
 
@@ -237,7 +235,7 @@ class TestSpheres: XCTestCase {
 		let s = Sphere()
 		s.setTransform(Matrix.translation(Point(0, 1, 0)))
 
-		let n = s.normalAt(Point(0, 1.70711, -0.70711))
+		let n = s.normal(at: Point(0, 1.70711, -0.70711))
 		XCTAssertEqual(n, Vector(0, 0.70711, -0.70711))
 	}
 
@@ -253,7 +251,7 @@ class TestSpheres: XCTestCase {
 		let m = Matrix.scaling(point: Point(1, 0.5, 1)) * Matrix.rotationZ(radians: CGFloat.pi / 5)
 		s.setTransform(m)
 
-		let n = s.normalAt(Point(0, sqrt(2)/2, -sqrt(2)/2))
+		let n = s.normal(at: Point(0, sqrt(2)/2, -sqrt(2)/2))
 		XCTAssertEqual(n, Vector(0,  0.97014, -0.24254))
 	}
 

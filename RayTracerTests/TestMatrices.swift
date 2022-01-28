@@ -28,8 +28,6 @@ public func XCTAssertEqual(_ lhs: Matrix, _ rhs: Matrix, accuracy: CGFloat,
 
 class TestMatrices: XCTestCase {
 
-    let epsilon: CGFloat = 0.00001
-
 // Scenario​: Constructing and inspecting a 4x4 matrix
 //   ​Given​ the following 4x4 matrix M:
 //     |  1   |  2   |  3   |  4   |

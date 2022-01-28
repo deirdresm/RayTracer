@@ -21,7 +21,7 @@ class TestCanvases: XCTestCase {
 
 		for y in 0..<c.height {
 			for x in 0..<c.width {
-				XCTAssertEqual(c.pixelAt(x, y), black)
+				XCTAssertEqual(c.pixel(at: x, y), black)
 			}
 		}
     }
@@ -36,7 +36,7 @@ class TestCanvases: XCTestCase {
 		XCTAssertEqual((NSColor.red).redComponent, color.nsColor().redComponent)
 
 		c.writePixel(2, 3, color)
-		XCTAssertEqual(c.pixelAt(2, 3).nsColor(), NSColor.red)
+		XCTAssertEqual(c.pixel(at: 2, 3).nsColor(), NSColor.red)
 	}
 
 	func testCanvasEquatability() {
