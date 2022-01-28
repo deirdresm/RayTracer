@@ -66,7 +66,7 @@ class TestMaterials: XCTestCase {
 		let eyeV = Vector(0, 0, -1)
 		let normalV = Vector(0, 0, -1)
 
-		let light = Light(position: Point(0, 0, -10), intensity: .white)
+		let light = Light(position: Point(0, 0, -10), color: .white)
 		let result = m.lighting(light: light, position: position, eyeV: eyeV, normalV: normalV)
 		XCTAssertEqual(result, VColor(1.9, 1.9, 1.9))
 	}
@@ -85,7 +85,7 @@ class TestMaterials: XCTestCase {
 		let eyeV = Vector(0, sqrt(2)/2, -sqrt(2)/2)
 		let normalV = Vector(0, 0, -1)
 
-		let light = Light(position: Point(0, 0, -10), intensity: .white)
+		let light = Light(position: Point(0, 0, -10), color: .white)
 		let result = m.lighting(light: light, position: position, eyeV: eyeV, normalV: normalV)
 		XCTAssertEqual(result, .white)
 	}
@@ -104,7 +104,7 @@ class TestMaterials: XCTestCase {
 		let eyeV = Vector(0, 0, -1)
 		let normalV = Vector(0, 0, -1)
 
-		let light = Light(position: Point(0, 10, -10), intensity: .white)
+		let light = Light(position: Point(0, 10, -10), color: .white)
 		let result = m.lighting(light: light, position: position, eyeV: eyeV, normalV: normalV)
 		XCTAssertEqual(result, VColor(0.7364, 0.7364, 0.7364))
 	}
@@ -123,7 +123,7 @@ class TestMaterials: XCTestCase {
 		let eyeV = Vector(0, -sqrt(2)/2, -sqrt(2)/2)
 		let normalV = Vector(0, 0, -1)
 
-		let light = Light(position: Point(0, 10, -10), intensity: .white)
+		let light = Light(position: Point(0, 10, -10), color: .white)
 		let result = m.lighting(light: light, position: position, eyeV: eyeV, normalV: normalV)
 		XCTAssertEqual(result, VColor(1.636396, 1.636396, 1.636396))
 
@@ -145,7 +145,7 @@ class TestMaterials: XCTestCase {
 		let eyeV = Vector(0, 0, -1)
 		let normalV = Vector(0, 0, -1)
 
-		let light = Light(position: Point(0, 0, 10), intensity: .white)
+		let light = Light(position: Point(0, 0, 10), color: .white)
 		let result = m.lighting(light: light, position: position, eyeV: eyeV, normalV: normalV)
 		XCTAssertEqual(result, VColor(0.1, 0.1, 0.1))
 	}

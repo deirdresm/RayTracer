@@ -18,20 +18,6 @@ class World {
 		self.lights = lights
 	}
 
-	func defaultWorld() {
-		let light = Light(position: Point(10, -10, 10), intensity: .white)
-		lights.append(light)
-
-		let sphereOne = Sphere()
-		var material = Material(diffuse: 0.7, specular: 0.2, color: VColor(0.8, 1.0, 0.6))
-		sphereOne.material = material
-
-		var sphereTwo = Sphere()
-		sphereTwo.setTransform(Matrix.scaling(point: Point(0.5, 0.5, 0.5)))
-
-		self.objects = [sphereOne, sphereTwo]
-	}
-
 	func intersections(ray: Ray) -> [Intersection] {
 		var intersections = [Intersection]()
 
@@ -53,4 +39,34 @@ class World {
 		}
 	}
 
+	public func color(at ray: Ray) -> VColor {
+		let xs = intersections(ray: ray)
+
+		guard let hit = Intersection.hit(by: xs) else {
+			return .black
+		}
+		return shadeHit(with: IntersectionState(intersection: hit, ray: ray))
+	}
 }
+
+#if DEBUG
+extension World {
+	static func defaultWorld() -> World {
+		let world = World()
+		let light = Light(position: Point(-10, 10, -10), color: .white)
+		world.lights.append(light)
+
+		let sphereOne = Sphere()
+		var material = Material(diffuse: 0.7, specular: 0.2, color: VColor(0.8, 1.0, 0.6))
+		sphereOne.material = material
+
+		var sphereTwo = Sphere()
+		sphereTwo.setTransform(Matrix.scaling(point: Point(0.5, 0.5, 0.5)))
+
+		world.objects = [sphereOne, sphereTwo]
+
+		return world
+	}
+
+}
+#endif

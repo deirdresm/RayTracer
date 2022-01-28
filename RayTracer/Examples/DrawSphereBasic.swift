@@ -26,7 +26,7 @@ struct DrawSphere {
 
 		let lightPosition = Point(-10, 10, -10)
 		let lightColor: VColor = .white
-		let light = Light(position: lightPosition, intensity: lightColor)
+		let light = Light(position: lightPosition, color: lightColor)
 
 		var c = Canvas(width, width)
 
@@ -36,8 +36,6 @@ struct DrawSphere {
 			for x in 0 ..< width {
 				let worldX = -halfWallSize + pixelSize * CGFloat(x)
 				let position = Point(CGFloat(worldX), CGFloat(worldY), CGFloat(wallZ))
-
-				let direction = position - rayOrigin
 
 				let ray = Ray(origin: rayOrigin,
 							  direction: (position - rayOrigin).normalize())

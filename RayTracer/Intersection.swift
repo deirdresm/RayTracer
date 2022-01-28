@@ -14,6 +14,9 @@ import Foundation
 // same as it was in the Ray structure.
 
 public struct Intersection: Identifiable, Equatable, Comparable {
+	public var id = UUID()
+	public let distance: CGFloat
+	public let shape: Shape
 
     // MARK: - Equatable/Comparable conformance
 
@@ -25,9 +28,23 @@ public struct Intersection: Identifiable, Equatable, Comparable {
         return((lhs.distance == rhs.distance) && (lhs.shape.id == rhs.shape.id))
     }
 
-    public var id = UUID()
-    public let distance: CGFloat
-    public let shape: Shape
+	// MARK: - Convenience methods
+
+	static func hit(by intersections: [Intersection]) -> Intersection? {
+		let sorted = intersections.sorted()
+
+		if sorted.count >= 0 {
+			for intersection in sorted {
+				if intersection.distance > 0 {
+					return intersection
+				}
+			}
+			// all hits were negative (behind the ray's origin)
+			return .none
+		}
+		// no items, so no hit
+		return .none
+	}
 }
 
 public struct IntersectionState: Equatable {
@@ -61,9 +78,4 @@ public struct IntersectionState: Equatable {
 	var distance: CGFloat {
 		return intersection.distance
 	}
-
-	var reflect: Vector {
-		return point.reflect(normalV)
-	}
-
 }

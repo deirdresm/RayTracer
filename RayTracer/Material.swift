@@ -23,45 +23,45 @@ public struct Material: Equatable {
 	}
 
 	func lighting(light: Light, position: Point, eyeV: Vector, normalV: Vector) -> VColor {
-		let specularColor: VColor
+		var _diffuse = VColor.black
+		var _specular = VColor.black
 
 		// combine the surface color with the light's color/intensity
-		let effectiveColor: VColor = color * light.intensity
-
-		// find the direction to the light source
-		let lightV = (light.position - position).normalize()
+		let effectiveColor: VColor = self.color * light.color
 
 		// compute the ambient contribution
-		let ambientColor: VColor = effectiveColor * ambient
+		let _ambient: VColor = effectiveColor * self.ambient
+
+		// find the direction to the light source from P
+		let lightV = (light.position - position).normalize()
 
 		// light_dot_normal represents the cosine of the angle between the
 		// light vector and the normal vector. A negative number means the
 		// light is on the other side of the surface.
 		let lightDotNormal = lightV • normalV
 
-		guard lightDotNormal >= 0 else {
-			return ambientColor
+		if lightDotNormal >= 0 {
+			// compute the diffuse contribution
+			_diffuse = effectiveColor * self.diffuse * lightDotNormal
+
+			// ​reflect_dot_eye represents the cosine of the angle between the
+			// reflection vector and the eye vector. A negative number means the
+			// light reflects away from the eye.
+
+			let reflectV = (-lightV).reflect(normalV)
+
+			let reflectDotEye = reflectV • eyeV
+
+			// reflection amoount the eye sees
+			if reflectDotEye >= 0 {
+				// compute the specular contribution
+				let factor = pow(reflectDotEye, shininess)
+				_specular = light.color * self.specular * factor
+			} else {	// light reflects away from eye
+				_specular = .black
+			}
 		}
 
-		// compute the diffuse contriution
-		let diffuseColor: VColor =  effectiveColor * (diffuse * lightDotNormal)
-
-		// ​reflect_dot_eye represents the cosine of the angle between the
-		// reflection vector and the eye vector. A negative number means the
-		// light reflects away from the eye.
-
-		let reflectV = (-lightV).reflect(normalV)
-		let reflectDotEye = reflectV • eyeV
-
-		if reflectDotEye < 0 {
-			specularColor = .black
-		} else {
-			// compute the specular contribution
-			let factor = pow(reflectDotEye, shininess)
-			specularColor = light.intensity * specular * factor
-		}
-
-		return ambientColor + diffuseColor + specularColor
+		return _ambient + _diffuse + _specular
 	}
-
 }

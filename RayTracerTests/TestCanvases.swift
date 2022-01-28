@@ -29,7 +29,6 @@ class TestCanvases: XCTestCase {
 	func testPixelSetAndRead() {
 		let c = Canvas(10,20)
 		let color = VColor(1.0, 0.0, 0.0) // red
-		print("color's redComponent: \(color.nsColor().redComponent), NSColor's redComponent: \((NSColor.red).redComponent)")
 
 		XCTAssertEqual(color.red, 1.0)
 		XCTAssertEqual(color.nsColor().redComponent, 1.0)

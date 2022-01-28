@@ -38,13 +38,12 @@ class TestWorlds: XCTestCase {
 //		And w contains s2
 
 	func testDefaultWorldWithLightAndSpheres() {
-		let world = World()
-		world.defaultWorld()
+		let world = World.defaultWorld()
 
 		XCTAssertEqual(world.objects.count, 2)
 		XCTAssertEqual(world.lights.count, 1)
 
-		let light = Light(position: Point(10, -10, 10), intensity: .white)
+		let light = Light(position: Point(-10, 10, -10), color: .white)
 
 		let sphereOne = Sphere()
 		var material = Material(diffuse: 0.7, specular: 0.2, color: VColor(0.8, 1.0, 0.6))
@@ -73,8 +72,7 @@ class TestWorlds: XCTestCase {
 //		And xs[3].t = 6
 
 	func testWorldIntersectionsWithRay() {
-		let world = World()
-		world.defaultWorld()
+		let world = World.defaultWorld()
 
 		let ray = Ray(origin: Point(0, 0, -5), direction: Vector(0, 0, 1))
 
@@ -107,8 +105,7 @@ class TestWorlds: XCTestCase {
 //	  Then c = color(0.38066, 0.47583, 0.2855)
 
 	func testShadingAnIntersection() {
-		var w = World()
-		w.defaultWorld()
+		var w = World.defaultWorld()
 	}
 
 //	Scenario: Shading an intersection from the inside
@@ -122,9 +119,9 @@ class TestWorlds: XCTestCase {
 //	  Then c = color(0.90498, 0.90498, 0.90498)
 
 	func testShadingAnIntersectionFromInside() {
-		var world = World()
-		world.defaultWorld()
-		let light = Light(position: Point(0, 0.25, 0), intensity: .white)
+		var world = World.defaultWorld()
+
+		let light = Light(position: Point(0, 0.25, 0), color: .white)
 		world.lights = [light]
 
 		let ray = Ray(origin: Point(0, 0, 0), direction: Vector(0, 0, 1))
@@ -145,14 +142,12 @@ class TestWorlds: XCTestCase {
 //	  Then c = color(0, 0, 0)
 
 	func testColorWhenRayMisses() {
-		var world = World()
-		world.defaultWorld()
+		var world = World.defaultWorld()
 
 		let ray = Ray(origin: Point(0, 0, -5), direction: Vector(0, 1, 0))
+		let color = world.color(at: ray)
 
-		// TODO more stuff here
-
-		// XCTAssertEqual(color, VColor(0.90498, 0.90498, 0.90498))
+		XCTAssertEqual(color, .black)
 	}
 
 //	Scenario: The color when a ray hits
@@ -160,7 +155,16 @@ class TestWorlds: XCTestCase {
 //		And r ← ray(point(0, 0, -5), vector(0, 0, 1))
 //	  When c ← color_at(w, r)
 //	  Then c = color(0.38066, 0.47583, 0.2855)
-//
+
+	func testColorWhenRayHits() {
+		var world = World.defaultWorld()
+
+		let ray = Ray(origin: Point(0, 0, -5), direction: Vector(0, 0, 1))
+		let color = world.color(at: ray)
+
+		XCTAssertEqual(color, VColor(0.38066, 0.47583, 0.2855))
+	}
+
 //	Scenario: The color with an intersection behind the ray
 //	  Given w ← default_world()
 //		And outer ← the first object in w
@@ -170,7 +174,23 @@ class TestWorlds: XCTestCase {
 //		And r ← ray(point(0, 0, 0.75), vector(0, 0, -1))
 //	  When c ← color_at(w, r)
 //	  Then c = inner.material.color
-//
+
+	func testColorWhenIntersectionBehindRay() {
+		var world = World.defaultWorld()
+
+		var outer = world.objects.first!
+		var inner = world.objects.last!
+
+		outer.material.ambient = 1.0
+		inner.material.ambient = 1.0
+
+		let ray = Ray(origin: Point(0, 0, 0.75), direction: Vector(0, 0, -1))
+
+		let color = world.color(at: ray)
+
+		XCTAssertEqual(color, inner.material.color)
+	}
+
 //	Scenario: There is no shadow when nothing is collinear with point and light
 //	  Given w ← default_world()
 //		And p ← point(0, 10, 0)

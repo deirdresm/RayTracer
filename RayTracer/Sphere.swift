@@ -66,4 +66,8 @@ class Sphere: Shape, Equatable {
     static func == (lhs: Sphere, rhs: Sphere) -> Bool {
         return lhs.id == rhs.id
     }
+
+	var description: String {
+		return("Sphere: origin x: \(origin.x), y: \(origin.y), z: \(origin.z), radius x: \(radius), transform matrix: \((transform))")
+	}
 }

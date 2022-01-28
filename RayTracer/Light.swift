@@ -10,9 +10,9 @@ import Foundation
 struct Light: Equatable {
 
 	var position: Point
-	var intensity: VColor
+	var color: VColor
 
 	var description: String {
-		return("Light: position x: \(position.x), y: \(position.y), z: \(position.z), intensity x: \(intensity.x), y: \(intensity.y), z: \(intensity.z)")
+		return("Light: position x: \(position.x), y: \(position.y), z: \(position.z), color x: \(color.x), y: \(color.y), z: \(color.z)")
 	}
 }

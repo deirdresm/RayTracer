@@ -13,6 +13,7 @@ import Foundation
 public protocol Shape {
     var id: UUID { get }
 	var material: Material { get set }
+	var description: String { get }
 
     func intersections(_ ray: Ray) -> [Intersection]
 
