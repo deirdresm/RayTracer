@@ -21,11 +21,11 @@ About to start Chapter 8, Shadows.
 
 ## Chapter 7
 
-![Scene With Spheres](RayTracer/Images/sphericalSilhouette.png)
+![Scene With Spheres](RayTracer/Images/sceneWithSpheres.png)
 
 ## Chapter 6
 
-![First Sphere](RayTracer/Images/sceneWithSpheres.png)
+![First Sphere](RayTracer/Images/sphericalSilhouette.png)
 
 ## Chapter 5
 
