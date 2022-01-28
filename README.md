@@ -21,9 +21,13 @@ About to start Chapter 8, Shadows.
 
 ## Chapter 7
 
+Let's put some spheres together, shall we? Note: these are all spheres, including the three walls.
+
 ![Scene With Spheres](RayTracer/Images/sceneWithSpheres.png)
 
 ## Chapter 6
+
+Your basic sphere with light and…less light. (Shadows are chapter 8.)
 
 ![First Sphere](RayTracer/Images/sphericalSilhouette.png)
 
