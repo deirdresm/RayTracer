@@ -22,7 +22,7 @@ public struct Material: Equatable {
 		return("Material: ambient: \(ambient), diffuse: \(diffuse), specular: \(specular), shininess: \(shininess)")
 	}
 
-	func lighting(light: Light, position: Point, eyeV: Vector, normalV: Vector) -> VColor {
+	func lighting(light: Light, position: Point, eyeV: Vector, normalV: Vector, inShadow: Bool = false) -> VColor {
 		var _diffuse = VColor.black
 		var _specular = VColor.black
 
@@ -31,6 +31,10 @@ public struct Material: Equatable {
 
 		// compute the ambient contribution
 		let _ambient: VColor = effectiveColor * self.ambient
+
+		if (inShadow) {
+			return _ambient
+		}
 
 		// find the direction to the light source from P
 		let lightV = (light.position - position).normalize()

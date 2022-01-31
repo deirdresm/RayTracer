@@ -18,7 +18,7 @@ class World {
 		self.lights = lights
 	}
 
-	func intersections(ray: Ray) -> [Intersection] {
+	func intersections(ray: inout Ray) -> [Intersection] {
 		var intersections = [Intersection]()
 
 		for object in objects {
@@ -26,26 +26,48 @@ class World {
 			intersections += xs
 		}
 
+		ray.intersections = intersections.sorted()
+
 		return intersections.sorted()
 	}
 
 	func shadeHit(with intersectionState: IntersectionState) -> VColor {
 		// support multiple lights at this intersection
 		return lights.reduce(into: VColor.black) { result, light in
+			let inShadow = isShadowed(point: intersectionState.overPoint)
 			result = result + intersectionState.shape.material.lighting(light: light,
-							position: intersectionState.point,
+							position: intersectionState.overPoint,
 							eyeV: intersectionState.eyeV,
-							normalV: intersectionState.normalV)
+							normalV: intersectionState.normalV,
+							inShadow: inShadow)
 		}
 	}
 
-	public func color(at ray: Ray) -> VColor {
-		let xs = intersections(ray: ray)
+	public func color(at ray: inout Ray) -> VColor {
+		let xs = intersections(ray: &ray)
 
 		guard let hit = Intersection.hit(by: xs) else {
 			return .black
 		}
 		return shadeHit(with: IntersectionState(intersection: hit, ray: ray))
+	}
+
+	func isShadowed(point: Point) -> Bool {
+		for light in self.lights {
+			let v = light.position - point
+			let distance = v.magnitude()
+			let direction: Vector = v.normalize()
+
+			var ray = Ray(origin: point, direction: direction)
+			let xs = intersections(ray: &ray)
+
+			if let hit: Intersection = ray.hit() {
+				if hit.distance < distance {
+					return true
+				}
+			}
+		}
+		return false
 	}
 }
 

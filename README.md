@@ -19,6 +19,12 @@ Just finished Chapter 7 (scenes and worlds and cameras).
 
 About to start Chapter 8, Shadows.
 
+## Chapter 8
+
+Let's put some spheres together, shall we? Note: these are all spheres, including the three walls.
+
+![Scene With Spheres, Shadow Edition](RayTracer/Images/sceneWithSpheres-shadows.png)
+
 ## Chapter 7
 
 Let's put some spheres together, shall we? Note: these are all spheres, including the three walls.

@@ -15,14 +15,15 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         // Insert code here to initialize your application
 
 		let example = Example()
-		example.makeCurve(width: 900, height: 600)
-        example.makeClock(width: 900, height: 600)
-        example.makeClock2(width: 900, height: 600)
-
-		let sphere = DrawSphericalWorld()
-		sphere.makeSceneWithSpheres(width: 600)
+//		example.makeCurve(width: 900, height: 600)
+//      example.makeClock(width: 900, height: 600)
+//      example.makeClock2(width: 900, height: 600)
 
 //		let sphere = DrawSphere()
 //		sphere.makeSphericalSilhouette(width: 600)
-    }
+
+//		let sphere = DrawSphericalWorld()
+//		sphere.makeSceneWithSpheres(width: 600)
+		
+	}
 }

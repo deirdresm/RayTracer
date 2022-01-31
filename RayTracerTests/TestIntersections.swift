@@ -118,7 +118,20 @@ class TestIntersections: XCTestCase {
 //      When comps ← prepare_computations(i, r)
 //      Then comps.over_point.z < -EPSILON/2
 //        And comps.point.z > comps.over_point.z
-//
+
+	func testHitShouldOffsetPoint() {
+		let ray = Ray(origin: Point(0, 0, -5), direction: Vector(0, 0, 1))
+		var shape = Sphere()
+		var m = Matrix.identity
+		shape.transform = m.translated(Point(0, 0, 1))
+
+		let intersection = Intersection(distance: 5, shape: shape)
+		let comps = IntersectionState(intersection: intersection, ray: ray)
+
+		XCTAssertLessThan(comps.overPoint.z, -CGFloat.epsilon / 2)
+		XCTAssertGreaterThan(comps.point.z, comps.overPoint.z)
+	}
+
 //    Scenario: The under point is offset below the surface
 //      Given r ← ray(point(0, 0, -5), vector(0, 0, 1))
 //        And shape ← glass_sphere() with:

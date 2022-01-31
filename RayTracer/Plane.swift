@@ -11,9 +11,11 @@ import Foundation
 class Plane: Shape {
 	var id = UUID()
 	var material: Material
+	var transform: Matrix
 
 	init(_ material: Material) {
 		self.material = material
+		self.transform = Matrix.identity
 	}
 
 	var description: String {

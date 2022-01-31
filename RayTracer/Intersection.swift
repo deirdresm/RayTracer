@@ -51,6 +51,7 @@ public struct IntersectionState: Equatable {
 	let intersection: Intersection
 	let ray: Ray
 	let point: Point
+	let overPoint: Point
 	let eyeV: Vector
 	let normalV: Vector
 	let isInside: Bool
@@ -69,6 +70,7 @@ public struct IntersectionState: Equatable {
 			self.isInside = false
 			self.normalV = normalV
 		}
+		self.overPoint = self.point + self.normalV * CGFloat.epsilon
 	}
 
 	var shape: Shape {

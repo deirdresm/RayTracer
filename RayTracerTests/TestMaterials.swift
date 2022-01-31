@@ -27,7 +27,6 @@ class TestMaterials: XCTestCase {
 
 	func testDefaultMaterial() {
 		let m = Material()
-		let p = Point(0, 0, 0)
 		let c = VColor(1, 1, 1)
 
 		XCTAssertEqual(m.color, c)

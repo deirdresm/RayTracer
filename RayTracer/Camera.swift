@@ -65,8 +65,8 @@ struct Camera {
 
 		for y in 0 ..< height {
 			for x in 0 ..< width {
-				let ray = rayForPixel(x: x, y: y)
-				let color = world.color(at: ray)
+				var ray = rayForPixel(x: x, y: y)
+				let color = world.color(at: &ray)
 				image.writePixel(x, y, color)
 			}
 		}

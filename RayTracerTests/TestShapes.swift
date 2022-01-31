@@ -16,24 +16,55 @@ class TestShapes: XCTestCase {
 //    Scenario: The default transformation
 //      Given s ← test_shape()
 //      Then s.transform = identity_matrix
-//
+
+	func testDefaultTransform() {
+		let m = Material()
+		let s = TestShape(material: m)
+
+		XCTAssertEqual(s.transform, Matrix.identity)
+	}
+
 //    Scenario: Assigning a transformation
 //      Given s ← test_shape()
 //      When set_transform(s, translation(2, 3, 4))
 //      Then s.transform = translation(2, 3, 4)
-//
+
+	func testAssignedTransform() {
+		let m = Material()
+		var s = TestShape(material: m)
+		s.transform = Matrix.translation(Point(2, 3, 4))
+
+		XCTAssertEqual(s.transform, Matrix.translation(Point(2, 3, 4)))
+	}
+
 //    Scenario: The default material
 //      Given s ← test_shape()
 //      When m ← s.material
 //      Then m = material()
-//
+
+	func testDefaultMaterial() {
+		let m = Material()
+		var s = TestShape(material: m)
+
+		XCTAssertEqual(s.material, m)
+	}
+
 //    Scenario: Assigning a material
 //      Given s ← test_shape()
 //        And m ← material()
 //        And m.ambient ← 1
 //      When s.material ← m
 //      Then s.material = m
-//
+
+	func testAssignedMaterial() {
+		var m = Material()
+		m.ambient = 1
+		var s = TestShape(material: m)
+
+		XCTAssertEqual(s.material, m)
+		XCTAssertEqual(s.material.ambient, m.ambient)
+	}
+
 //    Scenario: Intersecting a scaled shape with a ray
 //      Given r ← ray(point(0, 0, -5), vector(0, 0, 1))
 //        And s ← test_shape()

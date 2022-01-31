@@ -9,7 +9,7 @@
 import Foundation
 import CoreGraphics
 
-struct Matrix: Equatable {
+public struct Matrix: Equatable {
     private var _matrix: [[CGFloat]]
 
     init(_ matrix: [[CGFloat]]) {
@@ -58,7 +58,6 @@ struct Matrix: Equatable {
     // let m = Matrix([[1,2],[3,4]])
     // m[0,1] // returns 2
 
-    @inlinable
     public subscript(row: Int, column: Int) -> CGFloat {
         get {
             return _matrix[row][column]
