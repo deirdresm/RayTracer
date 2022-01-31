@@ -15,29 +15,29 @@ Anyhow, I thought it would be interesting to be able to visually model it becaus
 
 ### Current Status
 
-Just finished Chapter 7 (scenes and worlds and cameras).
+Just finished Chapter 8 (shadows).
 
-About to start Chapter 8, Shadows.
+About to start Chapter 9, Planes.
 
-## Chapter 8
+## Chapter 8, Shadows
 
-Let's put some spheres together, shall we? Note: these are all spheres, including the three walls.
+Spheres with shadows, oh my!
 
 ![Scene With Spheres, Shadow Edition](RayTracer/Images/sceneWithSpheres-shadows.png)
 
-## Chapter 7
+## Chapter 7, Scenes
 
 Let's put some spheres together, shall we? Note: these are all spheres, including the three walls.
 
 ![Scene With Spheres](RayTracer/Images/sceneWithSpheres.png)
 
-## Chapter 6
+## Chapter 6, Light and Shading
 
 Your basic sphere with light and…less light. (Shadows are chapter 8.)
 
 ![First Sphere](RayTracer/Images/sphericalSilhouette.png)
 
-## Chapter 5
+## Chapter 5, Ray-Sphere Intersections
 
 This book was basically easy until Chapter 5, because the visualization of the concepts got ahead of me fairly early on. What I struggled with at first was why a sphere's intersection with a ray should be a float, not a point.
 
