@@ -22,8 +22,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 //		let sphere = DrawSphere()
 //		sphere.makeSphericalSilhouette(width: 600)
 
-//		let sphere = DrawSphericalWorld()
-//		sphere.makeSceneWithSpheres(width: 600)
+		let sphere = DrawSphericalWorld()
+		sphere.makeSceneWithSpheres(width: 800)
 		
 	}
 }

@@ -1,5 +1,5 @@
 //
-//  TestShape.swift
+//  SampleShape.swift
 //  RayTracer
 //
 //  Created by Deirdre Saoirse Moen on 1/30/22.
@@ -7,17 +7,8 @@
 //
 
 import Foundation
-//public protocol Shape {
-//	var id: UUID { get }
-//	var material: Material { get set }
-//	var description: String { get }
-//
-//	func intersections(_ ray: Ray) -> [Intersection]
-//
-//	func normal(at worldPoint: Point) -> Vector
-//}
 
-class TestShape: Shape, Equatable {
+class SampleShape: Shape, Equatable {
 
 	var id = UUID()
 	var material: Material
@@ -30,6 +21,7 @@ class TestShape: Shape, Equatable {
 	}
 
 	func intersections(_ ray: Ray) -> [Intersection] {
+		let localRay = ray.transform(transform.inverse)
 		return []
 	}
 
@@ -37,7 +29,7 @@ class TestShape: Shape, Equatable {
 		return Vector(0, 0, 0)
 	}
 
-	static func == (lhs: TestShape, rhs: TestShape) -> Bool {
+	static func == (lhs: SampleShape, rhs: SampleShape) -> Bool {
 		return lhs.id == rhs.id
 	}
 }

@@ -11,7 +11,7 @@ import XCTest
 
 // swiftlint:disable identifier_name
 
-class TestShapes: XCTestCase {
+class TestSampleShapes: XCTestCase {
 
 //    Scenario: The default transformation
 //      Given s ← test_shape()
@@ -19,7 +19,7 @@ class TestShapes: XCTestCase {
 
 	func testDefaultTransform() {
 		let m = Material()
-		let s = TestShape(material: m)
+		let s = SampleShape(material: m)
 
 		XCTAssertEqual(s.transform, Matrix.identity)
 	}
@@ -31,7 +31,7 @@ class TestShapes: XCTestCase {
 
 	func testAssignedTransform() {
 		let m = Material()
-		var s = TestShape(material: m)
+		var s = SampleShape(material: m)
 		s.transform = Matrix.translation(Point(2, 3, 4))
 
 		XCTAssertEqual(s.transform, Matrix.translation(Point(2, 3, 4)))
@@ -44,7 +44,7 @@ class TestShapes: XCTestCase {
 
 	func testDefaultMaterial() {
 		let m = Material()
-		var s = TestShape(material: m)
+		var s = SampleShape(material: m)
 
 		XCTAssertEqual(s.material, m)
 	}
@@ -59,7 +59,7 @@ class TestShapes: XCTestCase {
 	func testAssignedMaterial() {
 		var m = Material()
 		m.ambient = 1
-		var s = TestShape(material: m)
+		var s = SampleShape(material: m)
 
 		XCTAssertEqual(s.material, m)
 		XCTAssertEqual(s.material.ambient, m.ambient)
@@ -72,7 +72,17 @@ class TestShapes: XCTestCase {
 //        And xs ← intersect(s, r)
 //      Then s.saved_ray.origin = point(0, 0, -2.5)
 //        And s.saved_ray.direction = vector(0, 0, 0.5)
-//
+
+	func testTranslatedShapeIntersectsRay() {
+		 let r = Ray(origin: Point(0, 0, -5), direction: Vector(0, 0, 1))
+		let shape = SampleShape(material: Material())
+		shape.transform = Matrix.scaling(point: Point(2, 2, 2))
+		 let xs = shape.intersections(r)
+		 XCTAssertEqual(xs.count, 0)
+
+		 // TODO: add another test case with a non-zero intersection count
+ }
+
 //    Scenario: Intersecting a translated shape with a ray
 //      Given r ← ray(point(0, 0, -5), vector(0, 0, 1))
 //        And s ← test_shape()

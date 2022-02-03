@@ -1,11 +1,19 @@
 #  RayTracer
 ## Based on the Book [Ray Tracer Challenge by Jamis Buck](https://pragprog.com/book/jbtracer/the-ray-tracer-challenge)
 
-For those who don't know about this book, it's a test-driven development approach to writing a ray tracer. Unlike most programming books, it tells you design principles and lays out what the tests should be like, but without code. So language choice is personal, and I chose Swift.
+For those who don't know about this book, it's a test-driven development approach to writing a ray tracer. Unlike most programming books, it tells you design principles and lays out what the tests should be like, but pseudocode rather than specifying a language. So language choice is personal, and I chose Swift.
 
 Many of the various projects for Swift are largely UI based, but Swift is a general-purpose language, so I wanted to try a project that wasn't UI based to get a feel for using the language in a different way.
 
 It's been a (ObiWan voice) *long time* since I've done significant geometry work. I've always had an interest in geometry ever since my mom got me [Cundy and Rollett's book *Mathematical Models*](https://en.wikipedia.org/wiki/Mathematical_Models_(Cundy_and_Rollett)) to placate me when I had an unfortunate math teacher, but I never went as far as I could have with it.
+
+### Project Goals
+
+1. Use Swift to its advantage. Small example: for dot producs, I defined the unary operator • rather than naming the function something with the word "dot." Similarly, for cross products, defined unary operator × rather than a named function.
+2. Learn stuff! This isn't intended as a be-all, end-all ray tracer, but learning the principles of something I never happened to do before.
+3. Render cool things! One of my thoughts about things I'd like to render after finishing the book, would be things like [this Haramis swirly volume knob](https://reverb.com/item/29250758-haramis-musical-hardware-strat-style-volume-knob-blue-swirl) or [this ESP multichrome guitar](https://www.espguitars.com/products/27427-f-1001).
+
+|![Volume knob](RayTracer/Images/haramis-voume-knob.jpg)|![Multichrome guitar](RayTracer/Images/esp-violet-andromeda.png)|
 
 ### One Motivation for Doing This
 
