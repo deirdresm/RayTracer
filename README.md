@@ -13,7 +13,9 @@ It's been a (ObiWan voice) *long time* since I've done significant geometry work
 2. Learn stuff! This isn't intended as a be-all, end-all ray tracer, but learning the principles of something I never happened to do before.
 3. Render cool things! One of my thoughts about things I'd like to render after finishing the book, would be things like [this Haramis swirly volume knob](https://reverb.com/item/29250758-haramis-musical-hardware-strat-style-volume-knob-blue-swirl) or [this ESP multichrome guitar](https://www.espguitars.com/products/27427-f-1001).
 
+| --- | --- |
 | ![Volume knob](RayTracer/Images/haramis-voume-knob.jpg) | ![Multichrome guitar](RayTracer/Images/esp-violet-andromeda.png) |
+| --- | --- |
 
 ### One Motivation for Doing This
 
