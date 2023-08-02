@@ -11,7 +11,7 @@ It's been a (ObiWan voice) *long time* since I've done significant geometry work
 
 1. Use Swift to its advantage. Small example: for dot producs, I defined the unary operator • rather than naming the function something with the word "dot." Similarly, for cross products, defined unary operator × rather than a named function.
 2. Learn stuff! This isn't intended as a be-all, end-all ray tracer, but learning the principles of something I never happened to do before.
-3. Render cool things! One of my thoughts about things I'd like to render after finishing the book, would be things like [this Haramis swirly volume knob](https://reverb.com/item/29250758-haramis-musical-hardware-strat-style-volume-knob-blue-swirl) or [this ESP multichrome guitar](https://www.espguitars.com/products/27427-f-1001).
+3. Render cool things! One of my thoughts about things I'd like to render after finishing the book, would be things like [this Haramis swirly volume knob](https://reverb.com/item/29250758-haramis-musical-hardware-strat-style-volume-knob-blue-swirl) or [this multichrome guitar](https://www.espguitars.com/products/27427-f-1001).
 
 | ![Volume knob](RayTracer/Images/haramis-voume-knob.jpg) | ![Multichrome guitar](RayTracer/Images/esp-violet-andromeda.png) |
 | --- | --- |
@@ -27,6 +27,12 @@ Anyhow, I thought it would be interesting to be able to visually model it becaus
 Just finished Chapter 8 (shadows).
 
 About to start Chapter 9, Planes.
+
+## Chapter 9, Planes
+
+In this chapter, the first step is extracting what's common about shapes into a Shape class (though, as Buck notes, use the analogous concept in the language of choice.)
+
+I'd already made Shape a protocol, which I think fits the bill; I called a generic non-abstract instance SampleShape. That'll be used for testing aspects of how the protocol works.
 
 ## Chapter 8, Shadows
 

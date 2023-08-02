@@ -39,5 +39,7 @@ class TestLights: XCTestCase {
 		let light = Light(position: Point(-1, 10, -5), color: VColor(0.2, 0.5, 0.75))
 
 		let ml = material.lighting(light: light, position: position, eyeV: eyeV, normalV: normalV)
+
+		// TODO: Missing testPointLightLighting test.
 	}
 }

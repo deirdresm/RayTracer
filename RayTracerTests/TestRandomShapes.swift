@@ -19,7 +19,7 @@ class TestSampleShapes: XCTestCase {
 
 	func testDefaultTransform() {
 		let m = Material()
-		let s = SampleShape(material: m)
+		let s = TestShape(material: m)
 
 		XCTAssertEqual(s.transform, Matrix.identity)
 	}
@@ -31,7 +31,7 @@ class TestSampleShapes: XCTestCase {
 
 	func testAssignedTransform() {
 		let m = Material()
-		var s = SampleShape(material: m)
+		let s = TestShape(material: m)
 		s.transform = Matrix.translation(Point(2, 3, 4))
 
 		XCTAssertEqual(s.transform, Matrix.translation(Point(2, 3, 4)))
@@ -44,7 +44,7 @@ class TestSampleShapes: XCTestCase {
 
 	func testDefaultMaterial() {
 		let m = Material()
-		var s = SampleShape(material: m)
+		let s = TestShape(material: m)
 
 		XCTAssertEqual(s.material, m)
 	}
@@ -59,7 +59,7 @@ class TestSampleShapes: XCTestCase {
 	func testAssignedMaterial() {
 		var m = Material()
 		m.ambient = 1
-		var s = SampleShape(material: m)
+		let s = TestShape(material: m)
 
 		XCTAssertEqual(s.material, m)
 		XCTAssertEqual(s.material.ambient, m.ambient)
@@ -73,12 +73,15 @@ class TestSampleShapes: XCTestCase {
 //      Then s.saved_ray.origin = point(0, 0, -2.5)
 //        And s.saved_ray.direction = vector(0, 0, 0.5)
 
-	func testTranslatedShapeIntersectsRay() {
+	func testScaledShapeIntersectsRay() {
 		 let r = Ray(origin: Point(0, 0, -5), direction: Vector(0, 0, 1))
-		let shape = SampleShape(material: Material())
+		let shape = TestShape(material: Material())
 		shape.transform = Matrix.scaling(point: Point(2, 2, 2))
 		 let xs = shape.intersections(r)
-		 XCTAssertEqual(xs.count, 0)
+		 XCTAssertEqual(xs.count, 1)
+
+		XCTAssertEqual(shape.savedRay?.origin, Point(0, 0, -2.5))
+		XCTAssertEqual(shape.savedRay?.direction, Vector(0, 0, 0.5))
 
 		 // TODO: add another test case with a non-zero intersection count
  }
@@ -90,7 +93,17 @@ class TestSampleShapes: XCTestCase {
 //        And xs ← intersect(s, r)
 //      Then s.saved_ray.origin = point(-5, 0, -5)
 //        And s.saved_ray.direction = vector(0, 0, 1)
-//
+
+	func testTranslatedShapeIntersectsRay() {
+		 let r = Ray(origin: Point(0, 0, -5), direction: Vector(0, 0, 1))
+		let shape = TestShape(material: Material())
+		shape.transform = Matrix.scaling(point: Point(2, 2, 2))
+		 let xs = shape.intersections(r)
+		 XCTAssertEqual(xs.count, 0)
+
+		 // TODO: add another test case with a non-zero intersection count
+ }
+
 //    Scenario: Computing the normal on a translated shape
 //      Given s ← test_shape()
 //      When set_transform(s, translation(0, 1, 0))

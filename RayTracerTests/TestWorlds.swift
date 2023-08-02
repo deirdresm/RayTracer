@@ -46,10 +46,10 @@ class TestWorlds: XCTestCase {
 		let light = Light(position: Point(-10, 10, -10), color: .white)
 
 		let sphereOne = Sphere()
-		var material = Material(diffuse: 0.7, specular: 0.2, color: VColor(0.8, 1.0, 0.6))
+		let material = Material(diffuse: 0.7, specular: 0.2, color: VColor(0.8, 1.0, 0.6))
 		sphereOne.material = material
 
-		var sphereTwo = Sphere()
+		let sphereTwo = Sphere()
 		sphereTwo.setTransform(Matrix.scaling(point: Point(0.5, 0.5, 0.5)))
 		XCTAssertEqual(world.lights.first, light)
 
@@ -77,15 +77,15 @@ class TestWorlds: XCTestCase {
 		var ray = Ray(origin: Point(0, 0, -5), direction: Vector(0, 0, 1))
 
 		let sphereOne = Sphere()
-		var material = Material(diffuse: 0.7, specular: 0.2, color: VColor(0.8, 1.0, 0.6))
+		let material = Material(diffuse: 0.7, specular: 0.2, color: VColor(0.8, 1.0, 0.6))
 		sphereOne.material = material
 
-		var sphereTwo = Sphere()
+		let sphereTwo = Sphere()
 		sphereTwo.setTransform(Matrix.scaling(point: Point(0.5, 0.5, 0.5)))
 
 		world.objects = [sphereOne, sphereTwo]
 
-		var xs = world.intersections(ray: &ray)
+		let xs = world.intersections(ray: &ray)
 
 		XCTAssertEqual(xs.count, 4)
 
@@ -105,12 +105,14 @@ class TestWorlds: XCTestCase {
 //	  Then c = color(0.38066, 0.47583, 0.2855)
 
 	func testShadingAnIntersection() {
-		var w = World.defaultWorld()
+		let w = World.defaultWorld()
 		let ray = Ray(origin: Point(0, 0, -5), direction: Vector(0, 0, 1))
 		let shape = w.objects.first!
 		let intersection = Intersection(distance: 4, shape: shape)
 		let comps = IntersectionState(intersection: intersection, ray: ray)
 		let color = w.shadeHit(with: comps)
+
+		XCTAssertEqual(color, VColor(0.38066, 0.47583, 0.2855))		// far outer
 	}
 
 //	Scenario: Shading an intersection from the inside
@@ -124,7 +126,7 @@ class TestWorlds: XCTestCase {
 //	  Then c = color(0.90498, 0.90498, 0.90498)
 
 	func testShadingAnIntersectionFromInside() {
-		var world = World.defaultWorld()
+		let world = World.defaultWorld()
 
 		let light = Light(position: Point(0, 0.25, 0), color: .white)
 		world.lights = [light]
@@ -147,7 +149,7 @@ class TestWorlds: XCTestCase {
 //	  Then c = color(0, 0, 0)
 
 	func testColorWhenRayMisses() {
-		var world = World.defaultWorld()
+		let world = World.defaultWorld()
 
 		var ray = Ray(origin: Point(0, 0, -5), direction: Vector(0, 1, 0))
 		let color = world.color(at: &ray)
@@ -162,7 +164,7 @@ class TestWorlds: XCTestCase {
 //	  Then c = color(0.38066, 0.47583, 0.2855)
 
 	func testColorWhenRayHits() {
-		var world = World.defaultWorld()
+		let world = World.defaultWorld()
 
 		var ray = Ray(origin: Point(0, 0, -5), direction: Vector(0, 0, 1))
 		let color = world.color(at: &ray)
@@ -181,7 +183,7 @@ class TestWorlds: XCTestCase {
 //	  Then c = inner.material.color
 
 	func testColorWhenIntersectionBehindRay() {
-		var world = World.defaultWorld()
+		let world = World.defaultWorld()
 
 		var outer = world.objects.first!
 		var inner = world.objects.last!
@@ -202,9 +204,9 @@ class TestWorlds: XCTestCase {
 //	   Then is_shadowed(w, p) is false
 
 	func testNoShadowsWhenNothingCollinear() {
-		var world = World.defaultWorld()
+		let world = World.defaultWorld()
 
-		var point = Point(0, 10, 0)
+		let point = Point(0, 10, 0)
 
 		XCTAssertEqual(world.isShadowed(point: point), false)
 	}
@@ -215,9 +217,9 @@ class TestWorlds: XCTestCase {
 //	   Then is_shadowed(w, p) is true
 
 	func testShadowsWhenObjectBetweenPointAndLight() {
-		var world = World.defaultWorld()
+		let world = World.defaultWorld()
 
-		var point = Point(10, -10, 10)
+		let point = Point(10, -10, 10)
 
 		XCTAssertEqual(world.isShadowed(point: point), true)
 	}
@@ -228,9 +230,9 @@ class TestWorlds: XCTestCase {
 //	   Then is_shadowed(w, p) is false
 
 	func testNoShadowsWhenObjectBehindLight() {
-		var world = World.defaultWorld()
+		let world = World.defaultWorld()
 
-		var point = Point(-20, 20, -20)
+		let point = Point(-20, 20, -20)
 
 		XCTAssertEqual(world.isShadowed(point: point), false)
 	}
@@ -241,9 +243,9 @@ class TestWorlds: XCTestCase {
 //	   Then is_shadowed(w, p) is false
 
 	func testNoShadowsWhenObjectBehindPoint() {
-		var world = World.defaultWorld()
+		let world = World.defaultWorld()
 
-		var point = Point(-2, 2, -2)
+		let point = Point(-2, 2, -2)
 
 		XCTAssertEqual(world.isShadowed(point: point), false)
 	}
@@ -263,17 +265,17 @@ class TestWorlds: XCTestCase {
 //	  Then c = color(0.1, 0.1, 0.1)
 
 	func testShadeHitInShadow() {
-		var world = World()
-		var light = Light(position: Point(0, 0, -10), color: .white)
+		let world = World()
+		let light = Light(position: Point(0, 0, -10), color: .white)
 		world.lights = [light]
 
-		var s1 = Sphere()
-		var s2 = Sphere()
-		var m = Matrix.identity
+		let s1 = Sphere()
+		let s2 = Sphere()
+		let m = Matrix.identity
 		s2.transform = m.translated(Point(0, 0, 10))
 		world.objects = [s1, s2]
 
-		var ray = Ray(origin: Point(0, 0, 5), direction: Vector(0, 0, 1))
+		let ray = Ray(origin: Point(0, 0, 5), direction: Vector(0, 0, 1))
 
 		let intersection = Intersection(distance: 4, shape: s2)
 		let comps = IntersectionState(intersection: intersection, ray: ray)

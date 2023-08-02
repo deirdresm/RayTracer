@@ -121,8 +121,8 @@ class TestIntersections: XCTestCase {
 
 	func testHitShouldOffsetPoint() {
 		let ray = Ray(origin: Point(0, 0, -5), direction: Vector(0, 0, 1))
-		var shape = Sphere()
-		var m = Matrix.identity
+		let shape = Sphere()
+		let m = Matrix.identity
 		shape.transform = m.translated(Point(0, 0, 1))
 
 		let intersection = Intersection(distance: 5, shape: shape)
